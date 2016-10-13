@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:author="http://www.sothink.com"
+width="212px" height="260px"
+xml:space="preserve">
+<g id="PathID_3106" transform="matrix(0.0352941, 0, 0, 0.0352941, 0, 37.8)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M512 0l-256 0l0 -128l-256 0l0 -384l256 0l0 -128l256 0l0 128l256 0l0 384l-256 0l0 128l0 0" />
+</g>
+<g id="PathID_3107" transform="matrix(0.0352941, 0, 0, 0.0352941, 48, 37.8)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M256 0l-256 0l0 -256l256 0l0 256l0 0" />
+</g>
+<g id="PathID_3108" transform="matrix(0.0352941, 0, 0, 0.0352941, 96, 37.8)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M384 -128l128 0l0 -256l-128 0l0 256l0 0M640 0l-512 0q-54 0 -91 -37q-37 -37 -37 -91l0 -512q0 -53 37 -90q37 -38 91 -38l512 0q53 0 90 38q38 37 38 90l0 512q0 54 -38 91q-37 37 -90 37l0 0" />
+</g>
+<g id="PathID_3109" transform="matrix(0.0352941, 0, 0, 0.0352941, 144, 37.8)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M512 0l-256 0l0 -384l-256 0l0 -384l384 0q53 0 90 38q38 37 38 90l0 640l0 0" />
+</g>
+<g id="PathID_3110" transform="matrix(0.0352941, 0, 0, 0.0352941, 0, 84)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M768 0l-768 0l0 -128l128 -128l128 -128l128 -128l-384 0l0 -256l640 0q53 0 90 38q38 37 38 90l0 128l-128 128l-128 128l-128 128l384 0l0 128l0 0" />
+</g>
+<g id="PathID_3111" transform="matrix(0.0352941, 0, 0, 0.0352941, 48, 84)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M640 0l-512 0q-54 0 -91 -37q-37 -37 -37 -91l512 0l0 -128l-384 0l0 -128l384 0l0 -128l-512 0l0 -128q0 -53 37 -90q37 -38 91 -38l512 0q53 0 90 38q38 37 38 90l0 512q0 54 -38 91q-37 37 -90 37l0 0" />
+</g>
+<g id="PathID_3112" transform="matrix(0.0352941, 0, 0, 0.0352941, 96, 84)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M512 0l-256 0l0 -128l-256 0l0 -512q0 -53 37 -90q37 -38 91 -38l128 0l0 384l512 0l0 256l-256 0l0 128l0 0" />
+</g>
+<g id="PathID_3113" transform="matrix(0.0352941, 0, 0, 0.0352941, 144, 84)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M640 0l-640 0l0 -128l256 0l0 -128l-256 0l0 -384q0 -53 37 -90q37 -38 91 -38l512 0q53 0 90 38q38 37 38 90l0 256l-384 0l0 128l384 0l0 128q0 54 -38 91q-37 37 -90 37l0 0" />
+</g>
+<g id="PathID_3114" transform="matrix(0.0352941, 0, 0, 0.0352941, 0, 132)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M384 -128l128 0l0 -128l-128 0l0 128l0 0M640 0l-512 0q-54 0 -91 -37q-37 -37 -37 -91l0 -512q0 -53 37 -90q37 -38 91 -38l512 0q53 0 90 38q38 37 38 90l0 128l-384 0l0 128l384 0l0 256q0 54 -38 91q-37 37 -90 37l0 0" />
+</g>
+<g id="PathID_3115" transform="matrix(0.0352941, 0, 0, 0.0352941, 48, 132)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M768 0l-256 0l0 -128l-256 0l0 -128l256 0l0 -128l-512 0l0 -384l640 0q53 0 90 38q38 37 38 90l0 640l0 0" />
+</g>
+<g id="PathID_3116" transform="matrix(0.0352941, 0, 0, 0.0352941, 96, 132)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M256 -128l256 0l0 -128l-256 0l0 128l0 0M256 -384l128 0l0 -128l-128 0l0 128l0 0M640 0l-512 0q-54 0 -91 -37q-37 -37 -37 -91l0 -512q0 -53 37 -90q37 -38 91 -38l512 0q53 0 90 38q38 37 38 90l0 512q0 54 -38 91q-37 37 -90 37l0 0" />
+</g>
+<g id="PathID_3117" transform="matrix(0.0352941, 0, 0, 0.0352941, 144, 132)">
+<path style="fill:#FFFFFF;fill-opacity:1" d="M256 -384l256 0l0 -128l-256 0l0 128l0 0M640 0l-640 0l0 -128l512 0l0 -128l-384 0q-54 0 -91 -37q-37 -37 -37 -91l0 -256q0 -53 37 -90q37 -38 91 -38l512 0q53 0 90 38q38 37 38 90l0 512q0 54 -38 91q-37 37 -90 37l0 0" />
+</g>
+</svg>

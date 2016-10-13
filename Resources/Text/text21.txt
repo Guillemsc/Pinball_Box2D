@@ -1,0 +1,1 @@
+﻿<p align="center"><font face="Arial Black" size="8" color="#ffffff" letterSpacing="0.000000" kerning="1">0%</font></p>
