@@ -24,17 +24,15 @@ bool j1Scene::Awake()
 	LOG("Loading Scene");
 	bool ret = true;
 
-	char* title = "hi";
-
-	App->win->SetTitle(title);
 	return ret;
 }
 
 // Called before the first frame
 bool j1Scene::Start()
 {
-	App->map->Load("hello2.tmx");
-	
+	char* title = "Mega extreme pinball hardcore gone sexual viral pranks click to see what happened i can't belive it";
+	App->win->SetTitle(title);
+
 	return true;
 }
 

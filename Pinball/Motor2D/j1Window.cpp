@@ -95,6 +95,13 @@ bool j1Window::CleanUp()
 	return true;
 }
 
+bool j1Window::Update()
+{
+	bool ret = true;
+
+	return ret;
+}
+
 // Set new window title
 void j1Window::SetTitle(const char* new_title)
 {
