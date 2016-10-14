@@ -24,6 +24,9 @@ bool j1Scene::Awake()
 	LOG("Loading Scene");
 	bool ret = true;
 
+	char* title = "hi";
+
+	App->win->SetTitle(title);
 	return ret;
 }
 
@@ -31,7 +34,6 @@ bool j1Scene::Awake()
 bool j1Scene::Start()
 {
 	App->map->Load("hello2.tmx");
-	//App->map->Load("iso.tmx");
 	
 	return true;
 }
@@ -65,16 +67,7 @@ bool j1Scene::Update(float dt)
 
 	App->map->Draw();
 
-	int x, y;
-	App->input->GetMousePosition(x, y);
-	iPoint map_coordinates = App->map->WorldToMap(x - App->render->camera.x, y - App->render->camera.y);
-	p2SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d Tile:%d,%d",
-					App->map->data.width, App->map->data.height,
-					App->map->data.tile_width, App->map->data.tile_height,
-					App->map->data.tilesets.count(),
-					map_coordinates.x, map_coordinates.y);
-
-	App->win->SetTitle(title.GetString());
+	
 	return true;
 }
 

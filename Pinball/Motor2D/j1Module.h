@@ -15,42 +15,17 @@
 class j1App;
 class PhysBody;
 
+
 class j1Module
 {
-private:
-	bool enabled;
 public:
 
 	j1Module() : active(false)
 	{}
 
-	bool IsEnabled() const
-	{
-		return enabled;
-	}
-
-	void Enable()
-	{
-		if (enabled == false)
-		{
-			enabled = true;
-			Start();
-		}
-	}
-
-	void Disable()
-	{
-		if (enabled == true)
-		{
-			enabled = false;
-			CleanUp();
-		}
-	}
-
-	bool Init()
+	void Init()
 	{
 		active = true;
-		return true;
 	}
 
 	// Called before render is available

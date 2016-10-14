@@ -1,17 +1,9 @@
-﻿  j1App.cpp
-  Generating Code...
-  Compiling...
-  j1Window.cpp
-  j1Input.cpp
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  j1Textures.cpp
-  j1Scene.cpp
-  j1Render.cpp
-  j1Physics.cpp
-  j1Map.cpp
-  j1Main.cpp
-  j1FileSystem.cpp
-  j1Audio.cpp
-  Motor2D.vcxproj -> C:\Users\gsunyer\Desktop\Dev_class6_handout\Debug\Development - Class 6.exe
-  Motor2D.vcxproj -> C:\Users\gsunyer\Desktop\Dev_class6_handout\Debug\Development - Class 6.pdb (Full PDB)
+﻿  j1Physics.cpp
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1physics.cpp(242): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1physics.cpp(243): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1physics.cpp(286): warning C4018: '<': signed/unsigned mismatch
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1physics.cpp(368): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1physics.cpp(369): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1physics.cpp(375): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Debug\Development - Class 6.exe
+  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Debug\Development - Class 6.pdb (Full PDB)
