@@ -30,8 +30,6 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	char* title = "Mega extreme pinball hardcore gone sexual viral pranks click to see what happened i can't belive it";
-	App->win->SetTitle(title);
 
 	return true;
 }

@@ -2,7 +2,7 @@
 
 <config>
   <app>
-    <title>Game Development Testbed</title>
+    <title>Pinball</title>
     <organization>UPC</organization>
   </app>
 	
@@ -11,7 +11,7 @@
   </renderer>
 
   <window>
-    <resolution width="1024" height="768" scale="1"/>
+    <resolution width="630" height="800" scale="1"/>
     <fullscreen value="false"/>
     <borderless value="false"/>
     <resizable value="false"/>
@@ -21,9 +21,5 @@
   <file_system>
     <path>data.zip</path>
   </file_system>
-
-  <map>
-    <folder>maps/</folder>
-  </map>
 
 </config>

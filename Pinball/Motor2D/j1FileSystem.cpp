@@ -37,6 +37,7 @@ bool j1FileSystem::Awake(pugi::xml_node& config)
 	for(pugi::xml_node path = config.child("path"); path; path = path.next_sibling("path"))
 	{
 		AddPath(path.child_value());
+		LOG("Path %s added", path.child_value());
 	}
 
 	// Ask SDL for a write dir

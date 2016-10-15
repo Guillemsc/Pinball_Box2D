@@ -18,6 +18,8 @@ public:
 	// Called before render is available
 	bool Awake(pugi::xml_node& conf);
 
+	bool Start();
+
 	// Called each loop iteration
 	void Draw();
 
@@ -25,8 +27,8 @@ public:
 	bool CleanUp();
 
 private:
-
-	bool				map_loaded;
+	SDL_Texture*		background1;
+	SDL_Rect			background1_rect;
 };
 
 #endif // __j1MAP_H__

@@ -1,0 +1,28 @@
+﻿  j1FileSystem.cpp
+  j1Main.cpp
+  j1App.cpp
+  j1Audio.cpp
+  j1Input.cpp
+  j1Map.cpp
+j1Map.cpp(50): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
+  c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1Textures.h(7): note: see declaration of 'SDL_Texture'
+  j1Physics.cpp
+j1Physics.cpp(242): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+j1Physics.cpp(243): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+j1Physics.cpp(286): warning C4018: '<': signed/unsigned mismatch
+j1Physics.cpp(368): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+j1Physics.cpp(369): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+j1Physics.cpp(375): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+  j1Scene.cpp
+  p2Log.cpp
+  j1Render.cpp
+  j1Textures.cpp
+  j1Window.cpp
+  pugixml.cpp
+     Creating library C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.lib and object C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.exp
+  Generating code
+  All 512 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+physfs.lib(physfs.obj) : warning LNK4049: locally defined symbol _sprintf imported
+  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.exe
+  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.pdb (Full PDB)

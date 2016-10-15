@@ -1,3 +1,5 @@
-﻿  j1Scene.cpp
+﻿  j1Map.cpp
+c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1map.cpp(50): warning C4150: deletion of pointer to incomplete type 'SDL_Texture'; no destructor called
+  c:\users\gsunyer\documents\github\pinball_box2d\pinball\motor2d\j1textures.h(7): note: see declaration of 'SDL_Texture'
   Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Debug\Development - Class 6.exe
   Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Debug\Development - Class 6.pdb (Full PDB)
