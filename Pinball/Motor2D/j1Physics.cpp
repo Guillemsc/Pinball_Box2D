@@ -13,7 +13,7 @@
 #define RADTODEG 57.295779513082320876f
 
 #define GRAVITY_X 0.0f
-#define GRAVITY_Y -1.0f
+#define GRAVITY_Y -2
 
 #ifdef _DEBUG
 #pragma comment( lib, "Box2D/libx86/Debug/Box2D.lib" )
@@ -104,7 +104,6 @@ bool j1Physics::PostUpdate()
 				// Draw circles ------------------------------------------------
 			case b2Shape::e_circle:
 			{
-				
 				b2CircleShape* shape = (b2CircleShape*)f->GetShape();
 				b2Vec2 pos = f->GetBody()->GetPosition();
 				App->render->DrawCircle(METERS_TO_PIXELS(pos.x), METERS_TO_PIXELS(pos.y), METERS_TO_PIXELS(shape->m_radius), 255, 255, 255);

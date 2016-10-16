@@ -42,29 +42,40 @@ bool j1Map::Start()
 	spring = new Sprite(App->tex->Load("images/spring.png"),
 		0, 0, 29, 180, 581, 950);
 
+	// Ball
+	ball = new Sprite(App->tex->Load("images/ball.png"),
+		0, 0, 33, 32, 50, 50);
+
 
 	return ret;
 }
 
 void j1Map::CreateColliders()
 {
-	App->physics->CreateCircle(50, 50, 10);
+	ball_body = App->physics->CreateCircle(50, 50, 50);
+	PhysBody* a = App->physics->CreateRectangle(40, 300, 50, 50);
+	a->body->SetType(b2_kinematicBody);
 }
 
 void j1Map::Draw()
 {
-	App->render->Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
-	App->render->Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
-	App->render->Blit(spring->texture, spring->pos.x, spring->pos.y, &spring->rect);
+	Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
+	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
+	Blit(spring->texture, spring->pos.x, spring->pos.y, &spring->rect);
+	Blit(ball->texture, ball_body->body->GetPosition().x , ball_body->body->GetPosition().y, &ball->rect);
 }
 
 // Called before quitting
 bool j1Map::CleanUp()
 {
 	LOG("Unloading map");
-	//RELEASE(background1);
 
 	return true;
+}
+
+void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section)
+{
+	App->render->Blit(texture, x, y, section);
 }
 
 

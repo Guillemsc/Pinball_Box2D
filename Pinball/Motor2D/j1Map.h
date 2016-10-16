@@ -60,10 +60,14 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section);
+
 private:
 	Sprite*		 bg1;
 	Sprite*		 bg2;
 	Sprite*		 spring;
+	Sprite*		 ball;		PhysBody* ball_body;
+
 
 };
 
