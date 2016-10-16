@@ -1,4 +1,5 @@
-﻿  j1FileSystem.cpp
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Development - Class 6.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  j1FileSystem.cpp
   j1Main.cpp
   j1App.cpp
   j1Audio.cpp
@@ -19,10 +20,10 @@ j1Physics.cpp(375): warning C4244: 'return': conversion from 'float32' to 'int',
   j1Textures.cpp
   j1Window.cpp
   pugixml.cpp
-     Creating library C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.lib and object C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.exp
+     Creating library C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Pinball.lib and object C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Pinball.exp
   Generating code
   All 512 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
 physfs.lib(physfs.obj) : warning LNK4049: locally defined symbol _sprintf imported
-  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.exe
-  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Development - Class 6.pdb (Full PDB)
+  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Pinball.exe
+  Motor2D.vcxproj -> C:\Users\gsunyer\Documents\GitHub\Pinball_Box2D\Pinball\Release\Pinball.pdb (Full PDB)

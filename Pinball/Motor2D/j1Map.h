@@ -29,6 +29,11 @@ public:
 private:
 	SDL_Texture*		background1;
 	SDL_Rect			background1_rect;
+
+	SDL_Texture*		background2;
+	SDL_Rect			background2_rect;
+
+
 };
 
 #endif // __j1MAP_H__
