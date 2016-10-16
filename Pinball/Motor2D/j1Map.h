@@ -10,6 +10,39 @@ class j1Map : public j1Module
 {
 public:
 
+	class Sprite
+	{
+	public:
+		Sprite()
+		{
+		}
+
+		Sprite(SDL_Texture* _texture, int _x, int _y, int _w, int _h, int _posx, int _posy)
+		{
+			texture = _texture;
+			rect.x = _x; rect.y = _y; rect.w = _w; rect.h = _h;
+			pos.x = _posx;
+			pos.y = _posy;
+		}
+
+		Sprite(SDL_Texture* _texture, SDL_Rect _rect, int _posx, int _posy)
+		{
+			texture = _texture;
+			rect = _rect;
+			pos.x = _posx;
+			pos.y = _posy;
+		}
+
+		~Sprite()
+		{}
+
+		SDL_Texture* texture;
+		SDL_Rect rect;
+		iPoint pos;
+
+	private:
+	};
+
 	j1Map();
 
 	// Destructor
@@ -21,18 +54,16 @@ public:
 	bool Start();
 
 	// Called each loop iteration
+	void CreateColliders();
 	void Draw();
 
 	// Called before quitting
 	bool CleanUp();
 
 private:
-	SDL_Texture*		background1;
-	SDL_Rect			background1_rect;
-
-	SDL_Texture*		background2;
-	SDL_Rect			background2_rect;
-
+	Sprite*		 bg1;
+	Sprite*		 bg2;
+	Sprite*		 spring;
 
 };
 

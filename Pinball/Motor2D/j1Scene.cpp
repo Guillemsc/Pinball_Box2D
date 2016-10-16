@@ -8,6 +8,7 @@
 #include "j1Window.h"
 #include "j1Map.h"
 #include "j1Scene.h"
+#include "j1Physics.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -30,6 +31,7 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
+	App->map->CreateColliders();
 
 	return true;
 }
