@@ -57,7 +57,11 @@ bool j1Scene::Update(float dt)
 	if((App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) && App->render->camera.y > -280)
 		App->render->camera.y -= 1;
 
+	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) && App->render->camera.y < 0)
+
 	App->map->Draw();
+
+
 
 	
 	return true;

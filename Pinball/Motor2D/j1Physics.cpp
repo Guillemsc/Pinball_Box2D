@@ -289,6 +289,26 @@ PhysBody * j1Physics::CreateChain(int x, int y, int * points, int size)
 	return pbody;
 }
 
+PhysBody * j1Physics::CreatePrismaticJoint(PhysBody * Rectangle, int lower, int max, int maxMotor, int motorSpeed)
+{
+	/*
+	b2PrismaticJointDef prismaticJointDef;
+	prismaticJointDef.bodyA = bodyA;
+	prismaticJointDef.bodyB = bodyB;
+	prismaticJointDef.collideConnected = false;
+		/*
+		the_prism_joint.lowerTranslation=-6;
+		the_prism_joint.upperTranslation=6
+		the_prism_joint.enableLimit=true;
+		the_prism_joint.maxMotorForce=100;
+		the_prism_joint.motorSpeed=4.0;
+		*/
+	*/
+	
+
+	return nullptr;
+}
+
 void j1Physics::BeginContact(b2Contact * contact)
 {
 	PhysBody* physA = (PhysBody*)contact->GetFixtureA()->GetBody()->GetUserData();

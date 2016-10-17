@@ -52,17 +52,16 @@ bool j1Map::Start()
 
 void j1Map::CreateColliders()
 {
-	ball_body = App->physics->CreateCircle(50, 50, 50);
-	PhysBody* a = App->physics->CreateRectangle(40, 300, 50, 50);
-	a->body->SetType(b2_kinematicBody);
+	ball->pb = App->physics->CreateCircle(50, 50, 14);
+	spring->pb = App->physics->CreateRectangle(597, 950, 30, 20); spring->pb->body->SetType(b2_staticBody);
 }
 
 void j1Map::Draw()
 {
 	Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
 	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
-	Blit(spring->texture, spring->pos.x, spring->pos.y, &spring->rect);
-	Blit(ball->texture, ball_body->body->GetPosition().x , ball_body->body->GetPosition().y, &ball->rect);
+	Blit(spring->texture, spring->pb->body->GetPosition().x - 15, spring->pb->body->GetPosition().y, &spring->rect);
+	Blit(ball->texture, ball->pb->body->GetPosition().x - 14, ball->pb->body->GetPosition().y - 14, &ball->rect);
 }
 
 // Called before quitting
