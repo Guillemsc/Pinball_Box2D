@@ -52,7 +52,7 @@ bool j1Map::Start()
 
 void j1Map::CreateColliders()
 {
-	ball->pb = App->physics->CreateCircle(100, 50, 13);
+	ball->pb = App->physics->CreateCircle(200, 50, 13);
 	spring->pb = App->physics->CreateRectangle(597, 950, 30, 20); spring->pb->body->SetType(b2_staticBody);
 
 	// Background standalone colliders
@@ -237,6 +237,8 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb6 = App->physics->CreateChain(0, 0, chain6, 28);
 	colliderb6->body->SetType(b2_staticBody);
+
+	b2RevoluteJoint* a = App->physics->CreateRevoluteJoint(15, 50, 15, 250, 400);
 	
 }
 

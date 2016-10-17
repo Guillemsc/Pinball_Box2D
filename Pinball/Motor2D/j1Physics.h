@@ -61,6 +61,7 @@ public:
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height);
 	PhysBody* CreateChain(int x, int y, int* points, int size);
 	PhysBody* CreatePrismaticJoint(PhysBody* Rectangle, int lower, int max, int maxMotor, int motorSpeed);
+	b2RevoluteJoint* CreateRevoluteJoint(int radius, int width, int height, int posx, int posy);
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);

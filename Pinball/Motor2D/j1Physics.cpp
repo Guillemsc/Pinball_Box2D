@@ -309,6 +309,46 @@ PhysBody * j1Physics::CreatePrismaticJoint(PhysBody * Rectangle, int lower, int 
 	return nullptr;
 }
 
+b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int width, int height, int posx, int posy)
+{
+
+	
+	//body and fixture defs - the common parts
+  b2BodyDef bodyDef;
+  b2FixtureDef fixtureDef;
+  fixtureDef.density = 1;
+  
+  //two shapes
+  b2PolygonShape boxShape;
+  boxShape.SetAsBox(PIXEL_TO_METERS(width), PIXEL_TO_METERS(height));
+  b2CircleShape circleShape;
+  circleShape.m_radius = PIXEL_TO_METERS(radius);
+  
+  //make box a little to the left
+  bodyDef.position.Set(PIXEL_TO_METERS(posx), PIXEL_TO_METERS(posy));
+  fixtureDef.shape = &boxShape;
+  bodyDef.type = b2_dynamicBody;
+  b2Body*m_bodyA = world->CreateBody( &bodyDef );
+  m_bodyA->CreateFixture( &fixtureDef );
+  
+  //and circle a little to the right
+  bodyDef.position.Set(PIXEL_TO_METERS(posx), PIXEL_TO_METERS(posy));
+  fixtureDef.shape = &circleShape;
+  bodyDef.type = b2_kinematicBody;
+  b2Body* m_bodyB = world->CreateBody( &bodyDef );
+  m_bodyB->CreateFixture( &fixtureDef );
+
+  b2RevoluteJointDef revoluteJointDef;
+  revoluteJointDef.bodyA = m_bodyA;
+  revoluteJointDef.bodyB = m_bodyB;
+  revoluteJointDef.collideConnected = false;
+  revoluteJointDef.type = e_revoluteJoint;
+
+  b2RevoluteJoint* m_joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef);
+	
+	return m_joint;
+}
+
 void j1Physics::BeginContact(b2Contact * contact)
 {
 	PhysBody* physA = (PhysBody*)contact->GetFixtureA()->GetBody()->GetUserData();
