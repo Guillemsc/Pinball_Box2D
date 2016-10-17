@@ -52,21 +52,21 @@ bool j1Map::Start()
 
 void j1Map::CreateColliders()
 {
-	ball->pb = App->physics->CreateCircle(100, 50, 12);
+	ball->pb = App->physics->CreateCircle(100, 50, 13);
 	spring->pb = App->physics->CreateRectangle(597, 950, 30, 20); spring->pb->body->SetType(b2_staticBody);
 
 	// Background standalone colliders
-	int chain1 [152] = {
+	int chain1[154] = {
 		261, 128,
 		254, 98,
 		233, 64,
 		198, 44,
 		162, 36,
-		127, 38,
-		102, 48,
+		128, 38,
+		101, 47,
 		82, 62,
-		68, 82,
-		54, 115,
+		61, 87,
+		52, 114,
 		52, 162,
 		47, 670,
 		57, 686,
@@ -132,9 +132,10 @@ void j1Map::CreateColliders()
 		351, 235,
 		340, 203,
 		317, 163,
-		270, 138
+		270, 138,
+		277, 128
 	};
-	PhysBody* colliderb1 = App->physics->CreateChain(0, 0, chain1, 152);
+	PhysBody* colliderb1 = App->physics->CreateChain(0, 0, chain1, 154);
 	colliderb1->body->SetType(b2_staticBody);
 
 	int chain2 [76] = {
@@ -143,13 +144,13 @@ void j1Map::CreateColliders()
 		199, 88,
 		175, 69,
 		159, 63,
-		140, 62,
-		123, 68,
-		110, 78,
-		95, 93,
-		83, 110,
-		80, 127,
-		79, 144,
+		139, 64,
+		123, 69,
+		111, 78,
+		96, 92,
+		86, 110,
+		81, 125,
+		80, 143,
 		89, 669,
 		94, 682,
 		102, 692,
@@ -179,6 +180,63 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb2 = App->physics->CreateChain(0, 0, chain2, 76);
 	colliderb2->body->SetType(b2_staticBody);
+
+	int chain3[10] = {
+		127, 888,
+		149, 882,
+		207, 983,
+		194, 998,
+		132, 968
+	};
+	PhysBody* colliderb3 = App->physics->CreateChain(0, 0, chain3, 10);
+	colliderb3->body->SetType(b2_staticBody);
+
+	int chain4[10] = {
+		463, 882,
+		404, 985,
+		418, 998,
+		478, 967,
+		485, 887
+	};
+	PhysBody* colliderb4 = App->physics->CreateChain(0, 0, chain4, 10);
+	colliderb4->body->SetType(b2_staticBody);
+
+	int chain5[26] = {
+		84, 992,
+		89, 994,
+		92, 999,
+		103, 1022,
+		216, 1087,
+		198, 1119,
+		94, 1064,
+		85, 1053,
+		81, 1044,
+		77, 1033,
+		76, 1020,
+		77, 1005,
+		78, 998
+	};
+	PhysBody* colliderb5 = App->physics->CreateChain(0, 0, chain5, 26);
+	colliderb5->body->SetType(b2_staticBody);
+
+	int chain6[28] = {
+		518, 992,
+		523, 990,
+		528, 993,
+		530, 1002,
+		532, 1012,
+		531, 1023,
+		530, 1034,
+		526, 1045,
+		517, 1058,
+		412, 1117,
+		392, 1085,
+		506, 1022,
+		511, 1011,
+		515, 1000
+	};
+	PhysBody* colliderb6 = App->physics->CreateChain(0, 0, chain6, 28);
+	colliderb6->body->SetType(b2_staticBody);
 	
 }
 

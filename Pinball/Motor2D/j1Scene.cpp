@@ -45,23 +45,34 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	if(App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		App->LoadGame("save_game.xml");
 
-	if(App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
 		App->SaveGame("save_game.xml");
 
-	if((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) && App->render->camera.y < 0)
-		App->render->camera.y += 5;
+	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
+		camera_debug = !camera_debug;
 
-	if((App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) && App->render->camera.y > -280)
-		App->render->camera.y -= 5;
+	if (camera_debug) 
+	{
+		if ((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT))
+			App->render->camera.y += 5;
 
-	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) && App->render->camera.y < 0)
-	{ }
+		if ((App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT))
+			App->render->camera.y -= 5;
+
+		if ((App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT))
+			App->render->camera.x += 5;
+
+		if ((App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT))
+			App->render->camera.x -= 5;
+	}
 
 	App->map->Draw();
-	ScrollCamera();
+
+	if(!camera_debug)
+		ScrollCamera();
 
 	return true;
 }
@@ -87,6 +98,7 @@ bool j1Scene::CleanUp()
 
 void j1Scene::ScrollCamera()
 {
+	App->render->camera.x = 0;
 	if (-App->map->ball->pb->body->GetPosition().y < PIXEL_TO_METERS(App->render->camera.y - 5) && App->render->camera.y > -280)
 	{
 		App->render->camera.y -= 5;

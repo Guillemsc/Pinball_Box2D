@@ -165,8 +165,6 @@ bool j1Physics::PostUpdate()
 		}
 	}
 
-
-
 	return ret;
 }
 

@@ -34,6 +34,8 @@ public:
 
 	void ScrollCamera();
 
+public:
+	bool camera_debug = false;
 private:
 };
 
