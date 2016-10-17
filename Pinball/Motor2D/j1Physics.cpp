@@ -13,7 +13,7 @@
 #define RADTODEG 57.295779513082320876f
 
 #define GRAVITY_X 0.0f
-#define GRAVITY_Y -2
+#define GRAVITY_Y -10
 
 #ifdef _DEBUG
 #pragma comment( lib, "Box2D/libx86/Debug/Box2D.lib" )
@@ -165,6 +165,8 @@ bool j1Physics::PostUpdate()
 		}
 	}
 
+
+
 	return ret;
 }
 
@@ -203,7 +205,7 @@ PhysBody * j1Physics::CreateCircle(int x, int y, int radius)
 	return pbody;
 }
 
-PhysBody * j1Physics::CreateRectangle(int x, int y, int width, int height)
+PhysBody* j1Physics::CreateRectangle(int x, int y, int width, int height)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -303,7 +305,7 @@ PhysBody * j1Physics::CreatePrismaticJoint(PhysBody * Rectangle, int lower, int 
 		the_prism_joint.maxMotorForce=100;
 		the_prism_joint.motorSpeed=4.0;
 		*/
-	*/
+	
 	
 
 	return nullptr;

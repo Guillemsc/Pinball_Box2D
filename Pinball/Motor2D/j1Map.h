@@ -25,6 +25,12 @@ public:
 			pos.y = _posy;
 		}
 
+		Sprite(SDL_Texture* _texture, int _x, int _y, int _w, int _h)
+		{
+			texture = _texture;
+			rect.x = _x; rect.y = _y; rect.w = _w; rect.h = _h;
+		}
+
 		Sprite(SDL_Texture* _texture, SDL_Rect _rect, int _posx, int _posy)
 		{
 			texture = _texture;

@@ -52,18 +52,17 @@ bool j1Scene::Update(float dt)
 		App->SaveGame("save_game.xml");
 
 	if((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT) && App->render->camera.y < 0)
-		App->render->camera.y += 1;
+		App->render->camera.y += 5;
 
 	if((App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT) && App->render->camera.y > -280)
-		App->render->camera.y -= 1;
+		App->render->camera.y -= 5;
 
 	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) && App->render->camera.y < 0)
+	{ }
 
 	App->map->Draw();
+	ScrollCamera();
 
-
-
-	
 	return true;
 }
 
@@ -84,4 +83,16 @@ bool j1Scene::CleanUp()
 	LOG("Freeing scene");
 
 	return true;
+}
+
+void j1Scene::ScrollCamera()
+{
+	if (-App->map->ball->pb->body->GetPosition().y < PIXEL_TO_METERS(App->render->camera.y - 5) && App->render->camera.y > -280)
+	{
+		App->render->camera.y -= 5;
+	}
+	else if (-App->map->ball->pb->body->GetPosition().y > PIXEL_TO_METERS(App->render->camera.y - 5) && App->render->camera.y < 0)
+	{
+		App->render->camera.y += 5;
+	}
 }
