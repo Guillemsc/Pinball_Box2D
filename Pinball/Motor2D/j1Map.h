@@ -73,7 +73,11 @@ public:
 	Sprite*		 bg1;
 	Sprite*		 bg2;
 	Sprite*		 spring;	
-	Sprite*		 ball;		
+	Sprite*		 ball;
+
+	// Kickers(?)
+	b2RevoluteJoint* left_kicker;
+	b2RevoluteJoint* right_kicker;
 
 
 };

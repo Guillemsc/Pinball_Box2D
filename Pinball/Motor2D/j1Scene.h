@@ -37,6 +37,7 @@ public:
 public:
 	bool camera_debug = false;
 private:
+	bool can_scroll = false;
 };
 
 #endif // __j1SCENE_H__

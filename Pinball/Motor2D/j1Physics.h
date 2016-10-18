@@ -56,12 +56,12 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	PhysBody* CreateCircle(int x, int y, int radius);
+	PhysBody* CreateCircle(int x, int y, int radius, uint16 mask, uint16 category);
 	PhysBody* CreateRectangle(int x, int y, int width, int height);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height);
-	PhysBody* CreateChain(int x, int y, int* points, int size);
+	PhysBody* CreateChain(int x, int y, int* points, int size, uint16 mask, uint16 category);
 	PhysBody* CreatePrismaticJoint(PhysBody* Rectangle, int lower, int max, int maxMotor, int motorSpeed);
-	b2RevoluteJoint* CreateRevoluteJoint(int radius, int width, int height, int posx, int posy);
+	b2RevoluteJoint* CreateRevoluteJoint(int radius, int width, int height, int posx, int posy, int despacement, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category);
 
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);

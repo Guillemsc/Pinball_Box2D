@@ -69,6 +69,22 @@ bool j1Scene::Update(float dt)
 			App->render->camera.x -= 5;
 	}
 
+	// Left kicker
+	if ((App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN))
+		App->map->left_kicker->SetMotorSpeed(300);
+	else if ((App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT))
+		App->map->left_kicker->SetMotorSpeed(300);
+	else
+		App->map->left_kicker->SetMotorSpeed(-200);
+
+	// Right kicker
+	if ((App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN))
+		App->map->right_kicker->SetMotorSpeed(-300);
+	else if ((App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT))
+		App->map->right_kicker->SetMotorSpeed(-300);
+	else
+		App->map->right_kicker->SetMotorSpeed(200);
+
 	App->map->Draw();
 
 	if(!camera_debug)
@@ -99,12 +115,12 @@ bool j1Scene::CleanUp()
 void j1Scene::ScrollCamera()
 {
 	App->render->camera.x = 0;
-	if (-App->map->ball->pb->body->GetPosition().y < PIXEL_TO_METERS(App->render->camera.y - 5) && App->render->camera.y > -280)
+
+	if (-App->map->ball->pb->body->GetPosition().y > PIXEL_TO_METERS(-590) )
 	{
-		App->render->camera.y -= 5;
-	}
-	else if (-App->map->ball->pb->body->GetPosition().y > PIXEL_TO_METERS(App->render->camera.y - 5) && App->render->camera.y < 0)
-	{
-		App->render->camera.y += 5;
+		if(-App->map->ball->pb->body->GetPosition().y < PIXEL_TO_METERS(-200))
+		{
+			App->render->camera.y = METERS_TO_PIXELS(-App->map->ball->pb->body->GetPosition().y) + 205;
+		}
 	}
 }

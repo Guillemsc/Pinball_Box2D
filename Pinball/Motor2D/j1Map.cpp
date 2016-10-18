@@ -32,11 +32,11 @@ bool j1Map::Start()
 	
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
-		0, 0, 630, 1080, 0, 0);
+		0, 0, 630, 1178, 0, 0);
 
 	// Background 2
 	bg2 = new Sprite(App->tex->Load("images/background2.png"), 
-		0, 0, 630, 1080, 0, 0);
+		0, 0, 630, 1178, 0, 0);
 
 	// Spring
 	spring = new Sprite(App->tex->Load("images/spring.png"),
@@ -52,7 +52,7 @@ bool j1Map::Start()
 
 void j1Map::CreateColliders()
 {
-	ball->pb = App->physics->CreateCircle(200, 50, 13);
+	ball->pb = App->physics->CreateCircle(200, 50, 13, 0x0002, 0x0001);
 	spring->pb = App->physics->CreateRectangle(597, 950, 30, 20); spring->pb->body->SetType(b2_staticBody);
 
 	// Background standalone colliders
@@ -135,7 +135,7 @@ void j1Map::CreateColliders()
 		270, 138,
 		277, 128
 	};
-	PhysBody* colliderb1 = App->physics->CreateChain(0, 0, chain1, 154);
+	PhysBody* colliderb1 = App->physics->CreateChain(0, 0, chain1, 154, 0x0001, 0x0002);
 	colliderb1->body->SetType(b2_staticBody);
 
 	int chain2 [76] = {
@@ -178,7 +178,7 @@ void j1Map::CreateColliders()
 		198, 141,
 		204, 142
 	};
-	PhysBody* colliderb2 = App->physics->CreateChain(0, 0, chain2, 76);
+	PhysBody* colliderb2 = App->physics->CreateChain(0, 0, chain2, 76, 0x0001, 0x0002);
 	colliderb2->body->SetType(b2_staticBody);
 
 	int chain3[10] = {
@@ -188,7 +188,7 @@ void j1Map::CreateColliders()
 		194, 998,
 		132, 968
 	};
-	PhysBody* colliderb3 = App->physics->CreateChain(0, 0, chain3, 10);
+	PhysBody* colliderb3 = App->physics->CreateChain(0, 0, chain3, 10, 0x0001, 0x0002);
 	colliderb3->body->SetType(b2_staticBody);
 
 	int chain4[10] = {
@@ -198,7 +198,7 @@ void j1Map::CreateColliders()
 		478, 967,
 		485, 887
 	};
-	PhysBody* colliderb4 = App->physics->CreateChain(0, 0, chain4, 10);
+	PhysBody* colliderb4 = App->physics->CreateChain(0, 0, chain4, 10, 0x0001, 0x0002);
 	colliderb4->body->SetType(b2_staticBody);
 
 	int chain5[26] = {
@@ -216,7 +216,7 @@ void j1Map::CreateColliders()
 		77, 1005,
 		78, 998
 	};
-	PhysBody* colliderb5 = App->physics->CreateChain(0, 0, chain5, 26);
+	PhysBody* colliderb5 = App->physics->CreateChain(0, 0, chain5, 26, 0x0001, 0x0002);
 	colliderb5->body->SetType(b2_staticBody);
 
 	int chain6[28] = {
@@ -235,11 +235,12 @@ void j1Map::CreateColliders()
 		511, 1011,
 		515, 1000
 	};
-	PhysBody* colliderb6 = App->physics->CreateChain(0, 0, chain6, 28);
+	PhysBody* colliderb6 = App->physics->CreateChain(0, 0, chain6, 28, 0x0001, 0x0002);
 	colliderb6->body->SetType(b2_staticBody);
 
-	b2RevoluteJoint* a = App->physics->CreateRevoluteJoint(15, 50, 15, 250, 400);
-	
+	// Kickers
+	left_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 220, 1090, 40, 200, 150, 200, -90, 0x0003, 0x0002);
+	right_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 400, 1090, -40, -150, -200, 200, 90, 0x0003, 0x0002);
 }
 
 void j1Map::Draw()
