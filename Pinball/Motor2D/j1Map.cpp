@@ -39,7 +39,7 @@ bool j1Map::Start()
 		0, 0, 630, 1080, 0, 0);
 
 	// Spring
-	spring = new Sprite(App->tex->Load("images/spring.png"),
+	spring = new Sprite(App->tex->Load("images/spring.png"), 
 		0, 0, 29, 180);
 
 	// Ball
