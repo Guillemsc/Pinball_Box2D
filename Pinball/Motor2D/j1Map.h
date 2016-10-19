@@ -67,17 +67,19 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	void Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section);
+	void Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed = 1.0f, double angle = 0.0f, int pivot_x = 0, int pivot_y = 0);
 
 public:
 	Sprite*		 bg1;
 	Sprite*		 bg2;
 	Sprite*		 spring;	
 	Sprite*		 ball;
+	Sprite*		 left_kicker;
+	Sprite*		 right_kicker;
 
 	// Kickers(?)
-	b2RevoluteJoint* left_kicker;
-	b2RevoluteJoint* right_kicker;
+	b2RevoluteJoint* left_kicker_coll;
+	b2RevoluteJoint* right_kicker_coll;
 
 
 };

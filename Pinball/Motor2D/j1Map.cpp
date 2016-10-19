@@ -46,6 +46,12 @@ bool j1Map::Start()
 	ball = new Sprite(App->tex->Load("images/ball.png"),
 		0, 0, 33, 32);
 
+	// Kickers
+	left_kicker = new Sprite(App->tex->Load("images/big_kicker_left.png"),
+		0, 0, 92, 39);
+
+	right_kicker = new Sprite(App->tex->Load("images/big_kicker_right.png"),
+		1, 1, 92, 39);
 
 	return ret;
 }
@@ -239,16 +245,51 @@ void j1Map::CreateColliders()
 	colliderb6->body->SetType(b2_staticBody);
 
 	// Kickers
-	left_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 199, 1098, 40, 200, 150, 200, -90, 0x0003, 0x0002);
-	right_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 409, 1098, -40, -150, -200, 200, 90, 0x0003, 0x0002);
+	int big_kicker_left_points[24] = {
+		77, 0,
+		9, 8,
+		5, 11,
+		2, 15,
+		2, 20,
+		3, 25,
+		5, 28,
+		76, 38,
+		86, 34,
+		92, 23,
+		91, 12,
+		84, 3
+	};
+
+	left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 225, 1107, 70, 20, 200, 150, 210, -90, 0x0003, 0x0002);
+
+	int big_kicker_right_points[24] = {
+		13, 1,
+		84, 8,
+		88, 11,
+		91, 17,
+		91, 22,
+		88, 26,
+		84, 29,
+		14, 38,
+		6, 33,
+		0, 25,
+		0, 14,
+		4, 7
+	};
+	right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 387, 1107, 20, 20, -150, -200, 210, 90, 0x0003, 0x0002);
 }
 
 void j1Map::Draw()
 {
 	Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
 	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
+
 	Blit(spring->texture, METERS_TO_PIXELS(spring->pb->body->GetPosition().x - 15), METERS_TO_PIXELS(spring->pb->body->GetPosition().y), &spring->rect);
+
 	Blit(ball->texture, METERS_TO_PIXELS(ball->pb->body->GetPosition().x - 14), METERS_TO_PIXELS(ball->pb->body->GetPosition().y - 14), &ball->rect);
+
+	Blit(right_kicker->texture, 315, 1090, &right_kicker->rect, 1, (-right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
+	Blit(left_kicker->texture, 206, 1090, &left_kicker->rect, 1, (-left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
 }
 
 // Called before quitting
@@ -259,9 +300,9 @@ bool j1Map::CleanUp()
 	return true;
 }
 
-void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section)
+void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y)
 {
-	App->render->Blit(texture, x, y, section);
+	App->render->Blit(texture, x, y, section, speed, angle, pivot_x, pivot_y);
 }
 
 

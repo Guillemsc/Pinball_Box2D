@@ -9,8 +9,6 @@
 #include "j1Map.h"
 #include "j1Physics.h"
 
-#define DEGTORAD 0.0174532925199432957f
-#define RADTODEG 57.295779513082320876f
 
 #define GRAVITY_X 0.0f
 #define GRAVITY_Y -10
@@ -313,7 +311,7 @@ PhysBody * j1Physics::CreatePrismaticJoint(PhysBody * Rectangle, int lower, int 
 	return nullptr;
 }
 
-b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int width, int height, int posx, int posy, int despacement, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category)
+b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category)
 {
 //body and fixture defs - the common parts
   b2BodyDef bodyDef;
@@ -323,22 +321,32 @@ b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int width, int heigh
   fixtureDef.filter.categoryBits = category;
   
   //two shapes
-  b2PolygonShape boxShape;
-  boxShape.SetAsBox(PIXEL_TO_METERS(width), PIXEL_TO_METERS(height));
+  b2PolygonShape poligonShape;
+
+  b2Vec2 vect[12];
+  for (uint i = 0; i < 12; ++i)
+  {
+	  vect[i].x = PIXEL_TO_METERS(vects[i * 2 + 0]);
+	  vect[i].y = PIXEL_TO_METERS(vects[i * 2 + 1]);
+  }
+
+  poligonShape.Set(vect, 12);
+
+
   b2CircleShape circleShape;
   circleShape.m_radius = PIXEL_TO_METERS(radius);
   
-  //make box a little to the left
+  //make a box
   bodyDef.position.Set(PIXEL_TO_METERS(posx), PIXEL_TO_METERS(posy));
-  fixtureDef.shape = &boxShape;
+  fixtureDef.shape = &poligonShape;
   bodyDef.type = b2_dynamicBody;
-  b2Body*m_bodyA = world->CreateBody( &bodyDef );
+  b2Body* m_bodyA = world->CreateBody( &bodyDef );
   m_bodyA->CreateFixture( &fixtureDef );
   
-  //and circle a little to the right
+  //and a circle
   bodyDef.position.Set(PIXEL_TO_METERS(posx), PIXEL_TO_METERS(posy));
   fixtureDef.shape = &circleShape;
-  bodyDef.type = b2_kinematicBody;
+  bodyDef.type = b2_staticBody;
   b2Body* m_bodyB = world->CreateBody( &bodyDef );
   m_bodyB->CreateFixture( &fixtureDef );
 
@@ -347,7 +355,7 @@ b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int width, int heigh
   revoluteJointDef.bodyB = m_bodyB;
   revoluteJointDef.collideConnected = false;
   revoluteJointDef.type = e_revoluteJoint;
-  revoluteJointDef.localAnchorA.Set(PIXEL_TO_METERS(despacement), 0);
+  revoluteJointDef.localAnchorA.Set(PIXEL_TO_METERS(desplacementx), PIXEL_TO_METERS(desplacementy));
 
   if (lower_angle != NULL && upper_angle != NULL) 
   {
