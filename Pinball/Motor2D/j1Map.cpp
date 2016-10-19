@@ -239,8 +239,8 @@ void j1Map::CreateColliders()
 	colliderb6->body->SetType(b2_staticBody);
 
 	// Kickers
-	left_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 220, 1090, 40, 200, 150, 200, -90, 0x0003, 0x0002);
-	right_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 400, 1090, -40, -150, -200, 200, 90, 0x0003, 0x0002);
+	left_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 199, 1098, 40, 200, 150, 200, -90, 0x0003, 0x0002);
+	right_kicker = App->physics->CreateRevoluteJoint(15, 50, 15, 409, 1098, -40, -150, -200, 200, 90, 0x0003, 0x0002);
 }
 
 void j1Map::Draw()
