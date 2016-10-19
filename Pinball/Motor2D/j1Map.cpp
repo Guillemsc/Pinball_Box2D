@@ -40,7 +40,7 @@ bool j1Map::Start()
 
 	// Spring
 	spring = new Sprite(App->tex->Load("images/spring.png"), 
-		0, 0, 29, 180);
+		0, 0, 29, 180, 580, 900);
 
 	// Ball
 	ball = new Sprite(App->tex->Load("images/ball.png"),
@@ -58,8 +58,9 @@ bool j1Map::Start()
 
 void j1Map::CreateColliders()
 {
-	ball->pb = App->physics->CreateCircle(200, 50, 13, 0x0002, 0x0001);
-	spring->pb = App->physics->CreateRectangle(597, 950, 30, 20); spring->pb->body->SetType(b2_staticBody);
+	// Ball
+	ball->pb = App->physics->CreateCircle(600, 980, 10, 0x0002, 0x0001);
+	balls.add(ball->pb);
 
 	// Background standalone colliders
 	int chain1[154] = {
@@ -260,7 +261,7 @@ void j1Map::CreateColliders()
 		84, 3
 	};
 
-	left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 225, 1107, 70, 20, 200, 150, 210, -90, 0x0003, 0x0002);
+	left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 210, -90, 0x0003, 0x0002);
 
 	int big_kicker_right_points[24] = {
 		13, 1,
@@ -276,20 +277,31 @@ void j1Map::CreateColliders()
 		0, 14,
 		4, 7
 	};
-	right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 387, 1107, 20, 20, -150, -200, 210, 90, 0x0003, 0x0002);
+	right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 210, 90, 0x0003, 0x0002);
+
+	// Spring
+	int pos_x = 596; int pos_y = 1150;
+	PhysBody* A = App->physics->CreateRectangle(pos_x, pos_y, 10, 100, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
+	PhysBody* B = App->physics->CreateRectangle(pos_x, pos_y, 50, 20, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
+	spring_coll = App->physics->CreatePrismaticJoint(A, B, b2Vec2(1, 1), b2Vec2(1, 1), -40, -120, 200, 200);
 }
 
 void j1Map::Draw()
 {
+	// Background
 	Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
 	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
 
-	Blit(spring->texture, METERS_TO_PIXELS(spring->pb->body->GetPosition().x - 15), METERS_TO_PIXELS(spring->pb->body->GetPosition().y), &spring->rect);
+	// Spring
+	Blit(spring->texture, spring->pos.x, METERS_TO_PIXELS(spring_coll->GetBodyB()->GetPosition().y) -10, &spring->rect);
 
+	// Ball
 	Blit(ball->texture, METERS_TO_PIXELS(ball->pb->body->GetPosition().x - 14), METERS_TO_PIXELS(ball->pb->body->GetPosition().y - 14), &ball->rect);
 
-	Blit(right_kicker->texture, 315, 1090, &right_kicker->rect, 1, (-right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
+	// Kickers
 	Blit(left_kicker->texture, 206, 1090, &left_kicker->rect, 1, (-left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
+	Blit(right_kicker->texture, 315, 1090, &right_kicker->rect, 1, (-right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
+	
 }
 
 // Called before quitting

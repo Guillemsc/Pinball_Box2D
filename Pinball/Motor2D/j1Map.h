@@ -77,9 +77,14 @@ public:
 	Sprite*		 left_kicker;
 	Sprite*		 right_kicker;
 
-	// Kickers(?)
+	// Kickers
 	b2RevoluteJoint* left_kicker_coll;
 	b2RevoluteJoint* right_kicker_coll;
+
+	// Spring
+	b2PrismaticJoint* spring_coll;
+
+	p2List<PhysBody*> balls;
 
 
 };

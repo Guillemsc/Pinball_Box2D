@@ -203,7 +203,7 @@ PhysBody * j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16
 	return pbody;
 }
 
-PhysBody* j1Physics::CreateRectangle(int x, int y, int width, int height)
+PhysBody* j1Physics::CreateRectangle(int x, int y, int width, int height, uint16 mask, uint16 category)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -216,6 +216,8 @@ PhysBody* j1Physics::CreateRectangle(int x, int y, int width, int height)
 	b2FixtureDef fixture;
 	fixture.shape = &box;
 	fixture.density = 1.0f;
+	fixture.filter.maskBits = mask;
+	fixture.filter.categoryBits = category;
 
 	b->CreateFixture(&fixture);
 
@@ -291,27 +293,31 @@ PhysBody * j1Physics::CreateChain(int x, int y, int * points, int size, uint16 m
 	return pbody;
 }
 
-PhysBody * j1Physics::CreatePrismaticJoint(PhysBody * Rectangle, int lower, int max, int maxMotor, int motorSpeed)
+b2PrismaticJoint* j1Physics::CreatePrismaticJoint(PhysBody* bodyA, PhysBody* bodyB, b2Vec2 ancorA, b2Vec2 ancorB, int max, int min, int maxMotor, int motorSpeed)
 {
-	/*
 	b2PrismaticJointDef prismaticJointDef;
-	prismaticJointDef.bodyA = bodyA;
-	prismaticJointDef.bodyB = bodyB;
+	prismaticJointDef.bodyA = bodyA->body;
+	prismaticJointDef.bodyB = bodyB->body;
 	prismaticJointDef.collideConnected = false;
-		/*
-		the_prism_joint.lowerTranslation=-6;
-		the_prism_joint.upperTranslation=6
-		the_prism_joint.enableLimit=true;
-		the_prism_joint.maxMotorForce=100;
-		the_prism_joint.motorSpeed=4.0;
-		*/
-	
-	
+	prismaticJointDef.localAxisA.Set(0, 1);
+	prismaticJointDef.localAnchorA.Set(PIXEL_TO_METERS(ancorA.x), PIXEL_TO_METERS(ancorA.y));
+	prismaticJointDef.localAnchorB.Set(PIXEL_TO_METERS(ancorB.x), PIXEL_TO_METERS(ancorB.y));
 
-	return nullptr;
+	prismaticJointDef.enableLimit = true;
+	prismaticJointDef.lowerTranslation = PIXEL_TO_METERS(min);
+	prismaticJointDef.upperTranslation = PIXEL_TO_METERS(max);
+	prismaticJointDef.type = e_prismaticJoint;
+
+	prismaticJointDef.enableMotor = true;
+	prismaticJointDef.motorSpeed = motorSpeed * DEGTORAD;
+	prismaticJointDef.maxMotorForce = maxMotor;
+
+	b2PrismaticJoint* joint = (b2PrismaticJoint*)world->CreateJoint(&prismaticJointDef);
+
+	return joint;
 }
 
-b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category)
+b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int size, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category)
 {
 //body and fixture defs - the common parts
   b2BodyDef bodyDef;
@@ -323,14 +329,14 @@ b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int posx
   //two shapes
   b2PolygonShape poligonShape;
 
-  b2Vec2 vect[12];
-  for (uint i = 0; i < 12; ++i)
+  b2Vec2* vect = new b2Vec2[size / 2];
+  for (uint i = 0; i < size/2; ++i)
   {
 	  vect[i].x = PIXEL_TO_METERS(vects[i * 2 + 0]);
 	  vect[i].y = PIXEL_TO_METERS(vects[i * 2 + 1]);
   }
 
-  poligonShape.Set(vect, 12);
+  poligonShape.Set(vect, size/2);
 
 
   b2CircleShape circleShape;

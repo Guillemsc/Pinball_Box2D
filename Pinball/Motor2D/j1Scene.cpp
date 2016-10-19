@@ -70,20 +70,34 @@ bool j1Scene::Update(float dt)
 	}
 
 	// Left kicker
-	if ((App->input->GetKey(SDL_SCANCODE_Q) == KEY_DOWN))
+	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN))
 		App->map->left_kicker_coll->SetMotorSpeed(300);
-	else if ((App->input->GetKey(SDL_SCANCODE_Q) == KEY_REPEAT))
+	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT))
 		App->map->left_kicker_coll->SetMotorSpeed(300);
 	else
 		App->map->left_kicker_coll->SetMotorSpeed(-200);
 
 	// Right kicker
-	if ((App->input->GetKey(SDL_SCANCODE_W) == KEY_DOWN))
+	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN))
 		App->map->right_kicker_coll->SetMotorSpeed(-300);
-	else if ((App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT))
+	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT))
 		App->map->right_kicker_coll->SetMotorSpeed(-300);
 	else
 		App->map->right_kicker_coll->SetMotorSpeed(200);
+
+	// Spring
+
+	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN))
+		App->map->spring_coll->SetMotorSpeed(1);
+	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT))
+		App->map->spring_coll->SetMotorSpeed(1);
+	else
+		App->map->spring_coll->SetMotorSpeed(-100);
+
+	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN))
+	{
+		App->map->ball->pb = App->physics->CreateCircle(600, 980, 10, 0x0002, 0x0001);
+	}
 
 	App->map->Draw();
 
