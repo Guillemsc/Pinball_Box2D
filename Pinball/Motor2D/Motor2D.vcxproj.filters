@@ -99,6 +99,9 @@
     <ClInclude Include="j1Physics.h">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="j1Animation.h">
+      <Filter>Desenvolupament  ========\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Programacio 2 ===========">

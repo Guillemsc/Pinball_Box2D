@@ -189,9 +189,10 @@ PhysBody * j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16
 	shape.m_radius = PIXEL_TO_METERS(radius);
 	b2FixtureDef fixture;
 	fixture.shape = &shape;
-	fixture.density = 1.0f;
+	fixture.density = 0.5f;
 	fixture.filter.maskBits = mask;
 	fixture.filter.categoryBits = category;
+	fixture.restitution = 0.33f;
 
 	b->CreateFixture(&fixture);
 

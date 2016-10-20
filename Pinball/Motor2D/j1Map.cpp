@@ -5,6 +5,7 @@
 #include "j1FileSystem.h"
 #include "j1Textures.h"
 #include "j1Map.h"
+#include "j1Animation.h"
 #include <math.h>
 #include "j1Physics.h"
 
@@ -21,7 +22,6 @@ j1Map::~j1Map()
 bool j1Map::Awake(pugi::xml_node& config)
 {
 	bool ret = true;
-
 
 	return ret;
 }
@@ -261,7 +261,7 @@ void j1Map::CreateColliders()
 		84, 3
 	};
 
-	left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 210, -90, 0x0003, 0x0002);
+	left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
 
 	int big_kicker_right_points[24] = {
 		13, 1,
@@ -277,7 +277,7 @@ void j1Map::CreateColliders()
 		0, 14,
 		4, 7
 	};
-	right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 210, 90, 0x0003, 0x0002);
+	right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
 
 	// Spring
 	int pos_x = 596; int pos_y = 1150;
