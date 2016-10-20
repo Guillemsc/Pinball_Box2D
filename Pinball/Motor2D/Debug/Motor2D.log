@@ -1,5 +1,19 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Development - Class 6.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
   j1Map.cpp
+  Generating Code...
+  Compiling...
+  j1Scene.cpp
+  j1Physics.cpp
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(228): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(229): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(272): warning C4018: '<': signed/unsigned mismatch
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(314): warning C4244: '=': conversion from 'int' to 'float32', possible loss of data
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(334): warning C4018: '<': signed/unsigned mismatch
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(379): warning C4244: '=': conversion from 'int' to 'float32', possible loss of data
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(450): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(451): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+c:\users\simonsb\desktop\pinball_box2d\pinball\motor2d\j1physics.cpp(457): warning C4244: 'return': conversion from 'float32' to 'int', possible loss of data
+  j1App.cpp
+  Generating Code...
   Motor2D.vcxproj -> C:\Users\simonsb\Desktop\Pinball_Box2D\Pinball\Debug\Pinball.exe
   Motor2D.vcxproj -> C:\Users\simonsb\Desktop\Pinball_Box2D\Pinball\Debug\Pinball.pdb (Full PDB)

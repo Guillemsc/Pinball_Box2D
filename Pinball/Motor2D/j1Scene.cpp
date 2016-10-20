@@ -71,19 +71,19 @@ bool j1Scene::Update(float dt)
 
 	// Left kicker
 	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN))
-		App->map->left_kicker_coll->SetMotorSpeed(400);
+		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT))
-		App->map->left_kicker_coll->SetMotorSpeed(400);
+		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 	else
-		App->map->left_kicker_coll->SetMotorSpeed(-200);
+		App->map->big_left_kicker_coll->SetMotorSpeed(-200);
 
 	// Right kicker
 	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN))
-		App->map->right_kicker_coll->SetMotorSpeed(-400);
+		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT))
-		App->map->right_kicker_coll->SetMotorSpeed(-400);
+		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 	else
-		App->map->right_kicker_coll->SetMotorSpeed(200);
+		App->map->big_right_kicker_coll->SetMotorSpeed(200);
 
 	// Spring
 

@@ -47,11 +47,15 @@ bool j1Map::Start()
 		0, 0, 33, 32);
 
 	// Kickers
-	left_kicker = new Sprite(App->tex->Load("images/big_kicker_left.png"),
+	big_left_kicker = new Sprite(App->tex->Load("images/big_kicker_left.png"),
 		0, 0, 92, 39);
-
-	right_kicker = new Sprite(App->tex->Load("images/big_kicker_right.png"),
+	big_right_kicker = new Sprite(App->tex->Load("images/big_kicker_right.png"),
 		1, 1, 92, 39);
+
+	small_left_kicker = new Sprite(App->tex->Load("images/small_kicker_left.png"),
+		0, 0, 67, 28);
+	small_right_kicker = new Sprite(App->tex->Load("images/small_kicker_right.png"),
+		1, 1, 67, 28);
 
 	// Spritesheet
 
@@ -248,7 +252,7 @@ void j1Map::CreateColliders()
 	PhysBody* colliderb6 = App->physics->CreateChain(0, 0, chain6, 28, 0x0001, 0x0002);
 	colliderb6->body->SetType(b2_staticBody);
 
-	// Kickers
+	// Big Kickers
 	int big_kicker_left_points[24] = {
 		77, 0,
 		9, 8,
@@ -264,7 +268,7 @@ void j1Map::CreateColliders()
 		84, 3
 	};
 
-	left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
+	big_left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
 
 	int big_kicker_right_points[24] = {
 		13, 1,
@@ -280,7 +284,49 @@ void j1Map::CreateColliders()
 		0, 14,
 		4, 7
 	};
-	right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
+	big_right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
+
+	// Small Kickers
+	int small_kicker_left_points[38] = {
+		67, 15,
+		66, 12,
+		64, 9,
+		61, 7,
+		57, 6,
+		15, 1,
+		11, 1,
+		7, 2,
+		4, 4,
+		1, 8,
+		0, 12,
+		0, 17,
+		2, 21,
+		6, 25,
+		11, 27,
+		16, 27,
+		59, 22,
+		64, 20,
+		66, 17
+	};
+
+	int small_kicker_right[32] = {
+		66, 15,
+		66, 11,
+		63, 6,
+		60, 2,
+		54, 1,
+		44, 2,
+		4, 7,
+		1, 10,
+		0, 14,
+		1, 18,
+		5, 21,
+		15, 23,
+		53, 27,
+		60, 26,
+		64, 22,
+		66, 18
+	};
 
 	// Spring
 	int pos_x = 596; int pos_y = 1150;
@@ -302,8 +348,8 @@ void j1Map::Draw()
 	Blit(ball->texture, METERS_TO_PIXELS(ball->pb->body->GetPosition().x - 14), METERS_TO_PIXELS(ball->pb->body->GetPosition().y - 14), &ball->rect);
 
 	// Kickers
-	Blit(left_kicker->texture, 206, 1090, &left_kicker->rect, 1, (-left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
-	Blit(right_kicker->texture, 315, 1090, &right_kicker->rect, 1, (-right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
+	Blit(big_left_kicker->texture, 206, 1090, &big_left_kicker->rect, 1, (-big_left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
+	Blit(big_right_kicker->texture, 315, 1090, &big_right_kicker->rect, 1, (-big_right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
 	
 }
 

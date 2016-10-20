@@ -5,6 +5,7 @@
 #include "p2List.h"
 #include "p2Point.h"
 #include "j1Module.h"
+#include "j1Animation.h"
 
 class j1Map : public j1Module
 {
@@ -58,7 +59,7 @@ public:
 		SpriteSheet() {};
 		SpriteSheet(SDL_Texture* _texture) : texture(_texture) {};
 		~SpriteSheet() {};
-	}
+	};
 
 	j1Map();
 
@@ -84,13 +85,14 @@ public:
 	Sprite*		 bg2;
 	Sprite*		 spring;	
 	Sprite*		 ball;
-	Sprite*		 left_kicker;
-	Sprite*		 right_kicker;
-
+	Sprite*		 big_left_kicker;
+	Sprite*		 big_right_kicker;
+	Sprite*		 small_left_kicker;
+	Sprite*		 small_right_kicker;
 
 	// Kickers
-	b2RevoluteJoint* left_kicker_coll;
-	b2RevoluteJoint* right_kicker_coll;
+	b2RevoluteJoint* big_left_kicker_coll;
+	b2RevoluteJoint* big_right_kicker_coll;
 
 	// Spring
 	b2PrismaticJoint* spring_coll;
