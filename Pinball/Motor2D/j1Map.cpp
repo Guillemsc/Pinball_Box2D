@@ -53,6 +53,9 @@ bool j1Map::Start()
 	right_kicker = new Sprite(App->tex->Load("images/big_kicker_right.png"),
 		1, 1, 92, 39);
 
+	// Spritesheet
+
+
 	return ret;
 }
 

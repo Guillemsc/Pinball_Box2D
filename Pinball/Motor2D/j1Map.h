@@ -50,6 +50,16 @@ public:
 	private:
 	};
 
+	class SpriteSheet {
+	public:
+		SDL_Texture* texture;
+		Animation* anim;
+
+		SpriteSheet() {};
+		SpriteSheet(SDL_Texture* _texture) : texture(_texture) {};
+		~SpriteSheet() {};
+	}
+
 	j1Map();
 
 	// Destructor
@@ -76,6 +86,7 @@ public:
 	Sprite*		 ball;
 	Sprite*		 left_kicker;
 	Sprite*		 right_kicker;
+
 
 	// Kickers
 	b2RevoluteJoint* left_kicker_coll;
