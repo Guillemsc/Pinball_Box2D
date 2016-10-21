@@ -51,14 +51,25 @@ public:
 	private:
 	};
 
-	class SpriteSheet {
+	class SpriteSheetItem {
+	public:
+
+		SpriteSheetItem()
+		{};
+
+		SpriteSheetItem()
+		{
+			texture = App->tex->Load("images/spritesheet.png");
+		};
+
+		~SpriteSheetItem() 
+		{};
+
 	public:
 		SDL_Texture* texture;
 		Animation* anim;
 
-		SpriteSheet() {};
-		SpriteSheet(SDL_Texture* _texture) : texture(_texture) {};
-		~SpriteSheet() {};
+	private:
 	};
 
 	j1Map();
@@ -81,23 +92,38 @@ public:
 	void Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed = 1.0f, double angle = 0.0f, int pivot_x = 0, int pivot_y = 0);
 
 public:
-	Sprite*		 bg1;
-	Sprite*		 bg2;
-	Sprite*		 spring;	
-	Sprite*		 ball;
-	Sprite*		 big_left_kicker;
-	Sprite*		 big_right_kicker;
-	Sprite*		 small_left_kicker;
-	Sprite*		 small_right_kicker;
+
+	// Sprites
+	Sprite*				 bg1;
+	Sprite*				 bg2;
+	Sprite*				 spring;	
+	Sprite*				 ball;
+	Sprite*				 big_left_kicker;
+	Sprite*				 big_right_kicker;
+	Sprite*				 small_left_kicker;
+	Sprite*				 small_right_kicker;
+
+	SpriteSheetItem*		 kawaii_blue;
+	SpriteSheetItem*		 kawaii_green;
+	SpriteSheetItem*		 kawaii_orange;
+	SpriteSheetItem*		 kawaii_red;
+	SpriteSheetItem*		 kawaii_violet;
+	SpriteSheetItem*		 kawaii_yellow;
+	SpriteSheetItem*		 kawaii_girl;
+	SpriteSheetItem*		 kawaii_guy;
+	SpriteSheetItem*		 little_button;
+	SpriteSheetItem*		 small_bumper;
+	SpriteSheetItem*	     blue_arrow;
 
 	// Kickers
-	b2RevoluteJoint* big_left_kicker_coll;
-	b2RevoluteJoint* big_right_kicker_coll;
+	b2RevoluteJoint*	 big_left_kicker_coll;
+	b2RevoluteJoint*	 big_right_kicker_coll;
 
 	// Spring
-	b2PrismaticJoint* spring_coll;
+	b2PrismaticJoint*    spring_coll;
 
-	p2List<PhysBody*> balls;
+	// Lists
+	p2List<PhysBody*>    balls;
 
 
 };

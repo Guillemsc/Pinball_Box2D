@@ -57,8 +57,18 @@ bool j1Map::Start()
 	small_right_kicker = new Sprite(App->tex->Load("images/small_kicker_right.png"),
 		1, 1, 67, 28);
 
-	// Spritesheet
-
+	// Spritesheet items
+	kawaii_blue = new SpriteSheetItem();
+	kawaii_green = new SpriteSheetItem();
+	kawaii_orange = new SpriteSheetItem();
+	kawaii_red = new SpriteSheetItem();
+	kawaii_violet = new SpriteSheetItem();
+	kawaii_yellow = new SpriteSheetItem();
+	kawaii_girl = new SpriteSheetItem();
+	kawaii_guy = new SpriteSheetItem();
+	little_button = new SpriteSheetItem();
+	small_bumper = new SpriteSheetItem();
+	blue_arrow = new SpriteSheetItem();
 
 	return ret;
 }
@@ -66,7 +76,7 @@ bool j1Map::Start()
 void j1Map::CreateColliders()
 {
 	// Ball
-	ball->pb = App->physics->CreateCircle(600, 980, 10, 0x0002, 0x0001);
+	ball->pb = App->physics->CreateCircle(600, 980, 11, 0x0002, 0x0001);
 	balls.add(ball->pb);
 
 	// Background standalone colliders

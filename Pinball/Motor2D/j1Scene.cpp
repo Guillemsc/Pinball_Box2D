@@ -45,15 +45,18 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
+	// Load/Save
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		App->LoadGame("save_game.xml");
 
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
 		App->SaveGame("save_game.xml");
 
+	// Activate camera debug
 	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
 		camera_debug = !camera_debug;
 
+	// Camera debug
 	if (camera_debug) 
 	{
 		if ((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT))
@@ -69,7 +72,7 @@ bool j1Scene::Update(float dt)
 			App->render->camera.x -= 5;
 	}
 
-	// Left kicker
+	// Left kickers
 	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN))
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT))
@@ -77,7 +80,7 @@ bool j1Scene::Update(float dt)
 	else
 		App->map->big_left_kicker_coll->SetMotorSpeed(-200);
 
-	// Right kicker
+	// Right kickers
 	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN))
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT))
@@ -86,7 +89,6 @@ bool j1Scene::Update(float dt)
 		App->map->big_right_kicker_coll->SetMotorSpeed(200);
 
 	// Spring
-
 	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN))
 		App->map->spring_coll->SetMotorSpeed(1);
 	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT))
@@ -94,13 +96,19 @@ bool j1Scene::Update(float dt)
 	else
 		App->map->spring_coll->SetMotorSpeed(-100);
 
+	// Create a new ball
 	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN))
 	{
-		App->map->ball->pb = App->physics->CreateCircle(600, 980, 10, 0x0002, 0x0001);
+		CreateBall();
 	}
+
+	// Draw ----------
 
 	App->map->Draw();
 
+	// ---------------
+
+	// Scroll camera
 	if(!camera_debug)
 		ScrollCamera();
 
@@ -137,4 +145,9 @@ void j1Scene::ScrollCamera()
 			App->render->camera.y = METERS_TO_PIXELS(-App->map->ball->pb->body->GetPosition().y) + 205;
 		}
 	}
+}
+
+void j1Scene::CreateBall()
+{
+	App->map->ball->pb = App->physics->CreateCircle(600, 980, 10, 0x0002, 0x0001);
 }
