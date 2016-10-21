@@ -58,7 +58,7 @@ bool j1Map::Start()
 		1, 1, 67, 28);
 
 	// Spritesheet items
-	kawaii_blue = new SpriteSheetItem();
+	kawaii_blue = new SpriteSheetItem(); 
 	kawaii_green = new SpriteSheetItem();
 	kawaii_orange = new SpriteSheetItem();
 	kawaii_red = new SpriteSheetItem();
@@ -69,6 +69,7 @@ bool j1Map::Start()
 	little_button = new SpriteSheetItem();
 	small_bumper = new SpriteSheetItem();
 	blue_arrow = new SpriteSheetItem();
+	big_bumper = new SpriteSheetItem();
 
 	return ret;
 }
@@ -347,9 +348,14 @@ void j1Map::CreateColliders()
 
 void j1Map::Draw()
 {
-	// Background
+	// Background --------------
 	Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
 	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
+
+	// Big bumper
+	//Blit(big_bumper->texture, big_bumper->pos.x, big_bumper->pos.y, &big_bumper->anim.GetCurrentFrame());
+
+	// --------------
 
 	// Spring
 	Blit(spring->texture, spring->pos.x, METERS_TO_PIXELS(spring_coll->GetBodyB()->GetPosition().y) -10, &spring->rect);
@@ -360,6 +366,7 @@ void j1Map::Draw()
 	// Kickers
 	Blit(big_left_kicker->texture, 206, 1090, &big_left_kicker->rect, 1, (-big_left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
 	Blit(big_right_kicker->texture, 315, 1090, &big_right_kicker->rect, 1, (-big_right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
+
 	
 }
 

@@ -29,6 +29,11 @@ public:
 
 		return frames[(int)current_frame];
 	}
+
+	void Reset()
+	{
+		current_frame = 0;
+	}
 };
 
 #endif

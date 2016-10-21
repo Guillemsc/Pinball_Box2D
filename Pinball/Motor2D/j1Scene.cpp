@@ -31,7 +31,11 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
+	// Create colliders -----------
+
 	App->map->CreateColliders();
+
+	// ----------------------------
 
 	return true;
 }

@@ -6,7 +6,9 @@
 #include "p2Point.h"
 #include "j1Module.h"
 #include "j1Animation.h"
+#include "j1App.h"
 
+class App;
 class j1Map : public j1Module
 {
 public:
@@ -55,19 +57,24 @@ public:
 	public:
 
 		SpriteSheetItem()
-		{};
-
-		SpriteSheetItem()
 		{
-			texture = App->tex->Load("images/spritesheet.png");
+			pos.x = 0;
+			pos.y = 0;
+		};
+
+		SpriteSheetItem(int x, int y)
+		{
+			pos.x = x; 
+			pos.y = y;
 		};
 
 		~SpriteSheetItem() 
 		{};
 
 	public:
-		SDL_Texture* texture;
-		Animation* anim;
+		SDL_Texture* texture = App->tex->Load("images/spritesheet.png");
+		Animation anim;
+		iPoint pos;
 
 	private:
 	};
@@ -113,6 +120,7 @@ public:
 	SpriteSheetItem*		 kawaii_guy;
 	SpriteSheetItem*		 little_button;
 	SpriteSheetItem*		 small_bumper;
+	SpriteSheetItem*		 big_bumper;
 	SpriteSheetItem*	     blue_arrow;
 
 	// Kickers
