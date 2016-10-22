@@ -50,11 +50,13 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 	// Load/Save
+	/*
 	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
 		App->LoadGame("save_game.xml");
 
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
 		App->SaveGame("save_game.xml");
+	*/
 
 	// Activate camera debug
 	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
@@ -94,11 +96,11 @@ bool j1Scene::Update(float dt)
 
 	// Spring
 	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN))
-		App->map->spring_coll->SetMotorSpeed(1);
+		App->map->spring_coll->SetMotorSpeed(2);
 	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT))
-		App->map->spring_coll->SetMotorSpeed(1);
+		App->map->spring_coll->SetMotorSpeed(6);
 	else
-		App->map->spring_coll->SetMotorSpeed(-100);
+		App->map->spring_coll->SetMotorSpeed(-230);
 
 	// Create a new ball
 	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN))
@@ -153,5 +155,5 @@ void j1Scene::ScrollCamera()
 
 void j1Scene::CreateBall()
 {
-	App->map->ball->pb = App->physics->CreateCircle(600, 980, 10, 0x0002, 0x0001);
+	App->map->ball->pb = App->physics->CreateCircle(598, 990, 10, 0x0002, 0x0001);
 }

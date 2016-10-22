@@ -75,6 +75,7 @@ public:
 		SDL_Texture* texture = App->tex->Load("images/spritesheet.png");
 		Animation anim;
 		iPoint pos;
+		PhysBody* pb = nullptr;
 
 	private:
 	};
@@ -120,7 +121,8 @@ public:
 	SpriteSheetItem*		 kawaii_guy;
 	SpriteSheetItem*		 little_button;
 	SpriteSheetItem*		 small_bumper;
-	SpriteSheetItem*		 big_bumper;
+	SpriteSheetItem*		 big_bumper1;
+	SpriteSheetItem*		 big_bumper2;
 	SpriteSheetItem*	     blue_arrow;
 
 	// Kickers

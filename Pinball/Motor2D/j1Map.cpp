@@ -57,19 +57,61 @@ bool j1Map::Start()
 	small_right_kicker = new Sprite(App->tex->Load("images/small_kicker_right.png"),
 		1, 1, 67, 28);
 
-	// Spritesheet items
-	kawaii_blue = new SpriteSheetItem(); 
-	kawaii_green = new SpriteSheetItem();
-	kawaii_orange = new SpriteSheetItem();
-	kawaii_red = new SpriteSheetItem();
-	kawaii_violet = new SpriteSheetItem();
-	kawaii_yellow = new SpriteSheetItem();
+	// Spritesheet items ----------------
+
+	// Kawaii blue
+	kawaii_blue = new SpriteSheetItem(200, 890); 
+		kawaii_blue->anim.PushBack({0, 130, 75, 65});
+		kawaii_blue->anim.PushBack({76, 130, 75, 65});
+		kawaii_blue->anim.speed = 0.00f ;
+
+	// Kawaii green
+	kawaii_green = new SpriteSheetItem(340, 890);
+		kawaii_green->anim.PushBack({ 152, 0, 75, 65 });
+		kawaii_green->anim.PushBack({ 228, 0, 75, 65 });
+		kawaii_green->anim.speed = 0.00f;
+
+	// Kawaii orange
+	kawaii_orange = new SpriteSheetItem(270, 990);
+		kawaii_orange->anim.PushBack({ 152, 65, 75, 65 });
+		kawaii_orange->anim.PushBack({ 228, 6, 75, 65 });
+		kawaii_orange->anim.speed = 0.00f;
+
+	// Kawaii red
+	kawaii_red = new SpriteSheetItem(425, 695);
+		kawaii_red->anim.PushBack({ 152, 130, 75, 65 });
+		kawaii_red->anim.PushBack({ 228, 130, 75, 65 });
+		kawaii_red->anim.speed = 0.00f;
+
+	// Kawaii violet
+	kawaii_violet = new SpriteSheetItem(285, 670);
+		kawaii_violet->anim.PushBack({ 0, 65, 75, 65 });
+		kawaii_violet->anim.PushBack({ 76, 65, 75, 65 });
+		kawaii_violet->anim.speed = 0.00f;
+
+	// Kawaii yellow
+	kawaii_yellow = new SpriteSheetItem(150, 695);
+		kawaii_yellow->anim.PushBack({ 0, 0, 75, 65 });
+		kawaii_yellow->anim.PushBack({ 76, 0, 75, 65 });
+		kawaii_yellow->anim.speed = 0.00f;
+
 	kawaii_girl = new SpriteSheetItem();
 	kawaii_guy = new SpriteSheetItem();
 	little_button = new SpriteSheetItem();
 	small_bumper = new SpriteSheetItem();
 	blue_arrow = new SpriteSheetItem();
-	big_bumper = new SpriteSheetItem();
+
+	// Big_bumper
+	big_bumper1 = new SpriteSheetItem();
+		big_bumper1->anim.PushBack({ 223, 274, 84, 84 });
+		big_bumper1->anim.PushBack({ 331, 274, 112, 112 });
+		big_bumper1->anim.speed = 0;
+	big_bumper2 = new SpriteSheetItem();
+		big_bumper2->anim.PushBack({ 223, 274, 84, 84 });
+		big_bumper2->anim.PushBack({ 331, 274, 112, 112 });
+		big_bumper2->anim.speed = 0;
+
+	// ----------------------------------
 
 	return ret;
 }
@@ -77,7 +119,7 @@ bool j1Map::Start()
 void j1Map::CreateColliders()
 {
 	// Ball
-	ball->pb = App->physics->CreateCircle(600, 980, 11, 0x0002, 0x0001);
+	ball->pb = App->physics->CreateCircle(598, 990, 11, 0x0002, 0x0001); ball->pb->body->SetBullet(1); 
 	balls.add(ball->pb);
 
 	// Background standalone colliders
@@ -342,8 +384,12 @@ void j1Map::CreateColliders()
 	// Spring
 	int pos_x = 596; int pos_y = 1150;
 	PhysBody* A = App->physics->CreateRectangle(pos_x, pos_y, 10, 100, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
-	PhysBody* B = App->physics->CreateRectangle(pos_x, pos_y, 50, 20, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
-	spring_coll = App->physics->CreatePrismaticJoint(A, B, b2Vec2(1, 1), b2Vec2(1, 1), -40, -120, 200, 200);
+	PhysBody* B = App->physics->CreateRectangle(pos_x, pos_y, 50, 70, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
+	spring_coll = App->physics->CreatePrismaticJoint(A, B, b2Vec2(1,10), b2Vec2(1, -10), -40, -120, 248, 200);
+
+	// Big bumper
+	big_bumper1->pb = App->physics->CreateCircle(370, 576, 40, 0x0003, 0x0002); big_bumper1->pb->body->SetType(b2_kinematicBody);
+	big_bumper2->pb = App->physics->CreateCircle(527, 440, 40, 0x0003, 0x0002); big_bumper2->pb->body->SetType(b2_kinematicBody);
 }
 
 void j1Map::Draw()
@@ -352,13 +398,24 @@ void j1Map::Draw()
 	Blit(bg1->texture, bg1->pos.x, bg1->pos.y, &bg1->rect);
 	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
 
-	// Big bumper
-	//Blit(big_bumper->texture, big_bumper->pos.x, big_bumper->pos.y, &big_bumper->anim.GetCurrentFrame());
+	// Kawaiis
+	Blit(kawaii_blue->texture, kawaii_blue->pos.x, kawaii_blue->pos.y, &kawaii_blue->anim.GetCurrentFrame());
+	Blit(kawaii_red->texture, kawaii_red->pos.x, kawaii_red->pos.y, &kawaii_red->anim.GetCurrentFrame());
+	Blit(kawaii_green->texture, kawaii_green->pos.x, kawaii_green->pos.y, &kawaii_green->anim.GetCurrentFrame());
+	Blit(kawaii_orange->texture, kawaii_orange->pos.x, kawaii_orange->pos.y, &kawaii_orange->anim.GetCurrentFrame());
+	Blit(kawaii_violet->texture, kawaii_violet->pos.x, kawaii_violet->pos.y, &kawaii_violet->anim.GetCurrentFrame());
+	Blit(kawaii_yellow->texture, kawaii_yellow->pos.x, kawaii_yellow->pos.y, &kawaii_yellow->anim.GetCurrentFrame());
 
-	// --------------
+
+
+	// Big bumper
+	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 42, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 42, &big_bumper1->anim.GetCurrentFrame());
+	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 42, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 42, &big_bumper2->anim.GetCurrentFrame());
+
+	// -------------------------
 
 	// Spring
-	Blit(spring->texture, spring->pos.x, METERS_TO_PIXELS(spring_coll->GetBodyB()->GetPosition().y) -10, &spring->rect);
+	Blit(spring->texture, spring->pos.x, METERS_TO_PIXELS(spring_coll->GetBodyB()->GetPosition().y) -35, &spring->rect);
 
 	// Ball
 	Blit(ball->texture, METERS_TO_PIXELS(ball->pb->body->GetPosition().x - 14), METERS_TO_PIXELS(ball->pb->body->GetPosition().y - 14), &ball->rect);

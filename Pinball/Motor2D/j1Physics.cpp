@@ -57,7 +57,7 @@ bool j1Physics::Start()
 // Called each loop iteration
 bool j1Physics::PreUpdate()
 {
-	world->Step(1.0f / 60.0f, 6, 2);
+	world->Step(1.0f / 60.0f, 128, 128);
 
 	for (b2Contact* c = world->GetContactList(); c; c = c->GetNext())
 	{
