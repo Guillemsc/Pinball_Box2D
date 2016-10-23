@@ -128,6 +128,8 @@ public:
 	// Kickers
 	b2RevoluteJoint*	 big_left_kicker_coll;
 	b2RevoluteJoint*	 big_right_kicker_coll;
+	b2RevoluteJoint*	 small_left_kicker_coll;
+	b2RevoluteJoint*	 small_right_kicker_coll;
 
 	// Spring
 	b2PrismaticJoint*    spring_coll;

@@ -320,7 +320,6 @@ void j1Map::CreateColliders()
 		91, 12,
 		84, 3
 	};
-
 	big_left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
 
 	int big_kicker_right_points[24] = {
@@ -340,46 +339,35 @@ void j1Map::CreateColliders()
 	big_right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
 
 	// Small Kickers
-	int small_kicker_left_points[38] = {
-		67, 15,
-		66, 12,
-		64, 9,
-		61, 7,
+	int small_kicker_left_points[22] = {
+		9, 0,
+		9, 27,
+		12, 28,
+		57, 22,
+		62, 21,
+		65, 18,
+		66, 14,
+		65, 10,
+		62, 7,
 		57, 6,
-		15, 1,
-		11, 1,
-		7, 2,
-		4, 4,
-		1, 8,
-		0, 12,
-		0, 17,
-		2, 21,
-		6, 25,
-		11, 27,
-		16, 27,
-		59, 22,
-		64, 20,
-		66, 17
+		12, 0
+	};
+	small_left_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 130, 554, 15, 15, 200, 150, 250, -90, 0x0003, 0x0002);
+	
+	int small_kicker_right_points[22] = {
+		1, 11,
+		3, 9,
+		6, 7,
+		50, 1,
+		55, 1,
+		55, 27,
+		50, 27,
+		6, 22,
+		3, 20,
+		1, 18,
+		0, 15
 	};
 
-	int small_kicker_right[32] = {
-		66, 15,
-		66, 11,
-		63, 6,
-		60, 2,
-		54, 1,
-		44, 2,
-		4, 7,
-		1, 10,
-		0, 14,
-		1, 18,
-		5, 21,
-		15, 23,
-		53, 27,
-		60, 26,
-		64, 22,
-		66, 18
-	};
 
 	// Spring
 	int pos_x = 596; int pos_y = 1150;

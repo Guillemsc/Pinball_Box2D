@@ -79,12 +79,18 @@ bool j1Scene::Update(float dt)
 	}
 
 	// Left kickers
-	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN))
+	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)) {
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
-	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT))
+		App->map->small_left_kicker_coll->SetMotorSpeed(400);
+	}
+	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)) {
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
-	else
+		App->map->small_left_kicker_coll->SetMotorSpeed(400);
+	}
+	else {
 		App->map->big_left_kicker_coll->SetMotorSpeed(-200);
+		App->map->small_left_kicker_coll->SetMotorSpeed(-200);
+	}
 
 	// Right kickers
 	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN))
