@@ -32,8 +32,8 @@ bool j1Map::Start()
 	bool ret = true;
 	
 	// Music FX
-	App->audio->LoadFx("audio/fx/hello_man.wav");
-
+	fx_coll = App->audio->LoadFx("pinball/bonus.wav");
+	
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
 		0, 0, 630, 1178, 0, 0);

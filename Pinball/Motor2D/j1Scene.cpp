@@ -60,7 +60,7 @@ bool j1Scene::Update(float dt)
 
 	// Activate camera debug
 	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
-		camera_debug = !camera_debug;
+		camera_debug = !camera_debug; App->audio->PlayFx(App->map->fx_coll, 1);
 
 	// Camera debug
 	if (camera_debug) 

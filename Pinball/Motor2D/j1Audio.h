@@ -10,7 +10,7 @@ class j1Audio : public j1Module
 {
 public:
 
-	j1Audio(bool start_enabled = true);
+	j1Audio();
 	~j1Audio();
 
 	bool Init();

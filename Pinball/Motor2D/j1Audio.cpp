@@ -8,7 +8,7 @@
 #include "SDL_mixer\include\SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-j1Audio::j1Audio(bool start_enabled) : j1Module(start_enabled), music(NULL)
+j1Audio::j1Audio() : music(NULL)
 {}
 
 // Destructor
@@ -130,8 +130,8 @@ bool j1Audio::PlayMusic(const char* path, float fade_time)
 // Load WAV
 unsigned int j1Audio::LoadFx(const char* path)
 {
-	if (IsEnabled() == false)
-		return 0;
+	//if (IsEnabled() == false)
+	//	return 0;
 
 	unsigned int ret = 0;
 
