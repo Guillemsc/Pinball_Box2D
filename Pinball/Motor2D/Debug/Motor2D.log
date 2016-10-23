@@ -1,11 +1,29 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Development - Class 6.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  pugixml.cpp
   j1Window.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1window.cpp(10): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1window.cpp(10): note: al hacer coincidir la lista de argumentos '()'
   j1Textures.cpp
-  j1Render.cpp
-  p2Log.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1textures.cpp(12): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1textures.cpp(12): note: al hacer coincidir la lista de argumentos '()'
   j1Scene.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1scene.cpp(14): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1scene.cpp(14): note: al hacer coincidir la lista de argumentos '()'
+  j1Render.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1render.cpp(11): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1render.cpp(11): note: al hacer coincidir la lista de argumentos '()'
   j1Physics.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(23): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(23): note: al hacer coincidir la lista de argumentos '()'
 c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(228): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(229): warning C4244: '=': conversión de 'float' a 'int'; posible pérdida de datos
 c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(272): warning C4018: '<': no coinciden signed/unsigned
@@ -16,14 +34,21 @@ c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\mo
 c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(451): warning C4244: 'inicializando': conversión de 'int' a 'float'; posible pérdida de datos
 c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1physics.cpp(457): warning C4244: 'return': conversión de 'float32' a 'int'; posible pérdida de datos
   j1Map.cpp
-c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1map.cpp(368): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1map.cpp(14): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1map.cpp(14): note: al hacer coincidir la lista de argumentos '()'
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1map.cpp(359): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
   j1Input.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1input.cpp(11): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1input.cpp(11): note: al hacer coincidir la lista de argumentos '()'
+  j1FileSystem.cpp
+c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1filesystem.cpp(11): error C2668: 'j1Module::j1Module': llamada ambigua a una función sobrecargada
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(27): note: puede ser 'j1Module::j1Module(bool)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1module.h(25): note: o       'j1Module::j1Module(void)'
+  c:\users\simón\documents\university\2nd year\physics 2\pinball_box2d\pinball\motor2d\j1filesystem.cpp(11): note: al hacer coincidir la lista de argumentos '()'
   j1Audio.cpp
   j1App.cpp
-  j1Main.cpp
-  j1FileSystem.cpp
   Generando código...
-     Creando biblioteca C:\Users\Simón\Documents\University\2nd Year\Physics 2\Pinball_Box2D\Pinball\Debug\Pinball.lib y objeto C:\Users\Simón\Documents\University\2nd Year\Physics 2\Pinball_Box2D\Pinball\Debug\Pinball.exp
-physfs.lib(physfs.obj) : warning LNK4217: se importó el símbolo _sprintf definido localmente en la función _PHYSFS_setSaneConfig
-  Motor2D.vcxproj -> C:\Users\Simón\Documents\University\2nd Year\Physics 2\Pinball_Box2D\Pinball\Debug\Pinball.exe
-  Motor2D.vcxproj -> C:\Users\Simón\Documents\University\2nd Year\Physics 2\Pinball_Box2D\Pinball\Debug\Pinball.pdb (Full PDB)

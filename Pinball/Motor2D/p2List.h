@@ -328,5 +328,37 @@ public:
 			p_other_list = p_other_list->next;
 		}
 	}
+
+	p2List_item<tdata>* getFirst() const
+	{
+		return start;
+	}
+
+	p2List_item<tdata>* getLast() const
+	{
+		return end;
+	}
+
+	/**
+	* Find by index
+	*/
+	bool at(unsigned int index, tdata& data) const
+	{
+		bool ret = false;
+		unsigned int i = 0;
+		p2List_item<tdata>*   p_data = start;
+
+		for (unsigned int i = 0; i < index && p_data != NULL; ++i)
+			p_data = p_data->next;
+
+		if (p_data != NULL)
+		{
+			ret = true;
+			data = p_data->data;
+		}
+
+		return ret;
+	}
+
 };
 #endif /*__p2List_H__*/

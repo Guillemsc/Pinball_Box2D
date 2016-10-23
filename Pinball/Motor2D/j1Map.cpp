@@ -6,6 +6,7 @@
 #include "j1Textures.h"
 #include "j1Map.h"
 #include "j1Animation.h"
+#include "j1Audio.h"
 #include <math.h>
 #include "j1Physics.h"
 
@@ -30,6 +31,9 @@ bool j1Map::Start()
 {
 	bool ret = true;
 	
+	// Music FX
+	App->audio->LoadFx("audio/fx/hello_man.wav");
+
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
 		0, 0, 630, 1178, 0, 0);
@@ -421,6 +425,11 @@ bool j1Map::CleanUp()
 	LOG("Unloading map");
 
 	return true;
+}
+
+void j1Map::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
+{
+	App->audio->PlayFx(fx_coll);
 }
 
 void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y)

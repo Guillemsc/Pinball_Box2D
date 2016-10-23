@@ -96,6 +96,7 @@ public:
 
 	// Called before quitting
 	bool CleanUp();
+	void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 	void Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed = 1.0f, double angle = 0.0f, int pivot_x = 0, int pivot_y = 0);
 
@@ -137,6 +138,8 @@ public:
 	// Lists
 	p2List<PhysBody*>    balls;
 
+	// Music
+	uint fx_coll;
 
 };
 
