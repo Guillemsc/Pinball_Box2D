@@ -35,6 +35,9 @@ public:
 	void ScrollCamera();
 	void CreateBall();
 
+
+
+
 public:
 	bool camera_debug = false;
 private:

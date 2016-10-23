@@ -124,8 +124,10 @@ bool j1Scene::Update(float dt)
 	if(!camera_debug)
 		ScrollCamera();
 
+
 	return true;
 }
+
 
 // Called each loop iteration
 bool j1Scene::PostUpdate()
@@ -163,3 +165,5 @@ void j1Scene::CreateBall()
 {
 	App->map->ball->pb = App->physics->CreateCircle(598, 990, 10, 0x0002, 0x0001);
 }
+
+

@@ -105,11 +105,12 @@ bool j1Map::Start()
 	small_bumper = new SpriteSheetItem();
 	blue_arrow = new SpriteSheetItem();
 
-	// Big_bumper
+	// Big_bumpers
 	big_bumper1 = new SpriteSheetItem();
 		big_bumper1->anim.PushBack({ 223, 274, 84, 84 });
 		big_bumper1->anim.PushBack({ 331, 274, 112, 112 });
 		big_bumper1->anim.speed = 0;
+
 	big_bumper2 = new SpriteSheetItem();
 		big_bumper2->anim.PushBack({ 223, 274, 84, 84 });
 		big_bumper2->anim.PushBack({ 331, 274, 112, 112 });
@@ -123,7 +124,9 @@ bool j1Map::Start()
 void j1Map::CreateColliders()
 {
 	// Ball
-	ball->pb = App->physics->CreateCircle(598, 990, 11, 0x0002, 0x0001); ball->pb->body->SetBullet(1); 
+	ball->pb = App->physics->CreateCircle(598, 990, 11, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
+	ball->pb->listener = App->physics;
+	ball->pb->identificator = 1;
 	balls.add(ball->pb);
 
 	// Background standalone colliders
@@ -382,6 +385,10 @@ void j1Map::CreateColliders()
 	// Big bumper
 	big_bumper1->pb = App->physics->CreateCircle(370, 576, 40, 0x0003, 0x0002); big_bumper1->pb->body->SetType(b2_kinematicBody);
 	big_bumper2->pb = App->physics->CreateCircle(527, 440, 40, 0x0003, 0x0002); big_bumper2->pb->body->SetType(b2_kinematicBody);
+
+	// Sensors
+	kawaii_blue->pb = App->physics->CreateRectangleSensor(240, 900, 60, 60, 0x0003, 0x0002);
+	kawaii_blue->pb->identificator = 2;
 }
 
 void j1Map::Draw()
@@ -416,7 +423,6 @@ void j1Map::Draw()
 	Blit(big_left_kicker->texture, 206, 1090, &big_left_kicker->rect, 1, (-big_left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
 	Blit(big_right_kicker->texture, 315, 1090, &big_right_kicker->rect, 1, (-big_right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
 
-	
 }
 
 // Called before quitting
@@ -425,11 +431,6 @@ bool j1Map::CleanUp()
 	LOG("Unloading map");
 
 	return true;
-}
-
-void j1Map::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
-{
-	App->audio->PlayFx(fx_coll);
 }
 
 void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y)

@@ -51,6 +51,9 @@ bool j1Physics::Start()
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 	world->SetContactListener(this);
 
+	b2BodyDef bd;
+	ground = world->CreateBody(&bd);
+
 	return true;
 }
 
@@ -156,11 +159,67 @@ bool j1Physics::PostUpdate()
 
 				v1 = b->GetWorldPoint(shape->m_vertex0);
 				v1 = b->GetWorldPoint(shape->m_vertex1);
-				App->render->DrawLine(METERS_TO_PIXELS(v1.x), METERS_TO_PIXELS(v1.y), METERS_TO_PIXELS(v2.x), METERS_TO_PIXELS(v2.y), 100, 100, 255);
+				App->render->DrawLine(METERS_TO_PIXELS(v1.x), METERS_TO_PIXELS(v1.y), METERS_TO_PIXELS(v2.x), METERS_TO_PIXELS(v2.y), 100, 100, 255, false);
 			}
 			break;
 			}
+
+
+			if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN) 
+			{
+				int mouse_x, mouse_y;
+				App->input->GetMousePosition(mouse_x, mouse_y);
+				mouse_x -= App->render->camera.x;
+				mouse_y -= App->render->camera.y;
+				b2Vec2 mouse(PIXEL_TO_METERS(mouse_x), PIXEL_TO_METERS(mouse_y));
+				App->render->DrawCircle(mouse_x - App->render->camera.x, mouse_y - App->render->camera.y, 50, 255, 255, 255);
+				if (f->TestPoint(mouse)) 
+				{
+					selected = f->GetBody();
+					break;
+				}
+			}
 		}
+	}
+
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && selected != nullptr) 
+	{
+		int mouse_x, mouse_y;
+		App->input->GetMousePosition(mouse_x, mouse_y);
+		mouse_x -= App->render->camera.x;
+		mouse_y -= App->render->camera.y;
+		b2Vec2 mouse(PIXEL_TO_METERS(mouse_x), PIXEL_TO_METERS(mouse_y));
+
+		b2MouseJointDef def;
+		def.bodyA = ground;
+		def.bodyB = selected;
+		def.target = mouse;
+		def.dampingRatio = 0.5f;
+		def.frequencyHz = 2.0f;
+		def.maxForce = 100.0f * selected->GetMass();
+
+		mouse_joint = (b2MouseJoint*)world->CreateJoint(&def);
+
+	}
+
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_REPEAT && selected != nullptr) 
+	{
+		int mouse_x, mouse_y;
+		App->input->GetMousePosition(mouse_x, mouse_y);
+		mouse_x -= App->render->camera.x;
+		mouse_y -= App->render->camera.y;
+		b2Vec2 mouse(PIXEL_TO_METERS(mouse_x), PIXEL_TO_METERS(mouse_y));
+		b2Vec2 mouse_pix(mouse_x, mouse_y);
+
+		mouse_joint->SetTarget(mouse);
+		App->render->DrawLine(mouse_pix.x, mouse_pix.y, METERS_TO_PIXELS(selected->GetPosition().x), METERS_TO_PIXELS(selected->GetPosition().y), 255, 0, 0, 255);
+	}
+
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_UP && selected != nullptr) 
+	{
+		world->DestroyJoint(mouse_joint);
+		mouse_joint = nullptr;
+		selected = nullptr;
 	}
 
 	return ret;
@@ -231,7 +290,7 @@ PhysBody* j1Physics::CreateRectangle(int x, int y, int width, int height, uint16
 	return pbody;
 }
 
-PhysBody * j1Physics::CreateRectangleSensor(int x, int y, int width, int height)
+PhysBody * j1Physics::CreateRectangleSensor(int x, int y, int width, int height, uint16 mask, uint16 category)
 {
 	b2BodyDef body;
 	body.type = b2_staticBody;
@@ -246,6 +305,8 @@ PhysBody * j1Physics::CreateRectangleSensor(int x, int y, int width, int height)
 	fixture.shape = &box;
 	fixture.density = 1.0f;
 	fixture.isSensor = true;
+	fixture.filter.maskBits = mask;
+	fixture.filter.categoryBits = category;
 
 	b->CreateFixture(&fixture);
 
@@ -398,6 +459,17 @@ void j1Physics::BeginContact(b2Contact * contact)
 
 	if (physB && physB->listener != NULL)
 		physB->listener->OnCollision(physB, physA);
+}
+
+void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
+{
+	if (bodyA != nullptr && bodyB != nullptr) 
+	{
+		if (bodyA->identificator == 1 && bodyB->identificator == 2)
+		{
+			App->map->kawaii_blue->anim.speed = 0.05f;
+		}
+	}
 }
 
 void PhysBody::GetPosition(int & x, int & y) const
