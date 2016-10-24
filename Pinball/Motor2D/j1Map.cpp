@@ -32,8 +32,8 @@ bool j1Map::Start()
 	bool ret = true;
 	
 	// Music FX
-	fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
-	App->audio->PlayFx(fx_coll, -1);
+	//fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
+//	App->audio->PlayFx(fx_coll, -1);
 	
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
@@ -103,7 +103,7 @@ bool j1Map::Start()
 	// Kawaii girl
 	kawaii_girl = new SpriteSheetItem(505, 890);
 		kawaii_girl->anim.PushBack({ 309, 126, 66, 76 });
-		kawaii_girl->anim.PushBack({ 376, 126, 66, 76 });
+		kawaii_girl->anim.PushBack({ 375, 126, 66, 76 });
 		kawaii_girl->anim.speed = 0.00f;
 
 	// Kawaii guy
@@ -425,6 +425,12 @@ void j1Map::CreateColliders()
 
 	kawaii_orange->pb = App->physics->CreateRectangleSensor(305, 1020, 64, 64, 0x0003, 0x0002);
 	kawaii_orange->pb->coll_name = collider_names::kawaii_orange;
+
+	kawaii_girl->pb = App->physics->CreateRectangleSensor(525, 940, 50, 64, 0x0003, 0x0002);
+	kawaii_girl->pb->coll_name = collider_names::kawaii_girl;
+
+	kawaii_guy->pb = App->physics->CreateRectangleSensor(83, 935, 50, 64, 0x0003, 0x0002);
+	kawaii_guy->pb->coll_name = collider_names::kawaii_guy;
 
 	// -------------------------
 }
