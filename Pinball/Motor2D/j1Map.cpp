@@ -40,6 +40,9 @@ bool j1Map::Start()
 	kicker1_fx = App->audio->LoadFx("audio/fx/kicker1_fx.wav");
 	kicker2_fx = App->audio->LoadFx("audio/fx/kicker2_fx.wav");
 	ball_hit_fx = App->audio->LoadFx("audio/fx/ball_hit_fx.wav");
+	kawaii_sound1_fx = App->audio->LoadFx("audio/fx/kawaii_sound1_fx.wav");
+	kawaii_sound2_fx = App->audio->LoadFx("audio/fx/kawaii_sound2_fx.wav");
+
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 

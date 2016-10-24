@@ -197,6 +197,8 @@ public:
 	uint					spring_pull_fx;
 	uint					spring_push_fx;
 	uint					ball_hit_fx;
+	uint					kawaii_sound1_fx;
+	uint					kawaii_sound2_fx;
 
 	// Lists
 	p2List<PhysBody*>		balls;
