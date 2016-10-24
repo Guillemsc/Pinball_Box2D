@@ -557,68 +557,56 @@ void j1Physics::TimerActions()
 	// Kawaii_red
 	if (App->map->kawaii_red->timer->IsTimeReached() && App->map->kawaii_red->timer->stop_time)
 	{
-		// What to do at the start of the program
 		App->map->kawaii_red->anim.SetFrame(0);
 	}
 	else if (App->map->kawaii_red->timer->IsTimeReached() && !App->map->kawaii_red->timer->stop_time)
 	{
-		// What to do when timer finishes
 		App->map->kawaii_red->anim.SetFrame(1);
 		App->map->kawaii_red->anim.speed = 0;
 	}
 	else
 	{
-		// What to do when timer starts
 		App->map->kawaii_red->anim.speed = 0.5f;
 	}
 
 	// Kawaii_green
 	if (App->map->kawaii_green->timer->IsTimeReached() && App->map->kawaii_green->timer->stop_time)
 	{
-		// What to do at the start of the program
 		App->map->kawaii_green->anim.SetFrame(0);
 	}
 	else if (App->map->kawaii_green->timer->IsTimeReached() && !App->map->kawaii_green->timer->stop_time)
 	{
-		// What to do when timer finishes
 		App->map->kawaii_green->anim.SetFrame(1);
 		App->map->kawaii_green->anim.speed = 0;
 	}
 	else
 	{
-		// What to do when timer starts
 		App->map->kawaii_green->anim.speed = 0.5f;
 	}
 
 	// Big bumper 1
 	if (App->map->big_bumper1->timer->IsTimeReached() && App->map->big_bumper1->timer->stop_time)
 	{
-		// What to do at the start of the program
 	}
 	else if (App->map->big_bumper1->timer->IsTimeReached() && !App->map->big_bumper1->timer->stop_time)
 	{
-		// What to do when timer finishes
 		App->map->big_bumper1->anim.SetFrame(0);
 	}
 	else
 	{
-		// What to do when timer starts
 		App->map->big_bumper1->anim.SetFrame(1);
 	}
 
 	// Big bumper 2
 	if (App->map->big_bumper2->timer->IsTimeReached() && App->map->big_bumper2->timer->stop_time)
 	{
-		// What to do at the start of the program
 	}
 	else if (App->map->big_bumper2->timer->IsTimeReached() && !App->map->big_bumper2->timer->stop_time)
 	{
-		// What to do when timer finishes
 		App->map->big_bumper2->anim.SetFrame(0);
 	}
 	else
 	{
-		// What to do when timer starts
 		App->map->big_bumper2->anim.SetFrame(1);
 	}
 
