@@ -99,13 +99,37 @@ bool j1Map::Start()
 		kawaii_yellow->anim.PushBack({ 76, 0, 75, 65 });
 		kawaii_yellow->anim.speed = 0.00f;
 
+	// Kawaii girl
 	kawaii_girl = new SpriteSheetItem();
-	kawaii_guy = new SpriteSheetItem();
-	little_button = new SpriteSheetItem();
-	small_bumper = new SpriteSheetItem();
-	blue_arrow = new SpriteSheetItem();
+		kawaii_girl->anim.PushBack({ 309, 126, 66, 76 });
+		kawaii_girl->anim.PushBack({ 376, 126, 66, 76 });
+		kawaii_girl->anim.speed = 0.00f;
 
-	// Big_bumpers
+	// Kawaii guy
+	kawaii_guy = new SpriteSheetItem();
+		kawaii_guy->anim.PushBack({ 309, 55, 65, 70 });
+		kawaii_guy->anim.PushBack({ 375, 55, 65, 70 });
+		kawaii_guy->anim.speed = 0.00f;
+
+	// Little button
+	little_button = new SpriteSheetItem();
+		little_button->anim.PushBack({ 10, 281, 46, 46 });
+		little_button->anim.PushBack({ 57, 278, 51, 52 });
+		little_button->anim.speed = 0.00f;
+
+	// Little button
+	small_bumper = new SpriteSheetItem();
+		small_bumper->anim.PushBack({ 105, 212, 24, 24 });
+		small_bumper->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper->anim.speed = 0.00f;
+
+	// Blue Arrow
+	blue_arrow = new SpriteSheetItem();
+		blue_arrow->anim.PushBack({ 7, 212, 48, 61 });
+		blue_arrow->anim.PushBack({ 56, 212, 48, 61 });
+		blue_arrow->anim.speed = 0.00f;
+
+	// Big bumpers
 	big_bumper1 = new SpriteSheetItem();
 		big_bumper1->anim.PushBack({ 223, 274, 84, 84 });
 		big_bumper1->anim.PushBack({ 331, 274, 112, 112 });
