@@ -32,16 +32,7 @@ bool j1Map::Start()
 	bool ret = true;
 	
 	// Music FX
-<<<<<<< HEAD
 	App->audio->PlayMusic("audio/music/game_music.mp3");
-=======
-<<<<<<< HEAD
-	//fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
-//	App->audio->PlayFx(fx_coll, -1);
-=======
-	App->audio->PlayMusic("audio/game_music.mp3");
->>>>>>> origin/master
->>>>>>> origin/master
 	
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
@@ -491,6 +482,7 @@ void j1Map::Draw()
 	Blit(big_left_kicker->texture, 206, 1090, &big_left_kicker->rect, 1, (-big_left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
 	Blit(big_right_kicker->texture, 315, 1090, &big_right_kicker->rect, 1, (-big_right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
 	Blit(small_left_kicker->texture, 115, 540, &small_left_kicker->rect, 1, (-small_left_kicker_coll->GetJointAngle() * RADTODEG), 13, 15);
+	Blit(small_right_kicker->texture, 520, 675, &small_right_kicker->rect, 1, (-small_right_kicker_coll->GetJointAngle() * RADTODEG), 54, 15);
 }
 
 // Called before quitting
