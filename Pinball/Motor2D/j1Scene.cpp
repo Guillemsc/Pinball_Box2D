@@ -76,7 +76,7 @@ bool j1Scene::Update(float dt)
 		camera_debug = !camera_debug; App->audio->PlayFx(App->map->fx_coll, 1);
 
 	// Camera debug
-	if (camera_debug) 
+	if (camera_debug)
 	{
 		if ((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT))
 			App->render->camera.y += 5;
@@ -92,7 +92,7 @@ bool j1Scene::Update(float dt)
 	}
 
 	// ----------------------------------------------------------------------------
-	
+
 	// Kickers --------------------------------------------------------------------
 
 	// Left kickers
@@ -110,13 +110,18 @@ bool j1Scene::Update(float dt)
 	}
 
 	// Right kickers
-	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN))
+	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)) {
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
-	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT))
+		App->map->small_right_kicker_coll->SetMotorSpeed(-400);
+	}
+	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)) {
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
-	else
+		App->map->small_right_kicker_coll->SetMotorSpeed(-400);
+	}
+	else {
 		App->map->big_right_kicker_coll->SetMotorSpeed(200);
-
+		App->map->small_right_kicker_coll->SetMotorSpeed(200);
+	}
 	// ----------------------------------------------------------------------------
 
 	// Spring ----------

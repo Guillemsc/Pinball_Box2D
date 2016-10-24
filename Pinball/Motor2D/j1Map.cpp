@@ -376,7 +376,7 @@ void j1Map::CreateColliders()
 		57, 6,
 		12, 0
 	};
-	small_left_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 130, 554, 15, 15, 200, 150, 250, -90, 0x0003, 0x0002);
+	small_left_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 130, 554, 15, 15, 360, 310, 250, -90, 0x0003, 0x0002);
 	
 	int small_kicker_right_points[22] = {
 		1, 11,
@@ -391,6 +391,7 @@ void j1Map::CreateColliders()
 		1, 18,
 		0, 15
 	};
+	small_right_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_right_points, 20, 570, 690, 50, 15, 55, 5, 250, -90, 0x0003, 0x0002);
 
 	// Spring
 	int pos_x = 596; int pos_y = 1150;
@@ -474,7 +475,7 @@ void j1Map::Draw()
 	// Kickers
 	Blit(big_left_kicker->texture, 206, 1090, &big_left_kicker->rect, 1, (-big_left_kicker_coll->GetJointAngle() * RADTODEG) + 180, 18, 20);
 	Blit(big_right_kicker->texture, 315, 1090, &big_right_kicker->rect, 1, (-big_right_kicker_coll->GetJointAngle() * RADTODEG) + 180, 73, 20);
-
+	Blit(small_left_kicker->texture, 115, 540, &small_left_kicker->rect, 1, (-small_left_kicker_coll->GetJointAngle() * RADTODEG), 13, 15);
 }
 
 // Called before quitting
