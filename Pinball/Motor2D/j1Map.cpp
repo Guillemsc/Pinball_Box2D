@@ -31,9 +31,15 @@ bool j1Map::Start()
 {
 	bool ret = true;
 	
-	// Music FX
+	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
-	
+
+	// Audio FX
+	spring_pull_fx = App->audio->LoadFx("audio/fx/spring_pull_fx.wav");
+	spring_push_fx = App->audio->LoadFx("audio/fx/spring_push_fx.wav");
+	kicker1_fx = App->audio->LoadFx("audio/fx/kicker1_fx.wav");
+	kicker2_fx = App->audio->LoadFx("audio/fx/kicker2_fx.wav");
+
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
 		0, 0, 630, 1178, 0, 0);
