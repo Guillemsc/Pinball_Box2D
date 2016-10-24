@@ -30,9 +30,9 @@ public:
 		return frames[(int)current_frame];
 	}
 
-	void Reset()
+	void SetFrame(int frame)
 	{
-		current_frame = 0;
+		current_frame = frame;
 	}
 };
 

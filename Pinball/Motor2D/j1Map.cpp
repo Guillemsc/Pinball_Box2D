@@ -391,6 +391,12 @@ void j1Map::CreateColliders()
 	kawaii_blue->pb->identificator = 2;
 }
 
+void j1Map::CreateTimers()
+{
+	kawaii_blue_timer = new Timer(2);
+	timers.add(kawaii_blue_timer);
+}
+
 void j1Map::Draw()
 {
 	// Background --------------

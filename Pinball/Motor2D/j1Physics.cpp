@@ -48,6 +48,8 @@ bool j1Physics::Start()
 {
 	LOG("Creating Physics 2D environment");
 
+	start_time = 0;
+
 	world = new b2World(b2Vec2(GRAVITY_X, -GRAVITY_Y));
 	world->SetContactListener(this);
 
@@ -79,7 +81,28 @@ bool j1Physics::PreUpdate()
 // Called each loop iteration
 bool j1Physics::Update(float dt)
 {
-
+	for (int i = 0; i < App->map->timers.count(); i++)
+	{
+		App->map->timers[i]->UpdateTime();
+	}
+	// Timers
+	if (App->map->kawaii_blue_timer->IsTimeReached() && App->map->kawaii_blue_timer->stop_time)
+	{
+		// What to do at the start of the program
+		App->map->kawaii_blue->anim.speed = 0.00f;
+	}
+	else if (App->map->kawaii_blue_timer->IsTimeReached() && !App->map->kawaii_blue_timer->stop_time)
+	{
+		// What to do when timer finishes
+		App->map->kawaii_blue->anim.SetFrame(0);
+		App->map->kawaii_blue->anim.speed = 0.00f;
+	}
+	else
+	{
+		// What to do when timer starts
+		App->map->kawaii_blue->anim.speed = 0.1f;
+	}
+	
 	return true;
 }
 
@@ -467,7 +490,8 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 	{
 		if (bodyA->identificator == 1 && bodyB->identificator == 2)
 		{
-			App->map->kawaii_blue->anim.speed = 0.05f;
+			App->map->kawaii_blue_timer->Start();
+			LOG("timer_start");
 		}
 	}
 }

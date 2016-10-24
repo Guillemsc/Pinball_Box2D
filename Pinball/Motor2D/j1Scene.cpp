@@ -37,6 +37,12 @@ bool j1Scene::Start()
 
 	// ----------------------------
 
+	// Create timers --------------
+
+	App->map->CreateTimers();
+
+	// ----------------------------
+
 	return true;
 }
 
@@ -58,6 +64,13 @@ bool j1Scene::Update(float dt)
 		App->SaveGame("save_game.xml");
 	*/
 
+
+	// Camera ---------------------------------------------------------------------
+
+	// Scroll camera
+	if (!camera_debug)
+		ScrollCamera();
+
 	// Activate camera debug
 	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
 		camera_debug = !camera_debug; App->audio->PlayFx(App->map->fx_coll, 1);
@@ -77,6 +90,10 @@ bool j1Scene::Update(float dt)
 		if ((App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT))
 			App->render->camera.x -= 5;
 	}
+
+	// ----------------------------------------------------------------------------
+	
+	// Kickers --------------------------------------------------------------------
 
 	// Left kickers
 	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)) {
@@ -100,7 +117,10 @@ bool j1Scene::Update(float dt)
 	else
 		App->map->big_right_kicker_coll->SetMotorSpeed(200);
 
-	// Spring
+	// ----------------------------------------------------------------------------
+
+	// Spring ----------
+
 	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN))
 		App->map->spring_coll->SetMotorSpeed(2);
 	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT))
@@ -108,22 +128,19 @@ bool j1Scene::Update(float dt)
 	else
 		App->map->spring_coll->SetMotorSpeed(-230);
 
+	// ----------------
+
 	// Create a new ball
 	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN))
 	{
 		CreateBall();
 	}
 
-	// Draw ----------
+	// Draw -----------
 
 	App->map->Draw();
 
-	// ---------------
-
-	// Scroll camera
-	if(!camera_debug)
-		ScrollCamera();
-
+	// ----------------
 
 	return true;
 }

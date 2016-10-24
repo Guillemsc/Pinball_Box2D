@@ -7,6 +7,7 @@
 #include "j1Module.h"
 #include "j1Animation.h"
 #include "j1App.h"
+#include "j1Physics.h"
 
 class App;
 class j1Map : public j1Module
@@ -53,7 +54,8 @@ public:
 	private:
 	};
 
-	class SpriteSheetItem {
+	class SpriteSheetItem 
+	{
 	public:
 
 		SpriteSheetItem()
@@ -80,6 +82,57 @@ public:
 	private:
 	};
 
+	class Timer
+	{
+	public:
+		Timer(Uint32 _time_to_wait) : time_to_wait(_time_to_wait * 0.5f * 1000.0f)
+		{
+			now = 0.0f;
+			stop_time = true;
+			actual = 0.0f;
+		}
+
+		~Timer()
+		{};
+
+
+		void UpdateTime()
+		{
+			if (!stop_time)
+				now = SDL_GetTicks();
+			else
+				now = time_to_wait + 10;
+		}
+
+		bool IsTimeReached()
+		{
+			if (now - actual >= time_to_wait)
+				return true;
+			return false;
+		}
+
+		void Reset()
+		{
+			stop_time = true;
+		}
+
+		void Start()
+		{
+			stop_time = false;
+			actual = SDL_GetTicks();
+		}
+	
+	private:
+
+	public:
+
+	public:
+		Uint32 now;
+		Uint32 time_to_wait;
+		Uint32 actual;
+		bool stop_time;
+	};
+
 	j1Map();
 
 	// Destructor
@@ -93,6 +146,7 @@ public:
 	// Called each loop iteration
 	void CreateColliders();
 	void Draw();
+	void CreateTimers();
 
 	// Called before quitting
 	bool CleanUp();
@@ -138,7 +192,12 @@ public:
 	p2List<PhysBody*>    balls;
 
 	// Music
-	uint fx_coll;
+	uint				 fx_coll;
+
+	// Timers
+	Timer*				 kawaii_blue_timer;
+
+	p2List<Timer*>       timers;
 
 };
 
