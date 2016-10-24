@@ -32,8 +32,7 @@ bool j1Map::Start()
 	bool ret = true;
 	
 	// Music FX
-	fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
-	App->audio->PlayFx(fx_coll, -1);
+	App->audio->PlayMusic("audio/game_music.mp3");
 	
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
