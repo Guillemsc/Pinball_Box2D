@@ -337,37 +337,30 @@ void j1Map::CreateColliders()
 	colliderb6->body->SetType(b2_staticBody);
 
 	// Big Kickers
-	int big_kicker_left_points[24] = {
-		77, 0,
+	int big_kicker_left_points[16] = {
+		90, 4,
 		9, 8,
 		5, 11,
 		2, 15,
 		2, 20,
-		3, 25,
-		5, 28,
-		76, 38,
-		86, 34,
-		92, 23,
-		91, 12,
-		84, 3
+		3, 24,
+		8, 30,
+		97, 32
 	};
-	big_left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 24, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
 
-	int big_kicker_right_points[24] = {
-		13, 1,
+	big_left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 16, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
+
+	int big_kicker_right_points[16] = {
+		5, 1,
 		84, 8,
 		88, 11,
 		91, 17,
 		91, 22,
 		88, 26,
 		84, 29,
-		14, 38,
-		6, 33,
-		0, 25,
-		0, 14,
-		4, 7
+		0, 36
 	};
-	big_right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 24, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
+	big_right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 16, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
 
 	// Small Kickers
 	int small_kicker_left_points[22] = {
