@@ -39,6 +39,7 @@ bool j1Map::Start()
 	spring_push_fx = App->audio->LoadFx("audio/fx/spring_push_fx.wav");
 	kicker1_fx = App->audio->LoadFx("audio/fx/kicker1_fx.wav");
 	kicker2_fx = App->audio->LoadFx("audio/fx/kicker2_fx.wav");
+	ball_hit_fx = App->audio->LoadFx("audio/fx/ball_hit_fx.wav");
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
@@ -241,6 +242,7 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb1 = App->physics->CreateChain(0, 0, chain1, 154, 0x0001, 0x0002);
 	colliderb1->body->SetType(b2_staticBody);
+	colliderb1->coll_name = collider_names::wall;
 
 	int chain2[76] = {
 		216, 138,
@@ -284,6 +286,7 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb2 = App->physics->CreateChain(0, 0, chain2, 76, 0x0001, 0x0002);
 	colliderb2->body->SetType(b2_staticBody);
+	colliderb2->coll_name = collider_names::wall;
 
 	int chain3[10] = {
 		127, 888,
@@ -294,6 +297,7 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb3 = App->physics->CreateChain(0, 0, chain3, 10, 0x0001, 0x0002);
 	colliderb3->body->SetType(b2_staticBody);
+	colliderb3->coll_name = collider_names::wall;
 
 	int chain4[10] = {
 		463, 882,
@@ -304,6 +308,7 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb4 = App->physics->CreateChain(0, 0, chain4, 10, 0x0001, 0x0002);
 	colliderb4->body->SetType(b2_staticBody);
+	colliderb4->coll_name = collider_names::wall;
 
 	int chain5[26] = {
 		84, 992,
@@ -322,6 +327,7 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb5 = App->physics->CreateChain(0, 0, chain5, 26, 0x0001, 0x0002);
 	colliderb5->body->SetType(b2_staticBody);
+	colliderb5->coll_name = collider_names::wall;
 
 	int chain6[28] = {
 		518, 992,
@@ -341,6 +347,7 @@ void j1Map::CreateColliders()
 	};
 	PhysBody* colliderb6 = App->physics->CreateChain(0, 0, chain6, 28, 0x0001, 0x0002);
 	colliderb6->body->SetType(b2_staticBody);
+	colliderb6->coll_name = collider_names::wall;
 
 	// Big Kickers
 	int big_kicker_left_points[16] = {

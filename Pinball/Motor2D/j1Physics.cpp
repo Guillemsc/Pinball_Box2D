@@ -532,6 +532,9 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 		case kawaii_guy:
 			App->map->kawaii_guy->timer->Start();
 			break;
+		case wall:
+			App->audio->PlayFx(App->map->ball_hit_fx);
+			break;
 		default:
 			break;
 		}

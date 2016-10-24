@@ -196,6 +196,7 @@ public:
 	uint					kicker2_fx;
 	uint					spring_pull_fx;
 	uint					spring_push_fx;
+	uint					ball_hit_fx;
 
 	// Lists
 	p2List<PhysBody*>		balls;

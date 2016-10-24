@@ -27,7 +27,8 @@ enum collider_names
 	kawaii_girl,
 	kawaii_guy,
 	big_bumper_1,
-	big_bumper_2
+	big_bumper_2,
+	wall
 };
 
 class PhysBody
