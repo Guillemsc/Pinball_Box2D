@@ -438,7 +438,7 @@ void j1Map::CreateTimers()
 {
 	kawaii_blue->timer = new Timer(0.2); timers.add(kawaii_blue->timer);
 	kawaii_red->timer = new Timer(0.2); timers.add(kawaii_red->timer);
-	kawaii_green->timer = new Timer(0.2); timers.add(kawaii_red->timer);
+	kawaii_green->timer = new Timer(0.2); timers.add(kawaii_green->timer);
 	kawaii_orange->timer = new Timer(0.2); timers.add(kawaii_orange->timer);
 	kawaii_yellow->timer = new Timer(0.2); timers.add(kawaii_yellow->timer);
 	kawaii_violet->timer = new Timer(0.2); timers.add(kawaii_violet->timer);

@@ -537,60 +537,147 @@ void j1Physics::TimerActions()
 	// Timer actions ----------------------------------------------------------------------------------
 
 	// Kawaii_blue
-	if (App->map->kawaii_blue->timer->IsTimeReached() && App->map->kawaii_blue->timer->stop_time)
-	{
-		// What to do at the start of the program
-		App->map->kawaii_blue->anim.SetFrame(0);
+	if (App->map->kawaii_blue->timer->IsTimeReached())	{
+		if (App->map->kawaii_blue->timer->stop_time) { 
+			// What to do at the start of the program
+			App->map->kawaii_blue->anim.SetFrame(0); 
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_blue->anim.SetFrame(1);
+			App->map->kawaii_blue->anim.speed = 0;
+		}
 	}
-	else if (App->map->kawaii_blue->timer->IsTimeReached() && !App->map->kawaii_blue->timer->stop_time)
-	{
-		// What to do when timer finishes
-		App->map->kawaii_blue->anim.SetFrame(1);
-		App->map->kawaii_blue->anim.speed = 0;
-	}
-	else
-	{
+	else{
 		// What to do when timer starts
 		App->map->kawaii_blue->anim.speed = 0.5f;
 	}
 
-	// Kawaii_red
-	if (App->map->kawaii_red->timer->IsTimeReached() && App->map->kawaii_red->timer->stop_time)
-	{
-		App->map->kawaii_red->anim.SetFrame(0);
-	}
-	else if (App->map->kawaii_red->timer->IsTimeReached() && !App->map->kawaii_red->timer->stop_time)
-	{
-		App->map->kawaii_red->anim.SetFrame(1);
-		App->map->kawaii_red->anim.speed = 0;
-	}
-	else
-	{
-		App->map->kawaii_red->anim.speed = 0.5f;
-	}
-
 	// Kawaii_green
-	if (App->map->kawaii_green->timer->IsTimeReached() && App->map->kawaii_green->timer->stop_time)
-	{
-		App->map->kawaii_green->anim.SetFrame(0);
+	if (App->map->kawaii_green->timer->IsTimeReached()) {
+		if (App->map->kawaii_green->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_green->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_green->anim.SetFrame(1);
+			App->map->kawaii_green->anim.speed = 0;
+		}
 	}
-	else if (App->map->kawaii_green->timer->IsTimeReached() && !App->map->kawaii_green->timer->stop_time)
-	{
-		App->map->kawaii_green->anim.SetFrame(1);
-		App->map->kawaii_green->anim.speed = 0;
-	}
-	else
-	{
+	else {
+		// What to do when timer starts
 		App->map->kawaii_green->anim.speed = 0.5f;
 	}
 
-	// Big bumper 1
-	if (App->map->big_bumper1->timer->IsTimeReached() && App->map->big_bumper1->timer->stop_time)
-	{
+	// Kawaii_red
+	if (App->map->kawaii_red->timer->IsTimeReached()) {
+		if (App->map->kawaii_red->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_red->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_red->anim.SetFrame(1);
+			App->map->kawaii_red->anim.speed = 0;
+		}
 	}
-	else if (App->map->big_bumper1->timer->IsTimeReached() && !App->map->big_bumper1->timer->stop_time)
-	{
-		App->map->big_bumper1->anim.SetFrame(0);
+	else {
+		// What to do when timer starts
+		App->map->kawaii_red->anim.speed = 0.5f;
+	}
+
+	// Kawaii_orange
+	if (App->map->kawaii_orange->timer->IsTimeReached()) {
+		if (App->map->kawaii_orange->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_orange->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_orange->anim.SetFrame(1);
+			App->map->kawaii_orange->anim.speed = 0;
+		}
+	}
+	else {
+		// What to do when timer starts
+		App->map->kawaii_orange->anim.speed = 0.5f;
+	}
+
+	// Kawaii_violet
+	if (App->map->kawaii_violet->timer->IsTimeReached()) {
+		if (App->map->kawaii_violet->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_violet->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_violet->anim.SetFrame(1);
+			App->map->kawaii_violet->anim.speed = 0;
+		}
+	}
+	else {
+		// What to do when timer starts
+		App->map->kawaii_violet->anim.speed = 0.5f;
+	}
+
+	// Kawaii_yellow
+	if (App->map->kawaii_yellow->timer->IsTimeReached()) {
+		if (App->map->kawaii_yellow->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_yellow->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_yellow->anim.SetFrame(1);
+			App->map->kawaii_yellow->anim.speed = 0;
+		}
+	}
+	else {
+		// What to do when timer starts
+		App->map->kawaii_yellow->anim.speed = 0.5f;
+	}
+
+	// Kawaii_guy
+	if (App->map->kawaii_guy->timer->IsTimeReached()) {
+		if (App->map->kawaii_guy->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_guy->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_guy->anim.SetFrame(1);
+			App->map->kawaii_guy->anim.speed = 0;
+		}
+	}
+	else {
+		// What to do when timer starts
+		App->map->kawaii_guy->anim.speed = 0.5f;
+	}
+
+	// Kawaii_girl
+	if (App->map->kawaii_girl->timer->IsTimeReached()) {
+		if (App->map->kawaii_girl->timer->stop_time) {
+			// What to do at the start of the program
+			App->map->kawaii_girl->anim.SetFrame(0);
+		}
+		else {
+			// What to do when timer finishes
+			App->map->kawaii_girl->anim.SetFrame(1);
+			App->map->kawaii_girl->anim.speed = 0;
+		}
+	}
+	else {
+		// What to do when timer starts
+		App->map->kawaii_girl->anim.speed = 0.5f;
+	}
+
+
+	// Big bumper 1
+	if (App->map->big_bumper1->timer->IsTimeReached()) {
+		if (!App->map->big_bumper1->timer->stop_time) {
+			App->map->big_bumper1->anim.SetFrame(0);
+		}
 	}
 	else
 	{
@@ -598,17 +685,16 @@ void j1Physics::TimerActions()
 	}
 
 	// Big bumper 2
-	if (App->map->big_bumper2->timer->IsTimeReached() && App->map->big_bumper2->timer->stop_time)
-	{
-	}
-	else if (App->map->big_bumper2->timer->IsTimeReached() && !App->map->big_bumper2->timer->stop_time)
-	{
-		App->map->big_bumper2->anim.SetFrame(0);
+	if (App->map->big_bumper2->timer->IsTimeReached()) {
+		if (!App->map->big_bumper2->timer->stop_time) {
+			App->map->big_bumper2->anim.SetFrame(0);
+		}
 	}
 	else
 	{
 		App->map->big_bumper2->anim.SetFrame(1);
 	}
+
 
 	// ------------------------------------------------------------------------------------------------
 
