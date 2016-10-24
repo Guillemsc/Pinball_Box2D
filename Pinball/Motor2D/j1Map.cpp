@@ -31,7 +31,6 @@ bool j1Map::Start()
 {
 	bool ret = true;
 	
-<<<<<<< HEAD
 	// Music FX
 
 	//fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
@@ -40,7 +39,6 @@ bool j1Map::Start()
 	//App->audio->PlayMusic("audio/game_music.mp3");
 
 	
-=======
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
 
@@ -51,7 +49,6 @@ bool j1Map::Start()
 	kicker2_fx = App->audio->LoadFx("audio/fx/kicker2_fx.wav");
 	ball_hit_fx = App->audio->LoadFx("audio/fx/ball_hit_fx.wav");
 
->>>>>>> origin/master
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
 		0, 0, 630, 1178, 0, 0);

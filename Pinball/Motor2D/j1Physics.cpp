@@ -533,13 +533,10 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 		case kawaii_guy:
 			App->map->kawaii_guy->timer->Start();
 			break;
-<<<<<<< HEAD
 		case ball_dead_detector:
 			App->scene->resetball = true;
-=======
 		case wall:
 			App->audio->PlayFx(App->map->ball_hit_fx);
->>>>>>> origin/master
 			break;
 		default:
 			break;
