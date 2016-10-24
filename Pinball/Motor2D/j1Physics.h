@@ -28,9 +28,13 @@ enum collider_names
 	kawaii_guy,
 	big_bumper_1,
 	big_bumper_2,
+<<<<<<< HEAD
 
 	ball_dead_detector
 
+=======
+	wall
+>>>>>>> origin/master
 };
 
 class PhysBody

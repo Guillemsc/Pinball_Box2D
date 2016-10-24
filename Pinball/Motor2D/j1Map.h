@@ -159,47 +159,51 @@ private:
 public:
 
 	// Sprites
-	Sprite*					 bg1;
-	Sprite*					 bg2;
-	Sprite*					 spring;	
-	Sprite*					 ball;
-	Sprite*					 big_left_kicker;
-	Sprite*					 big_right_kicker;
-	Sprite*					 small_left_kicker;
-	Sprite*					 small_right_kicker;
+	Sprite*					bg1;
+	Sprite*					bg2;
+	Sprite*					spring;	
+	Sprite*					ball;
+	Sprite*					big_left_kicker;
+	Sprite*					big_right_kicker;
+	Sprite*					small_left_kicker;
+	Sprite*					small_right_kicker;
 
-	SpriteSheetItem*		 kawaii_blue;
-	SpriteSheetItem*		 kawaii_green;
-	SpriteSheetItem*		 kawaii_orange;
-	SpriteSheetItem*		 kawaii_red;
-	SpriteSheetItem*		 kawaii_violet;
-	SpriteSheetItem*		 kawaii_yellow;
-	SpriteSheetItem*		 kawaii_girl;
-	SpriteSheetItem*		 kawaii_guy;
-	SpriteSheetItem*		 little_button;
-	SpriteSheetItem*		 small_bumper;
-	SpriteSheetItem*		 big_bumper1;
-	SpriteSheetItem*		 big_bumper2;
-	SpriteSheetItem*	     blue_arrow;
+	SpriteSheetItem*		kawaii_blue;
+	SpriteSheetItem*		kawaii_green;
+	SpriteSheetItem*		kawaii_orange;
+	SpriteSheetItem*		kawaii_red;
+	SpriteSheetItem*		kawaii_violet;
+	SpriteSheetItem*		kawaii_yellow;
+	SpriteSheetItem*		kawaii_girl;
+	SpriteSheetItem*		kawaii_guy;
+	SpriteSheetItem*		little_button;
+	SpriteSheetItem*		small_bumper;
+	SpriteSheetItem*		big_bumper1;
+	SpriteSheetItem*		big_bumper2;
+	SpriteSheetItem*	    blue_arrow;
 
 	// Kickers
-	b2RevoluteJoint*		 big_left_kicker_coll;
-	b2RevoluteJoint*		 big_right_kicker_coll;
-	b2RevoluteJoint*		 small_left_kicker_coll;
-	b2RevoluteJoint*		 small_right_kicker_coll;
+	b2RevoluteJoint*		big_left_kicker_coll;
+	b2RevoluteJoint*		big_right_kicker_coll;
+	b2RevoluteJoint*		small_left_kicker_coll;
+	b2RevoluteJoint*		small_right_kicker_coll;
 
 	// Spring
-	b2PrismaticJoint*		 spring_coll;
+	b2PrismaticJoint*		spring_coll;
 
 	// Standalone detectors
 	PhysBody*				 ball_dead_detector = nullptr;
 
 	// Music
-	uint					 fx_coll;
+	uint					kicker1_fx;
+	uint					kicker2_fx;
+	uint					spring_pull_fx;
+	uint					spring_push_fx;
+	uint					ball_hit_fx;
 
 	// Lists
-	p2List<PhysBody*>		 balls;
-	p2List<Timer*>			 timers;
+	p2List<PhysBody*>		balls;
+	p2List<Timer*>			timers;
 
 };
 
