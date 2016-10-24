@@ -68,6 +68,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*
 
 # Chutzpah Test files
 _Chutzpah*
@@ -178,6 +179,8 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+Debug/
+Release/
 orleans.codegen.cs
 
 # RIA/Silverlight projects
