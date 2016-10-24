@@ -33,7 +33,10 @@ public:
 	bool CleanUp();
 
 	void ScrollCamera();
-	void CreateBall();
+
+	// Reset the ball
+	void ResetBall(bool& reset);
+	bool resetball = false;
 
 
 
