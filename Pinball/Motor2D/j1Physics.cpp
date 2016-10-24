@@ -509,16 +509,16 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->map->kawaii_red->timer->Start();
 			break;
 		case kawaii_violet:
-			App->map->kawaii_violet->anim.SetFrame(1);
+			App->map->kawaii_violet->timer->Start();
 			break;
 		case kawaii_yellow:
-			App->map->kawaii_yellow->anim.SetFrame(1);
+			App->map->kawaii_yellow->timer->Start();
 			break;
 		case kawaii_green:
-			App->map->kawaii_green->anim.SetFrame(1);
+			App->map->kawaii_green->timer->Start();
 			break;
 		case kawaii_orange:
-			App->map->kawaii_orange->anim.SetFrame(1);
+			App->map->kawaii_orange->timer->Start();
 			break;
 		case big_bumper_1:
 			App->map->big_bumper1->timer->Start();
