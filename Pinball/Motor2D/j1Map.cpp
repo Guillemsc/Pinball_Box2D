@@ -100,13 +100,13 @@ bool j1Map::Start()
 		kawaii_yellow->anim.speed = 0.00f;
 
 	// Kawaii girl
-	kawaii_girl = new SpriteSheetItem();
+	kawaii_girl = new SpriteSheetItem(505, 890);
 		kawaii_girl->anim.PushBack({ 309, 126, 66, 76 });
 		kawaii_girl->anim.PushBack({ 376, 126, 66, 76 });
 		kawaii_girl->anim.speed = 0.00f;
 
 	// Kawaii guy
-	kawaii_guy = new SpriteSheetItem();
+	kawaii_guy = new SpriteSheetItem(40, 910);
 		kawaii_guy->anim.PushBack({ 309, 55, 65, 70 });
 		kawaii_guy->anim.PushBack({ 375, 55, 65, 70 });
 		kawaii_guy->anim.speed = 0.00f;
@@ -148,7 +148,7 @@ bool j1Map::Start()
 void j1Map::CreateColliders()
 {
 	// Ball
-	ball->pb = App->physics->CreateCircle(598, 990, 11, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
+	ball->pb = App->physics->CreateCircle(598, 990, 14, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
 	ball->pb->listener = App->physics;
 	ball->pb->coll_name = collider_names::ball;
 	balls.add(ball->pb);
@@ -187,11 +187,11 @@ void j1Map::CreateColliders()
 		532, 810,
 		504, 796,
 		511, 775,
-		535, 785,
-		548, 799,
+		532, 788,
+		544, 800,
 		560, 817,
-		574, 839,
-		581, 865,
+		572, 840,
+		580, 865,
 		581, 1177,
 		538, 1251,
 		535, 1318,
@@ -205,9 +205,9 @@ void j1Map::CreateColliders()
 		600, 830,
 		585, 800,
 		565, 778,
-		544, 764,
-		521, 754,
-		533, 728,
+		547, 761,
+		526, 745,
+		536, 728,
 		556, 735,
 		580, 689,
 		562, 677,
@@ -236,7 +236,7 @@ void j1Map::CreateColliders()
 	PhysBody* colliderb1 = App->physics->CreateChain(0, 0, chain1, 154, 0x0001, 0x0002);
 	colliderb1->body->SetType(b2_staticBody);
 
-	int chain2 [76] = {
+	int chain2[76] = {
 		216, 138,
 		213, 113,
 		199, 88,
@@ -457,6 +457,8 @@ void j1Map::Draw()
 	Blit(kawaii_orange->texture, kawaii_orange->pos.x, kawaii_orange->pos.y, &kawaii_orange->anim.GetCurrentFrame());
 	Blit(kawaii_violet->texture, kawaii_violet->pos.x, kawaii_violet->pos.y, &kawaii_violet->anim.GetCurrentFrame());
 	Blit(kawaii_yellow->texture, kawaii_yellow->pos.x, kawaii_yellow->pos.y, &kawaii_yellow->anim.GetCurrentFrame());
+	Blit(kawaii_girl->texture, kawaii_girl->pos.x, kawaii_girl->pos.y, &kawaii_girl->anim.GetCurrentFrame(), 1, 20);
+	Blit(kawaii_guy->texture, kawaii_guy->pos.x, kawaii_guy->pos.y, &kawaii_guy->anim.GetCurrentFrame(), 1, -20);
 
 
 	// Big bumper
