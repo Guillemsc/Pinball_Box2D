@@ -32,7 +32,7 @@ bool j1Map::Start()
 	bool ret = true;
 	
 	// Music FX
-	fx_coll = App->audio->LoadFx("pinball/bonus.wav");
+	fx_coll = App->audio->PlayMusic("audio/music/music_sadpiano.ogg", 0);
 	
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
@@ -376,7 +376,7 @@ void j1Map::CreateColliders()
 		57, 6,
 		12, 0
 	};
-	small_left_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 130, 554, 15, 15, 360, 310, 250, -90, 0x0003, 0x0002);
+	small_left_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 130, 554, 15, 15, 360, 300, 200, -90, 0x0003, 0x0002);
 	
 	int small_kicker_right_points[22] = {
 		1, 11,
@@ -391,7 +391,7 @@ void j1Map::CreateColliders()
 		1, 18,
 		0, 15
 	};
-	small_right_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_right_points, 20, 570, 690, 50, 15, 55, 5, 250, -90, 0x0003, 0x0002);
+	small_right_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_right_points, 20, 570, 690, 50, 15, 55, 5, 200, -90, 0x0003, 0x0002);
 
 	// Spring
 	int pos_x = 596; int pos_y = 1150;

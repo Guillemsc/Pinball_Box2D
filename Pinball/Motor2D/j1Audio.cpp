@@ -25,8 +25,8 @@ bool j1Audio::Init()
 	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
 	{
 		LOG("SDL_INIT_AUDIO could not initialize! SDL_Error: %s\n", SDL_GetError());
-		Disable();
-		return true; // Ugly patch for class computers without audio :(
+		active = false;
+		ret = true;
 	}
 
 	// load support for the OGG format
@@ -36,6 +36,7 @@ bool j1Audio::Init()
 	if ((init & flags) != flags)
 	{
 		LOG("Could not initialize Mixer lib. Mix_Init: %s", Mix_GetError());
+		active = false;
 		ret = false;
 	}
 
@@ -52,6 +53,9 @@ bool j1Audio::Init()
 // Called before quitting
 bool j1Audio::CleanUp()
 {
+	if (!active)
+		return true;
+
 	LOG("Freeing sound FX, closing Mixer and Audio subsystem");
 
 	if (music != NULL)
@@ -60,32 +64,31 @@ bool j1Audio::CleanUp()
 	}
 
 	p2List_item<Mix_Chunk*>* item;
-
-	for (item = fx.getFirst(); item != NULL; item = item->next)
-	{
+	for (item = fx.start; item != NULL; item = item->next)
 		Mix_FreeChunk(item->data);
-	}
 
 	fx.clear();
+
 	Mix_CloseAudio();
 	Mix_Quit();
 	SDL_QuitSubSystem(SDL_INIT_AUDIO);
+
 	return true;
 }
 
 // Play a music file
 bool j1Audio::PlayMusic(const char* path, float fade_time)
 {
-	if (IsEnabled() == false)
-		return false;
-
 	bool ret = true;
+
+	if (!active)
+		return false;
 
 	if (music != NULL)
 	{
 		if (fade_time > 0.0f)
 		{
-			Mix_FadeOutMusic((int)(fade_time * 1000.0f));
+			Mix_FadeOutMusic(int(fade_time * 1000.0f));
 		}
 		else
 		{
@@ -96,7 +99,7 @@ bool j1Audio::PlayMusic(const char* path, float fade_time)
 		Mix_FreeMusic(music);
 	}
 
-	music = Mix_LoadMUS(path);
+	music = Mix_LoadMUS_RW(App->fs->Load(path), 1);
 
 	if (music == NULL)
 	{
@@ -130,12 +133,12 @@ bool j1Audio::PlayMusic(const char* path, float fade_time)
 // Load WAV
 unsigned int j1Audio::LoadFx(const char* path)
 {
-	//if (IsEnabled() == false)
-	//	return 0;
-
 	unsigned int ret = 0;
 
-	Mix_Chunk* chunk = Mix_LoadWAV(path);
+	if (!active)
+		return 0;
+
+	Mix_Chunk* chunk = Mix_LoadWAV_RW(App->fs->Load(path), 1);
 
 	if (chunk == NULL)
 	{
