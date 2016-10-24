@@ -8,15 +8,18 @@
 #include "SDL_mixer\include\SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-j1Audio::j1Audio() : music(NULL)
-{}
+j1Audio::j1Audio() : j1Module()
+{
+	music = NULL;
+	name.create("audio");
+}
 
 // Destructor
 j1Audio::~j1Audio()
 {}
 
 // Called before render is available
-bool j1Audio::Init()
+bool j1Audio::Awake(pugi::xml_node& config)
 {
 	LOG("Loading Audio Mixer");
 	bool ret = true;
@@ -29,7 +32,7 @@ bool j1Audio::Init()
 		ret = true;
 	}
 
-	// load support for the OGG format
+	// load support for the JPG and PNG image formats
 	int flags = MIX_INIT_OGG;
 	int init = Mix_Init(flags);
 
@@ -37,13 +40,14 @@ bool j1Audio::Init()
 	{
 		LOG("Could not initialize Mixer lib. Mix_Init: %s", Mix_GetError());
 		active = false;
-		ret = false;
+		ret = true;
 	}
 
 	//Initialize SDL_mixer
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	if (Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 	{
 		LOG("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+		active = false;
 		ret = true;
 	}
 
@@ -156,17 +160,14 @@ unsigned int j1Audio::LoadFx(const char* path)
 // Play WAV
 bool j1Audio::PlayFx(unsigned int id, int repeat)
 {
-	if (IsEnabled() == false)
-		return false;
-
 	bool ret = false;
 
-	Mix_Chunk* chunk = NULL;
+	if (!active)
+		return false;
 
-	if (fx.at(id - 1, chunk) == true)
+	if (id > 0 && id <= fx.count())
 	{
-		Mix_PlayChannel(-1, chunk, repeat);
-		ret = true;
+		Mix_PlayChannel(-1, fx[id - 1], repeat);
 	}
 
 	return ret;
