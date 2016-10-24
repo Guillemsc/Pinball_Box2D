@@ -145,7 +145,7 @@ public:
 
 	bool Start();
 
-	// Called each loop iteration
+	// Functions
 	void CreateColliders();
 	void Draw();
 	void CreateTimers();
@@ -190,6 +190,9 @@ public:
 
 	// Spring
 	b2PrismaticJoint*		spring_coll;
+
+	// Standalone detectors
+	PhysBody*				 ball_dead_detector = nullptr;
 
 	// Music
 	uint					kicker1_fx;

@@ -31,6 +31,14 @@ bool j1Map::Start()
 {
 	bool ret = true;
 	
+	// Music FX
+
+	//fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
+//	App->audio->PlayFx(fx_coll, -1);
+
+	//App->audio->PlayMusic("audio/game_music.mp3");
+
+	
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
 
@@ -447,6 +455,9 @@ void j1Map::CreateColliders()
 	kawaii_guy->pb = App->physics->CreateRectangleSensor(83, 935, 50, 64, 0x0003, 0x0002);
 	kawaii_guy->pb->coll_name = collider_names::kawaii_guy;
 
+	ball_dead_detector = App->physics->CreateRectangleSensor(300, 1250, 300, 30, 0x0003, 0x0002);
+	ball_dead_detector->coll_name = collider_names::ball_dead_detector;
+
 	// -------------------------
 }
 
@@ -464,6 +475,7 @@ void j1Map::CreateTimers()
 	big_bumper1->timer = new Timer(0.1); timers.add(big_bumper1->timer);
 	big_bumper2->timer = new Timer(0.1); timers.add(big_bumper2->timer);
 }
+
 
 void j1Map::Draw()
 {

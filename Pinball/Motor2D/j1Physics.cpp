@@ -8,6 +8,7 @@
 #include "j1Window.h"
 #include "j1Map.h"
 #include "j1Physics.h"
+#include "j1Scene.h"
 
 
 #define GRAVITY_X 0.0f
@@ -244,7 +245,7 @@ bool j1Physics::CleanUp()
 	return true;
 }
 
-PhysBody * j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16 category)
+PhysBody* j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16 category)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -540,6 +541,8 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->audio->PlayFx(App->map->kawaii_sound1_fx);
 			App->map->kawaii_guy->timer->Start();
 			break;
+		case ball_dead_detector:
+			App->scene->resetball = true;
 		case wall:
 			App->audio->PlayFx(App->map->ball_hit_fx);
 			break;

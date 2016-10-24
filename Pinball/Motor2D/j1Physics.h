@@ -28,7 +28,11 @@ enum collider_names
 	kawaii_guy,
 	big_bumper_1,
 	big_bumper_2,
+
+	ball_dead_detector,
+
 	wall
+
 };
 
 class PhysBody
@@ -97,9 +101,7 @@ public:
 	virtual void OnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 private:
-
 	bool debug;
-	b2World* world;
 	b2MouseJoint* mouse_joint;
 	b2Body* ground;
 	b2Body* selected = nullptr;
@@ -108,6 +110,9 @@ public:
 
 	// Time
 	Uint32 start_time;
+
+	// World
+	b2World* world;
 };
 
 #endif // __j1PHYSICS_H__

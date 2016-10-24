@@ -152,7 +152,7 @@ bool j1Scene::Update(float dt)
 	// Create a new ball
 	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN))
 	{
-		CreateBall();
+		resetball = true;
 	}
 
 	// Draw -----------
@@ -160,6 +160,8 @@ bool j1Scene::Update(float dt)
 	App->map->Draw();
 
 	// ----------------
+
+	ResetBall(resetball);
 
 	return true;
 }
@@ -197,9 +199,14 @@ void j1Scene::ScrollCamera()
 	}
 }
 
-void j1Scene::CreateBall()
+void j1Scene::ResetBall(bool& reset)
 {
-	App->map->ball->pb = App->physics->CreateCircle(598, 990, 10, 0x0002, 0x0001);
+	if (reset) 
+	{
+		App->map->ball->pb->body->SetTransform(b2Vec2(PIXEL_TO_METERS(598), PIXEL_TO_METERS(990)), 0);
+		App->map->ball->pb->body->SetAngularVelocity(0);
+		reset = false;
+	}
 }
 
 
