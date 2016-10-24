@@ -54,6 +54,7 @@ public:
 	private:
 	};
 
+	class Timer;
 	class SpriteSheetItem 
 	{
 	public:
@@ -78,6 +79,7 @@ public:
 		Animation anim;
 		iPoint pos;
 		PhysBody* pb = nullptr;
+		Timer* timer;
 
 	private:
 	};
@@ -85,7 +87,7 @@ public:
 	class Timer
 	{
 	public:
-		Timer(Uint32 _time_to_wait) : time_to_wait(_time_to_wait * 0.5f * 1000.0f)
+		Timer(float _time_to_wait) : time_to_wait(_time_to_wait * 0.5f * 1000.0f)
 		{
 			now = 0.0f;
 			stop_time = true;
@@ -127,9 +129,9 @@ public:
 	public:
 
 	public:
-		Uint32 now;
-		Uint32 time_to_wait;
-		Uint32 actual;
+		float now;
+		float time_to_wait;
+		float actual;
 		bool stop_time;
 	};
 
@@ -152,18 +154,19 @@ public:
 	bool CleanUp();
 
 	void Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed = 1.0f, double angle = 0.0f, int pivot_x = 0, int pivot_y = 0);
+private:
 
 public:
 
 	// Sprites
-	Sprite*				 bg1;
-	Sprite*				 bg2;
-	Sprite*				 spring;	
-	Sprite*				 ball;
-	Sprite*				 big_left_kicker;
-	Sprite*				 big_right_kicker;
-	Sprite*				 small_left_kicker;
-	Sprite*				 small_right_kicker;
+	Sprite*					 bg1;
+	Sprite*					 bg2;
+	Sprite*					 spring;	
+	Sprite*					 ball;
+	Sprite*					 big_left_kicker;
+	Sprite*					 big_right_kicker;
+	Sprite*					 small_left_kicker;
+	Sprite*					 small_right_kicker;
 
 	SpriteSheetItem*		 kawaii_blue;
 	SpriteSheetItem*		 kawaii_green;
@@ -180,24 +183,20 @@ public:
 	SpriteSheetItem*	     blue_arrow;
 
 	// Kickers
-	b2RevoluteJoint*	 big_left_kicker_coll;
-	b2RevoluteJoint*	 big_right_kicker_coll;
-	b2RevoluteJoint*	 small_left_kicker_coll;
-	b2RevoluteJoint*	 small_right_kicker_coll;
+	b2RevoluteJoint*		 big_left_kicker_coll;
+	b2RevoluteJoint*		 big_right_kicker_coll;
+	b2RevoluteJoint*		 small_left_kicker_coll;
+	b2RevoluteJoint*		 small_right_kicker_coll;
 
 	// Spring
-	b2PrismaticJoint*    spring_coll;
-
-	// Lists
-	p2List<PhysBody*>    balls;
+	b2PrismaticJoint*		 spring_coll;
 
 	// Music
-	uint				 fx_coll;
+	uint					 fx_coll;
 
-	// Timers
-	Timer*				 kawaii_blue_timer;
-
-	p2List<Timer*>       timers;
+	// Lists
+	p2List<PhysBody*>		 balls;
+	p2List<Timer*>			 timers;
 
 };
 

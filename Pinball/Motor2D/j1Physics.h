@@ -18,7 +18,16 @@ struct SDL_Texture;
 enum collider_names
 {
 	ball,
-	kawaii_blue
+	kawaii_blue,
+	kawaii_red,
+	kawaii_violet,
+	kawaii_green,
+	kawaii_orange,
+	kawaii_yellow,
+	kawaii_girl,
+	kawaii_guy,
+	big_bumper_1,
+	big_bumper_2
 };
 
 class PhysBody
@@ -36,7 +45,7 @@ public:
 	int width, height;
 	b2Body* body;
 	j1Module* listener;
-	int identificator;
+	collider_names coll_name;
 };
 
 
@@ -68,13 +77,16 @@ public:
 	bool CleanUp();
 
 	PhysBody* CreateCircle(int x, int y, int radius, uint16 mask, uint16 category);
+	PhysBody* CreateCircleSensor(int x, int y, int radius, uint16 mask, uint16 category);
 	PhysBody* CreateRectangle(int x, int y, int width, int height, uint16 mask = 0x0001, uint16 category = 0x0001);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, uint16 mask, uint16 category);
 	PhysBody* CreateChain(int x, int y, int* points, int size, uint16 mask, uint16 category);
 	b2PrismaticJoint* CreatePrismaticJoint(PhysBody* bodyA, PhysBody* bodyB, b2Vec2 ancorA, b2Vec2 ancorB, int max, int min, int maxMotor, int motorSpeed);
 	b2RevoluteJoint* CreateRevoluteJoint(int radius, int* vects, int size, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category);
+	void TimerActions();
 
-	void SetGround(b2Body* body) {
+	void SetGround(b2Body* body) 
+	{
 		ground = body;
 	}
 

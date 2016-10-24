@@ -78,7 +78,7 @@ bool j1Map::Start()
 	// Kawaii orange
 	kawaii_orange = new SpriteSheetItem(270, 990);
 		kawaii_orange->anim.PushBack({ 152, 65, 75, 65 });
-		kawaii_orange->anim.PushBack({ 228, 6, 75, 65 });
+		kawaii_orange->anim.PushBack({ 228, 65, 75, 65 });
 		kawaii_orange->anim.speed = 0.00f;
 
 	// Kawaii red
@@ -131,13 +131,13 @@ bool j1Map::Start()
 
 	// Big bumpers
 	big_bumper1 = new SpriteSheetItem();
-		big_bumper1->anim.PushBack({ 223, 274, 84, 84 });
-		big_bumper1->anim.PushBack({ 331, 274, 112, 112 });
+		big_bumper1->anim.PushBack({ 209, 258, 104, 104 });
+		big_bumper1->anim.PushBack({ 385, 266, 114, 113 });
 		big_bumper1->anim.speed = 0;
 
 	big_bumper2 = new SpriteSheetItem();
-		big_bumper2->anim.PushBack({ 223, 274, 84, 84 });
-		big_bumper2->anim.PushBack({ 331, 274, 112, 112 });
+		big_bumper2->anim.PushBack({ 209, 258, 104, 104 });
+		big_bumper2->anim.PushBack({ 385, 266, 114, 113 });
 		big_bumper2->anim.speed = 0;
 
 	// ----------------------------------
@@ -150,7 +150,7 @@ void j1Map::CreateColliders()
 	// Ball
 	ball->pb = App->physics->CreateCircle(598, 990, 11, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
 	ball->pb->listener = App->physics;
-	ball->pb->identificator = 1;
+	ball->pb->coll_name = collider_names::ball;
 	balls.add(ball->pb);
 
 	// Background standalone colliders
@@ -399,7 +399,6 @@ void j1Map::CreateColliders()
 		0, 15
 	};
 
-
 	// Spring
 	int pos_x = 596; int pos_y = 1150;
 	PhysBody* A = App->physics->CreateRectangle(pos_x, pos_y, 10, 100, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
@@ -408,17 +407,41 @@ void j1Map::CreateColliders()
 
 	// Big bumper
 	big_bumper1->pb = App->physics->CreateCircle(370, 576, 40, 0x0003, 0x0002); big_bumper1->pb->body->SetType(b2_kinematicBody);
+	big_bumper1->pb->coll_name = collider_names::big_bumper_1;
 	big_bumper2->pb = App->physics->CreateCircle(527, 440, 40, 0x0003, 0x0002); big_bumper2->pb->body->SetType(b2_kinematicBody);
+	big_bumper2->pb->coll_name = collider_names::big_bumper_2;
 
-	// Sensors
-	kawaii_blue->pb = App->physics->CreateRectangleSensor(240, 900, 60, 60, 0x0003, 0x0002);
-	kawaii_blue->pb->identificator = 2;
+	// Sensors -----------------
+
+	kawaii_blue->pb = App->physics->CreateRectangleSensor(236, 923, 64, 64, 0x0003, 0x0002);
+	kawaii_blue->pb->coll_name = collider_names::kawaii_blue;
+
+	kawaii_red->pb = App->physics->CreateRectangleSensor(460, 725, 64, 64, 0x0003, 0x0002);
+	kawaii_red->pb->coll_name = collider_names::kawaii_red;
+
+	kawaii_violet->pb = App->physics->CreateRectangleSensor(320, 700, 64, 64, 0x0003, 0x0002);
+	kawaii_violet->pb->coll_name = collider_names::kawaii_violet;
+
+	kawaii_yellow->pb = App->physics->CreateRectangleSensor(186, 725, 64, 64, 0x0003, 0x0002);
+	kawaii_yellow->pb->coll_name = collider_names::kawaii_yellow;
+
+	kawaii_green->pb = App->physics->CreateRectangleSensor(375, 923, 64, 64, 0x0003, 0x0002);
+	kawaii_green->pb->coll_name = collider_names::kawaii_green;
+
+	kawaii_orange->pb = App->physics->CreateRectangleSensor(305, 1020, 64, 64, 0x0003, 0x0002);
+	kawaii_orange->pb->coll_name = collider_names::kawaii_orange;
+
+	// -------------------------
 }
 
 void j1Map::CreateTimers()
 {
-	kawaii_blue_timer = new Timer(2);
-	timers.add(kawaii_blue_timer);
+	kawaii_blue->timer = new Timer(0.2); timers.add(kawaii_blue->timer);
+	kawaii_red->timer = new Timer(0.2); timers.add(kawaii_red->timer);
+	kawaii_green->timer = new Timer(0.2); timers.add(kawaii_red->timer);
+
+	big_bumper1->timer = new Timer(0.1); timers.add(big_bumper1->timer);
+	big_bumper2->timer = new Timer(0.1); timers.add(big_bumper2->timer);
 }
 
 void j1Map::Draw()
@@ -436,10 +459,9 @@ void j1Map::Draw()
 	Blit(kawaii_yellow->texture, kawaii_yellow->pos.x, kawaii_yellow->pos.y, &kawaii_yellow->anim.GetCurrentFrame());
 
 
-
 	// Big bumper
-	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 42, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 42, &big_bumper1->anim.GetCurrentFrame());
-	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 42, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 42, &big_bumper2->anim.GetCurrentFrame());
+	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 56, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 57, &big_bumper1->anim.GetCurrentFrame());
+	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 56, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 57, &big_bumper2->anim.GetCurrentFrame());
 
 	// -------------------------
 

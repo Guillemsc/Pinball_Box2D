@@ -85,24 +85,9 @@ bool j1Physics::Update(float dt)
 	{
 		App->map->timers[i]->UpdateTime();
 	}
-	// Timers
-	if (App->map->kawaii_blue_timer->IsTimeReached() && App->map->kawaii_blue_timer->stop_time)
-	{
-		// What to do at the start of the program
-		App->map->kawaii_blue->anim.speed = 0.00f;
-	}
-	else if (App->map->kawaii_blue_timer->IsTimeReached() && !App->map->kawaii_blue_timer->stop_time)
-	{
-		// What to do when timer finishes
-		App->map->kawaii_blue->anim.SetFrame(0);
-		App->map->kawaii_blue->anim.speed = 0.00f;
-	}
-	else
-	{
-		// What to do when timer starts
-		App->map->kawaii_blue->anim.speed = 0.1f;
-	}
 	
+	TimerActions();
+
 	return true;
 }
 
@@ -260,6 +245,33 @@ bool j1Physics::CleanUp()
 }
 
 PhysBody * j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16 category)
+{
+	b2BodyDef body;
+	body.type = b2_dynamicBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+
+	b2Body* b = world->CreateBody(&body);
+
+	b2CircleShape shape;
+	shape.m_radius = PIXEL_TO_METERS(radius);
+	b2FixtureDef fixture;
+	fixture.shape = &shape;
+	fixture.density = 0.5f;
+	fixture.filter.maskBits = mask;
+	fixture.filter.categoryBits = category;
+	fixture.restitution = 0.33f;
+
+	b->CreateFixture(&fixture);
+
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = pbody->height = radius;
+
+	return pbody;
+}
+
+PhysBody * j1Physics::CreateCircleSensor(int x, int y, int radius, uint16 mask, uint16 category)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -486,14 +498,132 @@ void j1Physics::BeginContact(b2Contact * contact)
 
 void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 {
-	if (bodyA != nullptr && bodyB != nullptr) 
+	if (bodyA != nullptr && bodyB != nullptr && bodyA->coll_name == ball) 
 	{
-		if (bodyA->identificator == 1 && bodyB->identificator == 2)
+		switch(bodyB->coll_name)
 		{
-			App->map->kawaii_blue_timer->Start();
-			LOG("timer_start");
+		case kawaii_blue:
+			App->map->kawaii_blue->timer->Start();
+			break;
+		case kawaii_red:
+			App->map->kawaii_red->timer->Start();
+			break;
+		case kawaii_violet:
+			App->map->kawaii_violet->anim.SetFrame(1);
+			break;
+		case kawaii_yellow:
+			App->map->kawaii_yellow->anim.SetFrame(1);
+			break;
+		case kawaii_green:
+			App->map->kawaii_green->anim.SetFrame(1);
+			break;
+		case kawaii_orange:
+			App->map->kawaii_orange->anim.SetFrame(1);
+			break;
+		case big_bumper_1:
+			App->map->big_bumper1->timer->Start();
+			break;
+		case big_bumper_2:
+			App->map->big_bumper2->timer->Start();
+			break;
+		default:
+			break;
 		}
 	}
+}
+
+void j1Physics::TimerActions()
+{
+	// Timer actions ----------------------------------------------------------------------------------
+
+	// Kawaii_blue
+	if (App->map->kawaii_blue->timer->IsTimeReached() && App->map->kawaii_blue->timer->stop_time)
+	{
+		// What to do at the start of the program
+		App->map->kawaii_blue->anim.SetFrame(0);
+	}
+	else if (App->map->kawaii_blue->timer->IsTimeReached() && !App->map->kawaii_blue->timer->stop_time)
+	{
+		// What to do when timer finishes
+		App->map->kawaii_blue->anim.SetFrame(1);
+		App->map->kawaii_blue->anim.speed = 0;
+	}
+	else
+	{
+		// What to do when timer starts
+		App->map->kawaii_blue->anim.speed = 0.5f;
+	}
+
+	// Kawaii_red
+	if (App->map->kawaii_red->timer->IsTimeReached() && App->map->kawaii_red->timer->stop_time)
+	{
+		// What to do at the start of the program
+		App->map->kawaii_red->anim.SetFrame(0);
+	}
+	else if (App->map->kawaii_red->timer->IsTimeReached() && !App->map->kawaii_red->timer->stop_time)
+	{
+		// What to do when timer finishes
+		App->map->kawaii_red->anim.SetFrame(1);
+		App->map->kawaii_red->anim.speed = 0;
+	}
+	else
+	{
+		// What to do when timer starts
+		App->map->kawaii_red->anim.speed = 0.5f;
+	}
+
+	// Kawaii_green
+	if (App->map->kawaii_green->timer->IsTimeReached() && App->map->kawaii_green->timer->stop_time)
+	{
+		// What to do at the start of the program
+		App->map->kawaii_green->anim.SetFrame(0);
+	}
+	else if (App->map->kawaii_green->timer->IsTimeReached() && !App->map->kawaii_green->timer->stop_time)
+	{
+		// What to do when timer finishes
+		App->map->kawaii_green->anim.SetFrame(1);
+		App->map->kawaii_green->anim.speed = 0;
+	}
+	else
+	{
+		// What to do when timer starts
+		App->map->kawaii_green->anim.speed = 0.5f;
+	}
+
+	// Big bumper 1
+	if (App->map->big_bumper1->timer->IsTimeReached() && App->map->big_bumper1->timer->stop_time)
+	{
+		// What to do at the start of the program
+	}
+	else if (App->map->big_bumper1->timer->IsTimeReached() && !App->map->big_bumper1->timer->stop_time)
+	{
+		// What to do when timer finishes
+		App->map->big_bumper1->anim.SetFrame(0);
+	}
+	else
+	{
+		// What to do when timer starts
+		App->map->big_bumper1->anim.SetFrame(1);
+	}
+
+	// Big bumper 2
+	if (App->map->big_bumper2->timer->IsTimeReached() && App->map->big_bumper2->timer->stop_time)
+	{
+		// What to do at the start of the program
+	}
+	else if (App->map->big_bumper2->timer->IsTimeReached() && !App->map->big_bumper2->timer->stop_time)
+	{
+		// What to do when timer finishes
+		App->map->big_bumper2->anim.SetFrame(0);
+	}
+	else
+	{
+		// What to do when timer starts
+		App->map->big_bumper2->anim.SetFrame(1);
+	}
+
+	// ------------------------------------------------------------------------------------------------
+
 }
 
 void PhysBody::GetPosition(int & x, int & y) const
@@ -557,3 +687,4 @@ int PhysBody::RayCast(int x1, int y1, int x2, int y2, float & normal_x, float & 
 
 	return ret;
 }
+
