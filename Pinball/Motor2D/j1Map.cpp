@@ -35,18 +35,11 @@ bool j1Map::Load(pugi::xml_node &)
 
 bool j1Map::Start()
 {
-
-
 	bool ret = true;
-	
-	// Music FX
 
-	//fx_coll = App->audio->LoadFx("audio/fx/hello_man.wav");
-//	App->audio->PlayFx(fx_coll, -1);
+	player.points = 0;
+	player.balls = 3;
 
-	//App->audio->PlayMusic("audio/game_music.mp3");
-
-	
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
 

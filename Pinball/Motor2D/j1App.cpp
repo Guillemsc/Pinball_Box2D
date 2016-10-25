@@ -15,6 +15,7 @@
 #include "j1App.h"
 #include "j1Physics.h"
 #include "j1Menu.h"
+#include "SceneManager.h"
 
 
 // Constructor
@@ -28,8 +29,11 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	render = new j1Render();
 	tex = new j1Textures();
 	audio = new j1Audio();
+
+	scene_manager = new j1SceneManager();
 	menu = new j1Menu();
 	scene = new j1Scene();
+
 	fs = new j1FileSystem();
 	map = new j1Map();
 	physics = new j1Physics();
@@ -45,13 +49,14 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 
 	// Scenes
+	AddModule(scene_manager);
 	AddModule(menu);
 	AddModule(scene);
 
 	// render last to swap buffer
 	AddModule(render);
 
-	//scene->active = false;
+	scene->active = false;
 }
 
 // Destructor

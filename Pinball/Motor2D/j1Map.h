@@ -243,6 +243,8 @@ public:
 	p2List<PhysBody*>		balls;
 	p2List<Timer*>			timers;
 
+	// Player
+	Player player;
 };
 
 #endif // __j1MAP_H__

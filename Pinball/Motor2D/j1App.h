@@ -14,6 +14,7 @@ class j1Audio;
 class j1FileSystem;
 class j1Menu;
 class j1Scene;
+class j1SceneManager;
 class j1Map;
 class j1Physics;
 
@@ -87,10 +88,12 @@ public:
 	j1Audio*			audio;
 	j1Menu*				menu;
 	j1Scene*			scene;
+	j1SceneManager*		scene_manager;
 	j1FileSystem*		fs;
 	j1Map*				map;
 	j1Physics*			physics;
 
+	p2SString			title;
 private:
 
 	p2List<j1Module*>	modules;
@@ -99,7 +102,6 @@ private:
 	int					argc;
 	char**				args;
 
-	p2SString			title;
 	p2SString			organization;
 
 	mutable bool		want_to_save;
