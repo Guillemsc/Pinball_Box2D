@@ -553,6 +553,34 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->map->big_bumper2->timer->Start();
 			App->audio->PlayFx(App->map->big_bumper_fx);
 			break;
+		case small_bumper_1:
+			//App->map->small_bumper1->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
+		case small_bumper_2:
+			//App->map->small_bumper2->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
+		case small_bumper_3:
+			//App->map->small_bumper3->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
+		case small_bumper_4:
+			//App->map->small_bumper4->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
+		case small_bumper_5:
+			//App->map->small_bumper5->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
+		case small_bumper_6:
+			//App->map->small_bumper6->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
+		case small_bumper_7:
+			//App->map->small_bumper7->timer->Start();
+			App->audio->PlayFx(App->map->small_bumper_fx);
+			break;
 		case kawaii_girl:
 			if (App->map->kawaii_girl->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound4_fx);
