@@ -138,10 +138,45 @@ bool j1Map::Start()
 		kawaii_guy->anim.speed = 0.00f;
 
 	// Little button
-	little_button = new SpriteSheetItem();
-		little_button->anim.PushBack({ 10, 281, 46, 46 });
-		little_button->anim.PushBack({ 57, 278, 51, 52 });
-		little_button->anim.speed = 0.00f;
+	little_button1 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button2 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button3 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button4 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button5 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button6 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button7 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
+
+	little_button8 = new SpriteSheetItem();
+		little_button1->anim.PushBack({ 102, 334, 55, 55 });
+		little_button1->anim.PushBack({ 8, 278, 52, 52 });
+		little_button1->anim.speed = 0.00f;
 
 	// Small Bumpers
 	small_bumper1 = new SpriteSheetItem();
@@ -204,7 +239,7 @@ bool j1Map::Start()
 void j1Map::CreateColliders()
 {
 	// Ball
-	ball->pb = App->physics->CreateCircle(598, 990, 14, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
+	ball->pb = App->physics->CreateCircle(598, 990, 14, 0.4f, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
 	ball->pb->listener = App->physics;
 	ball->pb->coll_name = collider_names::ball;
 	balls.add(ball->pb);
@@ -214,11 +249,11 @@ void j1Map::CreateColliders()
 		263, 121,
 		254, 98,
 		233, 64,
-		198, 44,
-		162, 36,
-		128, 38,
-		101, 47,
-		82, 62,
+		200, 44,
+		161, 33,
+		125, 35,
+		99, 47,
+		79, 61,
 		61, 87,
 		52, 114,
 		48, 155,
@@ -475,34 +510,34 @@ void j1Map::CreateColliders()
 	int pos_x = 596; int pos_y = 1150;
 	PhysBody* A = App->physics->CreateRectangle(pos_x, pos_y, 10, 100, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
 	PhysBody* B = App->physics->CreateRectangle(pos_x, pos_y, 50, 70, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
-	spring_coll = App->physics->CreatePrismaticJoint(A, B, b2Vec2(1,10), b2Vec2(1, -10), -40, -120, 248, 200);
+	spring_coll = App->physics->CreatePrismaticJoint(A, B, b2Vec2(1,10), b2Vec2(1, -10), -40, -120, 350, 200);
 
 	// Big bumpers
-	big_bumper1->pb = App->physics->CreateCircle(370, 576, 40, 0x0003, 0x0002); big_bumper1->pb->body->SetType(b2_kinematicBody);
+	big_bumper1->pb = App->physics->CreateCircle(370, 576, 40, 0.7f, 0x0003, 0x0002); big_bumper1->pb->body->SetType(b2_kinematicBody);
 	big_bumper1->pb->coll_name = collider_names::big_bumper_1;
-	big_bumper2->pb = App->physics->CreateCircle(527, 440, 40, 0x0003, 0x0002); big_bumper2->pb->body->SetType(b2_kinematicBody);
+	big_bumper2->pb = App->physics->CreateCircle(527, 440, 40, 0.7f, 0x0003, 0x0002); big_bumper2->pb->body->SetType(b2_kinematicBody);
 	big_bumper2->pb->coll_name = collider_names::big_bumper_2;
 
 	// Small bumpers
-	small_bumper1->pb = App->physics->CreateCircle(540, 880, 17, 0x0003, 0x0002); small_bumper1->pb->body->SetType(b2_kinematicBody);
+	small_bumper1->pb = App->physics->CreateCircle(540, 880, 17, 0.8f, 0x0003, 0x0002); small_bumper1->pb->body->SetType(b2_kinematicBody);
 	small_bumper1->pb->coll_name = collider_names::small_bumper_1;
 
-	small_bumper2->pb = App->physics->CreateCircle(130, 350, 17, 0x0003, 0x0002); small_bumper2->pb->body->SetType(b2_kinematicBody);
+	small_bumper2->pb = App->physics->CreateCircle(130, 350, 17, 0.8f, 0x0003, 0x0002); small_bumper2->pb->body->SetType(b2_kinematicBody);
 	small_bumper2->pb->coll_name = collider_names::small_bumper_2;
 
-	small_bumper3->pb = App->physics->CreateCircle(300, 180, 17, 0x0003, 0x0002); small_bumper3->pb->body->SetType(b2_kinematicBody);
+	small_bumper3->pb = App->physics->CreateCircle(300, 180, 17, 0.8f, 0x0003, 0x0002); small_bumper3->pb->body->SetType(b2_kinematicBody);
 	small_bumper3->pb->coll_name = collider_names::small_bumper_3;
 
-	small_bumper4->pb = App->physics->CreateCircle(405, 160, 17, 0x0003, 0x0002); small_bumper4->pb->body->SetType(b2_kinematicBody);
+	small_bumper4->pb = App->physics->CreateCircle(405, 160, 17, 0.8f, 0x0003, 0x0002); small_bumper4->pb->body->SetType(b2_kinematicBody);
 	small_bumper4->pb->coll_name = collider_names::small_bumper_4;
 
-	small_bumper5->pb = App->physics->CreateCircle(540, 160, 17, 0x0003, 0x0002); small_bumper5->pb->body->SetType(b2_kinematicBody);
+	small_bumper5->pb = App->physics->CreateCircle(540, 160, 17, 0.8f, 0x0003, 0x0002); small_bumper5->pb->body->SetType(b2_kinematicBody);
 	small_bumper5->pb->coll_name = collider_names::small_bumper_5;
 
-	small_bumper6->pb = App->physics->CreateCircle(580, 285, 17, 0x0003, 0x0002); small_bumper6->pb->body->SetType(b2_kinematicBody);
+	small_bumper6->pb = App->physics->CreateCircle(580, 285, 17, 0.8f, 0x0003, 0x0002); small_bumper6->pb->body->SetType(b2_kinematicBody);
 	small_bumper6->pb->coll_name = collider_names::small_bumper_6;
 
-	small_bumper7->pb = App->physics->CreateCircle(480, 100, 17, 0x0003, 0x0002); small_bumper7->pb->body->SetType(b2_kinematicBody);
+	small_bumper7->pb = App->physics->CreateCircle(480, 100, 17, 0.8f, 0x0003, 0x0002); small_bumper7->pb->body->SetType(b2_kinematicBody);
 	small_bumper7->pb->coll_name = collider_names::small_bumper_7;
 
 	// Sensors -----------------
@@ -533,6 +568,30 @@ void j1Map::CreateColliders()
 
 	ball_dead_detector = App->physics->CreateRectangleSensor(300, 1250, 300, 30, 0x0003, 0x0002);
 	ball_dead_detector->coll_name = collider_names::ball_dead_detector;
+
+	little_button1->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button1->pb->body->SetType(b2_kinematicBody);
+	little_button1->pb->coll_name = collider_names::little_button_1;
+
+	little_button2->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button2->pb->body->SetType(b2_kinematicBody);
+	little_button2->pb->coll_name = collider_names::little_button_2;
+
+	little_button3->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button3->pb->body->SetType(b2_kinematicBody);
+	little_button3->pb->coll_name = collider_names::little_button_3;
+
+	little_button4->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button4->pb->body->SetType(b2_kinematicBody);
+	little_button4->pb->coll_name = collider_names::little_button_4;
+
+	little_button5->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button5->pb->body->SetType(b2_kinematicBody);
+	little_button5->pb->coll_name = collider_names::little_button_5;
+
+	little_button6->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button6->pb->body->SetType(b2_kinematicBody);
+	little_button6->pb->coll_name = collider_names::little_button_6;
+
+	little_button7->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button7->pb->body->SetType(b2_kinematicBody);
+	little_button7->pb->coll_name = collider_names::little_button_7;
+
+	little_button8->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button8->pb->body->SetType(b2_kinematicBody);
+	little_button8->pb->coll_name = collider_names::little_button_8;
 
 	// -------------------------
 }
@@ -590,6 +649,16 @@ void j1Map::Draw()
 	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().y) - 38, &small_bumper5->anim.GetCurrentFrame());
 	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().y) - 38, &small_bumper6->anim.GetCurrentFrame());
 	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().y) - 38, &small_bumper7->anim.GetCurrentFrame());
+
+	// Butons
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button1->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button1->pb->body->GetPosition().y) - 26, &little_button1->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button2->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button2->pb->body->GetPosition().y) - 26, &little_button2->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button3->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button3->pb->body->GetPosition().y) - 26, &little_button3->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button4->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button4->pb->body->GetPosition().y) - 26, &little_button4->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button5->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button5->pb->body->GetPosition().y) - 26, &little_button5->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().y) - 26, &little_button6->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().y) - 26, &little_button7->anim.GetCurrentFrame());
+	Blit(little_button1->texture, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().y) - 26, &little_button8->anim.GetCurrentFrame());
 
 	// -------------------------
 

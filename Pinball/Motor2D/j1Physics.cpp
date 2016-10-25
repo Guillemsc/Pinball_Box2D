@@ -245,7 +245,7 @@ bool j1Physics::CleanUp()
 	return true;
 }
 
-PhysBody* j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16 category)
+PhysBody* j1Physics::CreateCircle(int x, int y, int radius, float restitution, uint16 mask, uint16 category)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -260,7 +260,7 @@ PhysBody* j1Physics::CreateCircle(int x, int y, int radius, uint16 mask, uint16 
 	fixture.density = 0.5f;
 	fixture.filter.maskBits = mask;
 	fixture.filter.categoryBits = category;
-	fixture.restitution = 0.33f;
+	fixture.restitution = restitution; //0.4f;
 
 	b->CreateFixture(&fixture);
 
@@ -288,6 +288,7 @@ PhysBody * j1Physics::CreateCircleSensor(int x, int y, int radius, uint16 mask, 
 	fixture.filter.maskBits = mask;
 	fixture.filter.categoryBits = category;
 	fixture.restitution = 0.33f;
+	fixture.isSensor = true;
 
 	b->CreateFixture(&fixture);
 
@@ -602,6 +603,30 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			break;
 		case slingshot:
 			App->audio->PlayFx(App->map->slingshot_fx);
+			break;
+		case little_button_1:
+			App->map->little_button1->anim.SetFrame(1);
+			break;
+		case little_button_2:
+			App->map->little_button2->anim.SetFrame(1);
+			break;
+		case little_button_3:
+			App->map->little_button3->anim.SetFrame(1);
+			break;
+		case little_button_4:
+			App->map->little_button4->anim.SetFrame(1);
+			break;
+		case little_button_5:
+			App->map->little_button5->anim.SetFrame(1);
+			break;
+		case little_button_6:
+			App->map->little_button6->anim.SetFrame(1);
+			break;
+		case little_button_7:
+			App->map->little_button7->anim.SetFrame(1);
+			break;
+		case little_button_8:
+			App->map->little_button8->anim.SetFrame(1);
 			break;
 		default:
 			break;

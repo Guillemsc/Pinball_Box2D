@@ -144,7 +144,7 @@ bool j1Scene::Update(float dt)
 		App->audio->PlayFx(App->map->spring_push_fx);
 	}
 	else {
-		App->map->spring_coll->SetMotorSpeed(-230);
+		App->map->spring_coll->SetMotorSpeed(-500);
 	}
 
 	// ----------------

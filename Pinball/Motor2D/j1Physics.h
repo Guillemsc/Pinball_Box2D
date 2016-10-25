@@ -35,6 +35,14 @@ enum collider_names
 	small_bumper_5,
 	small_bumper_6,
 	small_bumper_7,
+	little_button_1,
+	little_button_2,
+	little_button_3,
+	little_button_4,
+	little_button_5,
+	little_button_6,
+	little_button_7,
+	little_button_8,
 
 	ball_dead_detector,
 
@@ -88,7 +96,7 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	PhysBody* CreateCircle(int x, int y, int radius, uint16 mask, uint16 category);
+	PhysBody* CreateCircle(int x, int y, int radius, float restitution, uint16 mask, uint16 category);
 	PhysBody* CreateCircleSensor(int x, int y, int radius, uint16 mask, uint16 category);
 	PhysBody* CreateRectangle(int x, int y, int width, int height, uint16 mask = 0x0001, uint16 category = 0x0001);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, uint16 mask, uint16 category);
