@@ -486,7 +486,7 @@ void j1Map::CreateColliders()
 	small_bumper6->pb = App->physics->CreateCircle(580, 285, 17, 0x0003, 0x0002); small_bumper6->pb->body->SetType(b2_kinematicBody);
 	small_bumper6->pb->coll_name = collider_names::small_bumper_6;
 
-	small_bumper7->pb = App->physics->CreateCircle(540, 880, 17, 0x0003, 0x0002); small_bumper7->pb->body->SetType(b2_kinematicBody);
+	small_bumper7->pb = App->physics->CreateCircle(480, 100, 17, 0x0003, 0x0002); small_bumper7->pb->body->SetType(b2_kinematicBody);
 	small_bumper7->pb->coll_name = collider_names::small_bumper_7;
 
 	// Sensors -----------------
