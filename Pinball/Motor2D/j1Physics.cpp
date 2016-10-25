@@ -547,9 +547,11 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			break;
 		case big_bumper_1:
 			App->map->big_bumper1->timer->Start();
+			App->audio->PlayFx(App->map->big_bumper_fx);
 			break;
 		case big_bumper_2:
 			App->map->big_bumper2->timer->Start();
+			App->audio->PlayFx(App->map->big_bumper_fx);
 			break;
 		case kawaii_girl:
 			if (App->map->kawaii_girl->collide_once) {

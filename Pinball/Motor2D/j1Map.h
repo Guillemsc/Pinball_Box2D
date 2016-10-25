@@ -207,6 +207,7 @@ public:
 	uint					kawaii_sound3_fx;
 	uint					kawaii_sound4_fx;
 	uint					small_bumper_fx;
+	uint					big_bumper_fx;
 	uint					multiball_release_fx;
 	uint					multiball_fx;
 	uint					target_fx;

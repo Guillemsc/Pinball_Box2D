@@ -58,6 +58,7 @@ bool j1Map::Start()
 	slingshot_fx = App->audio->LoadFx("audio/fx/slingshot_fx.wav");
 	target_fx = App->audio->LoadFx("audio/fx/target_fx.wav");
 	small_bumper_fx = App->audio->LoadFx("audio/fx/small_bumper_fx.wav");
+	big_bumper_fx = App->audio->LoadFx("audio/fx/big_bumper_fx.wav");
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
