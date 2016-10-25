@@ -48,9 +48,16 @@ bool j1Map::Start()
 	kicker1_fx = App->audio->LoadFx("audio/fx/kicker1_fx.wav");
 	kicker2_fx = App->audio->LoadFx("audio/fx/kicker2_fx.wav");
 	ball_hit_fx = App->audio->LoadFx("audio/fx/ball_hit_fx.wav");
+	ball_lost_fx = App->audio->LoadFx("audio/fx/ball_lost_fx.wav");
 	kawaii_sound1_fx = App->audio->LoadFx("audio/fx/kawaii_sound1_fx.wav");
 	kawaii_sound2_fx = App->audio->LoadFx("audio/fx/kawaii_sound2_fx.wav");
-
+	kawaii_sound3_fx = App->audio->LoadFx("audio/fx/kawaii_sound3_fx.wav");
+	kawaii_sound4_fx = App->audio->LoadFx("audio/fx/kawaii_sound4_fx.wav");
+	multiball_release_fx = App->audio->LoadFx("audio/fx/multiball_release_fx.wav");
+	multiball_fx = App->audio->LoadFx("audio/fx/multiball_fx.wav");
+	slingshot_fx = App->audio->LoadFx("audio/fx/slingshot_fx.wav");
+	target_fx = App->audio->LoadFx("audio/fx/target_fx.wav");
+	small_bumper_fx = App->audio->LoadFx("audio/fx/small_bumper_fx.wav");
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 

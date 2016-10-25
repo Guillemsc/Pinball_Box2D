@@ -80,6 +80,7 @@ public:
 		iPoint pos;
 		PhysBody* pb = nullptr;
 		Timer* timer;
+		bool collide_once = true;
 
 	private:
 	};
@@ -200,8 +201,16 @@ public:
 	uint					spring_pull_fx;
 	uint					spring_push_fx;
 	uint					ball_hit_fx;
+	uint					ball_lost_fx;
 	uint					kawaii_sound1_fx;
 	uint					kawaii_sound2_fx;
+	uint					kawaii_sound3_fx;
+	uint					kawaii_sound4_fx;
+	uint					small_bumper_fx;
+	uint					multiball_release_fx;
+	uint					multiball_fx;
+	uint					target_fx;
+	uint					slingshot_fx;
 
 	// Lists
 	p2List<PhysBody*>		balls;

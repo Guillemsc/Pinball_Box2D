@@ -504,27 +504,45 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 		switch(bodyB->coll_name)
 		{
 		case kawaii_blue:
-			App->audio->PlayFx(App->map->kawaii_sound2_fx);
+			if (App->map->kawaii_blue->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->map->kawaii_blue->collide_once = false;
+			}
 			App->map->kawaii_blue->timer->Start();
 			break;
 		case kawaii_red:
-			App->audio->PlayFx(App->map->kawaii_sound2_fx);
+			if (App->map->kawaii_red->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound1_fx);
+				App->map->kawaii_red->collide_once = false;
+			}
 			App->map->kawaii_red->timer->Start();
 			break;
 		case kawaii_violet:
-			App->audio->PlayFx(App->map->kawaii_sound2_fx);
+			if (App->map->kawaii_violet->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound1_fx);
+				App->map->kawaii_violet->collide_once = false;
+			}
 			App->map->kawaii_violet->timer->Start();
 			break;
 		case kawaii_yellow:
-			App->audio->PlayFx(App->map->kawaii_sound2_fx);
+			if (App->map->kawaii_yellow->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound1_fx);
+				App->map->kawaii_yellow->collide_once = false;
+			}
 			App->map->kawaii_yellow->timer->Start();
 			break;
 		case kawaii_green:
-			App->audio->PlayFx(App->map->kawaii_sound2_fx);
+			if (App->map->kawaii_green->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->map->kawaii_green->collide_once = false;
+			}
 			App->map->kawaii_green->timer->Start();
 			break;
 		case kawaii_orange:
-			App->audio->PlayFx(App->map->kawaii_sound2_fx);
+			if (App->map->kawaii_orange->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->map->kawaii_orange->collide_once = false;
+			}
 			App->map->kawaii_orange->timer->Start();
 			break;
 		case big_bumper_1:
@@ -534,11 +552,17 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->map->big_bumper2->timer->Start();
 			break;
 		case kawaii_girl:
-			App->audio->PlayFx(App->map->kawaii_sound1_fx);
+			if (App->map->kawaii_girl->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound4_fx);
+				App->map->kawaii_girl->collide_once = false;
+			}
 			App->map->kawaii_girl->timer->Start();
 			break;
 		case kawaii_guy:
-			App->audio->PlayFx(App->map->kawaii_sound1_fx);
+			if (App->map->kawaii_guy->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound3_fx);
+				App->map->kawaii_guy->collide_once = false;
+			}
 			App->map->kawaii_guy->timer->Start();
 			break;
 		case ball_dead_detector:
