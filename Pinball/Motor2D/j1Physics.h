@@ -28,6 +28,13 @@ enum collider_names
 	kawaii_guy,
 	big_bumper_1,
 	big_bumper_2,
+	small_bumper_1,
+	small_bumper_2,
+	small_bumper_3,
+	small_bumper_4,
+	small_bumper_5,
+	small_bumper_6,
+	small_bumper_7,
 
 	ball_dead_detector,
 

@@ -143,11 +143,41 @@ bool j1Map::Start()
 		little_button->anim.PushBack({ 57, 278, 51, 52 });
 		little_button->anim.speed = 0.00f;
 
-	// Little button
-	small_bumper = new SpriteSheetItem();
-		small_bumper->anim.PushBack({ 105, 212, 24, 24 });
-		small_bumper->anim.PushBack({ 144, 213, 59, 59 });
-		small_bumper->anim.speed = 0.00f;
+	// Small Bumpers
+	small_bumper1 = new SpriteSheetItem();
+		small_bumper1->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper1->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper1->anim.speed = 0.00f;
+
+	small_bumper2 = new SpriteSheetItem();
+		small_bumper2->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper2->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper2->anim.speed = 0.00f;
+
+	small_bumper3 = new SpriteSheetItem();
+		small_bumper3->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper3->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper3->anim.speed = 0.00f;
+
+	small_bumper4 = new SpriteSheetItem();
+		small_bumper4->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper4->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper4->anim.speed = 0.00f;
+
+	small_bumper5 = new SpriteSheetItem();
+		small_bumper5->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper5->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper5->anim.speed = 0.00f;
+
+	small_bumper6 = new SpriteSheetItem();
+		small_bumper6->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper6->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper6->anim.speed = 0.00f;
+
+	small_bumper7 = new SpriteSheetItem();
+		small_bumper7->anim.PushBack({ 105, 212, 36, 34 });
+		small_bumper7->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper7->anim.speed = 0.00f;
 
 	// Blue Arrow
 	blue_arrow = new SpriteSheetItem();
@@ -431,11 +461,33 @@ void j1Map::CreateColliders()
 	PhysBody* B = App->physics->CreateRectangle(pos_x, pos_y, 50, 70, 0x0003, 0x0002); A->body->SetType(b2_staticBody);
 	spring_coll = App->physics->CreatePrismaticJoint(A, B, b2Vec2(1,10), b2Vec2(1, -10), -40, -120, 248, 200);
 
-	// Big bumper
+	// Big bumpers
 	big_bumper1->pb = App->physics->CreateCircle(370, 576, 40, 0x0003, 0x0002); big_bumper1->pb->body->SetType(b2_kinematicBody);
 	big_bumper1->pb->coll_name = collider_names::big_bumper_1;
 	big_bumper2->pb = App->physics->CreateCircle(527, 440, 40, 0x0003, 0x0002); big_bumper2->pb->body->SetType(b2_kinematicBody);
 	big_bumper2->pb->coll_name = collider_names::big_bumper_2;
+
+	// Small bumpers
+	small_bumper1->pb = App->physics->CreateCircle(540, 880, 17, 0x0003, 0x0002); small_bumper1->pb->body->SetType(b2_kinematicBody);
+	small_bumper1->pb->coll_name = collider_names::small_bumper_1;
+
+	small_bumper2->pb = App->physics->CreateCircle(130, 350, 17, 0x0003, 0x0002); small_bumper2->pb->body->SetType(b2_kinematicBody);
+	small_bumper2->pb->coll_name = collider_names::small_bumper_2;
+
+	small_bumper3->pb = App->physics->CreateCircle(300, 180, 17, 0x0003, 0x0002); small_bumper3->pb->body->SetType(b2_kinematicBody);
+	small_bumper3->pb->coll_name = collider_names::small_bumper_3;
+
+	small_bumper4->pb = App->physics->CreateCircle(405, 160, 17, 0x0003, 0x0002); small_bumper4->pb->body->SetType(b2_kinematicBody);
+	small_bumper4->pb->coll_name = collider_names::small_bumper_4;
+
+	small_bumper5->pb = App->physics->CreateCircle(540, 160, 17, 0x0003, 0x0002); small_bumper5->pb->body->SetType(b2_kinematicBody);
+	small_bumper5->pb->coll_name = collider_names::small_bumper_5;
+
+	small_bumper6->pb = App->physics->CreateCircle(580, 285, 17, 0x0003, 0x0002); small_bumper6->pb->body->SetType(b2_kinematicBody);
+	small_bumper6->pb->coll_name = collider_names::small_bumper_6;
+
+	small_bumper7->pb = App->physics->CreateCircle(540, 880, 17, 0x0003, 0x0002); small_bumper7->pb->body->SetType(b2_kinematicBody);
+	small_bumper7->pb->coll_name = collider_names::small_bumper_7;
 
 	// Sensors -----------------
 
@@ -502,9 +554,18 @@ void j1Map::Draw()
 	Blit(kawaii_guy->texture, kawaii_guy->pos.x, kawaii_guy->pos.y, &kawaii_guy->anim.GetCurrentFrame(), 1, -20);
 
 
-	// Big bumper
+	// Big bumpers
 	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 56, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 57, &big_bumper1->anim.GetCurrentFrame());
 	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 56, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 57, &big_bumper2->anim.GetCurrentFrame());
+
+	// Small bumpers
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().y) - 16, &small_bumper1->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().y) - 16, &small_bumper2->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().y) - 16, &small_bumper3->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().y) - 16, &small_bumper4->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().y) - 16, &small_bumper5->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().y) - 16, &small_bumper6->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().y) - 16, &small_bumper7->anim.GetCurrentFrame());
 
 	// -------------------------
 

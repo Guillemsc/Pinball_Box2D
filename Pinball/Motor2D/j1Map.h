@@ -178,7 +178,13 @@ public:
 	SpriteSheetItem*		kawaii_girl;
 	SpriteSheetItem*		kawaii_guy;
 	SpriteSheetItem*		little_button;
-	SpriteSheetItem*		small_bumper;
+	SpriteSheetItem*		small_bumper1;
+	SpriteSheetItem*		small_bumper2;
+	SpriteSheetItem*		small_bumper3;
+	SpriteSheetItem*		small_bumper4;
+	SpriteSheetItem*		small_bumper5;
+	SpriteSheetItem*		small_bumper6;
+	SpriteSheetItem*		small_bumper7;
 	SpriteSheetItem*		big_bumper1;
 	SpriteSheetItem*		big_bumper2;
 	SpriteSheetItem*	    blue_arrow;
