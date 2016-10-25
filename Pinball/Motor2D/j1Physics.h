@@ -38,8 +38,8 @@ enum collider_names
 
 	ball_dead_detector,
 
-	wall
-
+	wall,
+	slingshot
 };
 
 class PhysBody

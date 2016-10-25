@@ -347,6 +347,14 @@ void j1Map::CreateColliders()
 	PhysBody* colliderb3 = App->physics->CreateChain(0, 0, chain3, 10, 0x0001, 0x0002);
 	colliderb3->body->SetType(b2_staticBody);
 	colliderb3->coll_name = collider_names::wall;
+	
+	int chainA[4] = {
+		149, 882,
+		207, 983
+	};
+	PhysBody* collider_slingshot1 = App->physics->CreateChain(0, 0, chainA, 4, 0x0001, 0x0002);
+	collider_slingshot1->body->SetType(b2_staticBody);
+	collider_slingshot1->coll_name = collider_names::slingshot;
 
 	int chain4[10] = {
 		463, 882,
@@ -358,6 +366,14 @@ void j1Map::CreateColliders()
 	PhysBody* colliderb4 = App->physics->CreateChain(0, 0, chain4, 10, 0x0001, 0x0002);
 	colliderb4->body->SetType(b2_staticBody);
 	colliderb4->coll_name = collider_names::wall;
+
+	int chainB[4] = {
+		463, 882,
+		404, 985
+	};
+	PhysBody* collider_slingshot2 = App->physics->CreateChain(0, 0, chainB, 4, 0x0001, 0x0002);
+	collider_slingshot2->body->SetType(b2_staticBody);
+	collider_slingshot2->coll_name = collider_names::slingshot;
 
 	int chain5[26] = {
 		84, 992,

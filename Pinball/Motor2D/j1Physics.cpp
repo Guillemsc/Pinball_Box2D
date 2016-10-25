@@ -600,6 +600,9 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 		case wall:
 			App->audio->PlayFx(App->map->ball_hit_fx);
 			break;
+		case slingshot:
+			App->audio->PlayFx(App->map->slingshot_fx);
+			break;
 		default:
 			break;
 		}
