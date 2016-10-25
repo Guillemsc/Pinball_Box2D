@@ -146,37 +146,37 @@ bool j1Map::Start()
 	// Small Bumpers
 	small_bumper1 = new SpriteSheetItem();
 		small_bumper1->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper1->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper1->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper1->anim.speed = 0.00f;
 
 	small_bumper2 = new SpriteSheetItem();
 		small_bumper2->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper2->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper2->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper2->anim.speed = 0.00f;
 
 	small_bumper3 = new SpriteSheetItem();
 		small_bumper3->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper3->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper3->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper3->anim.speed = 0.00f;
 
 	small_bumper4 = new SpriteSheetItem();
 		small_bumper4->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper4->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper4->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper4->anim.speed = 0.00f;
 
 	small_bumper5 = new SpriteSheetItem();
 		small_bumper5->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper5->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper5->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper5->anim.speed = 0.00f;
 
 	small_bumper6 = new SpriteSheetItem();
 		small_bumper6->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper6->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper6->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper6->anim.speed = 0.00f;
 
 	small_bumper7 = new SpriteSheetItem();
 		small_bumper7->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper7->anim.PushBack({ 144, 213, 59, 59 });
+		small_bumper7->anim.PushBack({ 584, 300, 60, 60 });
 		small_bumper7->anim.speed = 0.00f;
 
 	// Blue Arrow
@@ -534,6 +534,14 @@ void j1Map::CreateTimers()
 
 	big_bumper1->timer = new Timer(0.1); timers.add(big_bumper1->timer);
 	big_bumper2->timer = new Timer(0.1); timers.add(big_bumper2->timer);
+
+	small_bumper1->timer = new Timer(0.2); timers.add(small_bumper1->timer);
+	small_bumper2->timer = new Timer(0.2); timers.add(small_bumper2->timer);
+	small_bumper3->timer = new Timer(0.2); timers.add(small_bumper3->timer);
+	small_bumper4->timer = new Timer(0.2); timers.add(small_bumper4->timer);
+	small_bumper5->timer = new Timer(0.2); timers.add(small_bumper5->timer);
+	small_bumper6->timer = new Timer(0.2); timers.add(small_bumper6->timer);
+	small_bumper7->timer = new Timer(0.2); timers.add(small_bumper7->timer);
 }
 
 

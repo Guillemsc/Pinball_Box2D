@@ -554,31 +554,31 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->audio->PlayFx(App->map->big_bumper_fx);
 			break;
 		case small_bumper_1:
-			//App->map->small_bumper1->timer->Start();
+			App->map->small_bumper1->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case small_bumper_2:
-			//App->map->small_bumper2->timer->Start();
+			App->map->small_bumper2->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case small_bumper_3:
-			//App->map->small_bumper3->timer->Start();
+			App->map->small_bumper3->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case small_bumper_4:
-			//App->map->small_bumper4->timer->Start();
+			App->map->small_bumper4->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case small_bumper_5:
-			//App->map->small_bumper5->timer->Start();
+			App->map->small_bumper5->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case small_bumper_6:
-			//App->map->small_bumper6->timer->Start();
+			App->map->small_bumper6->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case small_bumper_7:
-			//App->map->small_bumper7->timer->Start();
+			App->map->small_bumper7->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			break;
 		case kawaii_girl:
@@ -742,6 +742,83 @@ void j1Physics::TimerActions()
 	else
 	{
 		App->map->big_bumper2->anim.SetFrame(1);
+	}
+
+	// Small bumper 1
+	if (App->map->small_bumper1->timer->IsTimeReached()) {
+		if (!App->map->small_bumper1->timer->stop_time) {
+			App->map->small_bumper1->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper1->anim.SetFrame(1);
+	}
+
+	// Small bumper 2
+	if (App->map->small_bumper2->timer->IsTimeReached()) {
+		if (!App->map->small_bumper2->timer->stop_time) {
+			App->map->small_bumper2->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper2->anim.SetFrame(1);
+	}
+
+	// Small bumper 3
+	if (App->map->small_bumper3->timer->IsTimeReached()) {
+		if (!App->map->small_bumper3->timer->stop_time) {
+			App->map->small_bumper3->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper3->anim.SetFrame(1);
+	}
+
+	// Small bumper 4
+	if (App->map->small_bumper4->timer->IsTimeReached()) {
+		if (!App->map->small_bumper4->timer->stop_time) {
+			App->map->small_bumper4->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper4->anim.SetFrame(1);
+	}
+
+	// Small bumper 5
+	if (App->map->small_bumper5->timer->IsTimeReached()) {
+		if (!App->map->small_bumper5->timer->stop_time) {
+			App->map->small_bumper5->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper5->anim.SetFrame(1);
+	}
+
+	// Small bumper 6
+	if (App->map->small_bumper6->timer->IsTimeReached()) {
+		if (!App->map->small_bumper6->timer->stop_time) {
+			App->map->small_bumper6->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper6->anim.SetFrame(1);
+	}
+
+	// Small bumper 7
+	if (App->map->small_bumper7->timer->IsTimeReached()) {
+		if (!App->map->small_bumper7->timer->stop_time) {
+			App->map->small_bumper7->anim.SetFrame(0);
+		}
+	}
+	else
+	{
+		App->map->small_bumper7->anim.SetFrame(1);
 	}
 
 
