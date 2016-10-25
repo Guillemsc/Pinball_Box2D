@@ -42,7 +42,7 @@ public:
 
 
 public:
-	bool camera_debug = false;
+	
 private:
 	bool one_start;
 };

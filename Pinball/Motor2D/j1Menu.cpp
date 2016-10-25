@@ -15,7 +15,7 @@
 
 j1Menu::j1Menu() : j1Module()
 {
-	name.create("scene");
+	name.create("menu");
 }
 
 // Destructor
@@ -34,13 +34,19 @@ bool j1Menu::Awake()
 // Called before the first frame
 bool j1Menu::Start()
 {
-	menu = App->tex->Load("menu/Play.png");
-	menu_rect.x = 0;
-	menu_rect.y = 0;
-	menu_rect.w = 1180;
-	menu_rect.h = 746;
+	start = new MenuItem(App->tex->Load("menu/Play.png"), 0, 0, 1180, 746, -270, 390);
+	button_normal = new MenuItem(App->tex->Load("menu/play_normal.png"), 0, 0, 164, 73, 238, 863);
+	button_pressed = new MenuItem(App->tex->Load("menu/play_pressed.png"), 0, 0, 164, 73, 238, 863);
+	rotating_background = new MenuItem(App->tex->Load("menu/rotating_background.png"), 0, 0, 1726, 971, -550, 300);
+	logo = new MenuItem(App->tex->Load("menu/logo.png"), 0, 0, 350, 218, 140, 600);
 
-	start = new Button(250, 500, 150, 50);
+	background.x = 0;
+	background.y = -App->render->camera.y;
+	background.w = 1000;
+	background.h = 1000;
+
+
+	start_button = new Button(240, 480, 160, 80);
 
 	return true;
 }
@@ -53,14 +59,44 @@ bool j1Menu::PreUpdate()
 
 // Called each loop iteration
 bool j1Menu::Update(float dt)
-{
-	App->render->Blit(menu, -270, 390, &menu_rect);
-	start->Draw();
+{	
+	
+	App->render->DrawQuad(background, 255, 255, 255, 255);
+	degrees++;
+	App->render->Blit(rotating_background->texture, rotating_background->pos.x, rotating_background->pos.y, &rotating_background->rect, 1.0f, (degrees * 0.5f));
+	App->render->Blit(logo->texture, logo->pos.x, logo->pos.y, &logo->rect);
 
-	if (start->CheckMouse())
+	start_button->Draw();
+
+	if (start_button->MouseDown())
 	{
 		App->scene_manager->LoadScene();
 	}
+
+	if (start_button->MouseOver())
+	{
+		App->render->Blit(button_pressed->texture, button_pressed->pos.x, button_pressed->pos.y, &button_pressed->rect);
+	}
+	else
+	{
+		App->render->Blit(button_normal->texture, button_normal->pos.x, button_normal->pos.y, &button_normal->rect);
+	}
+
+	if (App->scene_manager->camera_debug)
+	{
+		if ((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT))
+			App->render->camera.y += 5;
+
+		if ((App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT))
+			App->render->camera.y -= 5;
+
+		if ((App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT))
+			App->render->camera.x += 5;
+
+		if ((App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT))
+			App->render->camera.x -= 5;
+	}
+
 	return true;
 }
 
@@ -83,10 +119,11 @@ bool j1Menu::CleanUp()
 
 void Button::Draw()
 {
-	App->render->DrawQuad(rect, 100, 255, 100, 100, false);
+	if(App->scene_manager->camera_debug)
+		App->render->DrawQuad(rect, 255, 0, 0, 1000, false);
 }
 
-bool Button::CheckMouse()
+bool Button::MouseDown()
 {
 	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN)
 	{
@@ -105,3 +142,22 @@ bool Button::CheckMouse()
 	}
 	return false;
 }
+
+bool Button::MouseOver()
+{
+	int mouse_x, mouse_y;
+	App->input->GetMousePosition(mouse_x, mouse_y);
+	mouse_x -= App->render->camera.x;
+	mouse_y -= App->render->camera.y;
+
+	if (mouse_x > rect.x && mouse_x < rect.x + rect.w)
+	{
+		if (mouse_y > rect.y && mouse_y < rect.y + rect.h)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+

@@ -9,6 +9,7 @@
 #include "j1Map.h"
 #include "j1Scene.h"
 #include "j1Physics.h"
+#include "SceneManager.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -67,15 +68,11 @@ bool j1Scene::Update(float dt)
 	// Camera ---------------------------------------------------------------------
 
 	// Scroll camera
-	if (!camera_debug)
+	if (!App->scene_manager->camera_debug)
 		ScrollCamera();
 
-	// Activate camera debug
-	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
-		camera_debug = !camera_debug; 
-
 	// Camera debug
-	if (camera_debug)
+	if (App->scene_manager->camera_debug)
 	{
 		if ((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT))
 			App->render->camera.y += 5;
@@ -155,7 +152,7 @@ bool j1Scene::Update(float dt)
 	// ----------------
 
 	// Create a new ball
-	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN) && camera_debug)
+	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN) && App->scene_manager->camera_debug)
 	{
 		resetball = true;
 	}

@@ -35,6 +35,7 @@ public:
 	void LoadScene();
 
 public:
+	bool camera_debug = false;
 
 private:
 };

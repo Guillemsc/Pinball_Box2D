@@ -6,6 +6,26 @@
 
 struct SDL_Texture;
 
+class MenuItem
+{
+public:
+	MenuItem()
+	{
+	}
+
+	MenuItem(SDL_Texture* _texture, int _x, int _y, int _w, int _h, int _posx, int _posy)
+	{
+		texture = _texture;
+		rect.x = _x; rect.y = _y; rect.w = _w; rect.h = _h;
+		pos.x = _posx;
+		pos.y = _posy;
+	}
+
+	SDL_Texture* texture;
+	SDL_Rect rect;
+	iPoint pos;
+};
+
 class Button
 {
 public:
@@ -20,7 +40,8 @@ public:
 	SDL_Rect rect;
 
 	void Draw();
-	bool CheckMouse();
+	bool MouseDown();
+	bool MouseOver();
 };
 
 class j1Menu : public j1Module
@@ -52,12 +73,18 @@ public:
 
 public:
 
-	SDL_Texture* menu;
-	SDL_Rect menu_rect;
+	MenuItem* start;
+	MenuItem* button_normal;
+	MenuItem* button_pressed;
+	MenuItem* rotating_background;
+	MenuItem* logo;
 
-	Button* start;
+	Button* start_button;
+
+	SDL_Rect background;
 
 private:
+	float degrees = 0;
 };
 
 #endif // __j1MENU_H__

@@ -15,7 +15,7 @@
 
 j1SceneManager::j1SceneManager() : j1Module()
 {
-	name.create("scene");
+	name.create("scene_manager");
 }
 
 // Destructor
@@ -48,9 +48,20 @@ bool j1SceneManager::PreUpdate()
 bool j1SceneManager::Update(float dt)
 {
 	// Title and puntuation
+	if (App->scene->active)
+	{
+		p2SString title("%s	  [Balls: %d Points: %d]", App->title.GetString(), App->map->player.balls, App->map->player.points);
+		App->win->SetTitle(title.GetString());
+	}
+	else
+	{
+		p2SString title("%s", App->title.GetString());
+		App->win->SetTitle(title.GetString());
+	}
 
-	p2SString title("%s	  [Balls: %d Points: %d]", App->title.GetString(), App->map->player.balls, App->map->player.points);
-	App->win->SetTitle(title.GetString());
+	// Activate camera debug
+	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
+		camera_debug = !camera_debug;
 
 	return true;
 }
