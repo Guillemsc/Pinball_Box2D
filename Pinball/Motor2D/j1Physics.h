@@ -26,6 +26,8 @@ enum collider_names
 	kawaii_yellow,
 	kawaii_girl,
 	kawaii_guy,
+	kawaii_box1,
+	kawaii_box2,
 	big_bumper_1,
 	big_bumper_2,
 	small_bumper_1,

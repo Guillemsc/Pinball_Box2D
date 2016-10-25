@@ -177,6 +177,8 @@ public:
 	SpriteSheetItem*		kawaii_yellow;
 	SpriteSheetItem*		kawaii_girl;
 	SpriteSheetItem*		kawaii_guy;
+	SpriteSheetItem*		kawaii_box1;
+	SpriteSheetItem*		kawaii_box2;
 	SpriteSheetItem*		little_button1;
 	SpriteSheetItem*		little_button2;
 	SpriteSheetItem*		little_button3;

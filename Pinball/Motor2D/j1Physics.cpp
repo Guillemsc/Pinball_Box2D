@@ -181,7 +181,6 @@ bool j1Physics::PostUpdate()
 				mouse_x -= App->render->camera.x;
 				mouse_y -= App->render->camera.y;
 				b2Vec2 mouse(PIXEL_TO_METERS(mouse_x), PIXEL_TO_METERS(mouse_y));
-				App->render->DrawCircle(mouse_x - App->render->camera.x, mouse_y - App->render->camera.y, 50, 255, 255, 255);
 				if (f->TestPoint(mouse)) 
 				{
 					selected = f->GetBody();
@@ -546,6 +545,20 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_orange->timer->Start();
 			break;
+		case kawaii_box1:
+			if (App->map->kawaii_box1->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->map->kawaii_box1->collide_once = false;
+			}
+			App->map->kawaii_box1->timer->Start();
+			break;
+		case kawaii_box2:
+			if (App->map->kawaii_box2->collide_once) {
+				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->map->kawaii_box2->collide_once = false;
+			}
+			App->map->kawaii_box2->timer->Start();
+			break;
 		case big_bumper_1:
 			App->map->big_bumper1->timer->Start();
 			App->audio->PlayFx(App->map->big_bumper_fx);
@@ -637,6 +650,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 void j1Physics::TimerActions()
 {
 	// Timer actions ----------------------------------------------------------------------------------
+
 	// Kawaii_blue
 	if (App->map->kawaii_blue->timer->IsTimeReached())	{
 		if (App->map->kawaii_blue->timer->stop_time) { 
@@ -749,6 +763,34 @@ void j1Physics::TimerActions()
 		App->map->kawaii_girl->anim.speed = 0.5f;
 	}
 
+	// Kawaii_box 1
+	if (App->map->kawaii_box1->timer->IsTimeReached()) {
+		if (App->map->kawaii_box1->timer->stop_time) {
+			App->map->kawaii_box1->anim.SetFrame(0);
+		}
+		else {
+			App->map->kawaii_box1->anim.SetFrame(1);
+			App->map->kawaii_box1->anim.speed = 0;
+		}
+	}
+	else {
+		App->map->kawaii_box1->anim.speed = 0.5f;
+	}
+
+	// Kawaii_box 2
+	if (App->map->kawaii_box2->timer->IsTimeReached()) {
+		if (App->map->kawaii_box2->timer->stop_time) {
+			App->map->kawaii_box2->anim.SetFrame(0);
+		}
+		else {
+			App->map->kawaii_box2->anim.SetFrame(1);
+			App->map->kawaii_box2->anim.speed = 0;
+		}
+	}
+	else {
+		App->map->kawaii_box2->anim.speed = 0.5f;
+	}
+
 
 	// Big bumper 1
 	if (App->map->big_bumper1->timer->IsTimeReached()) {
@@ -849,9 +891,7 @@ void j1Physics::TimerActions()
 		App->map->small_bumper7->anim.SetFrame(1);
 	}
 
-
 	// ------------------------------------------------------------------------------------------------
-
 }
 
 void PhysBody::GetPosition(int & x, int & y) const
