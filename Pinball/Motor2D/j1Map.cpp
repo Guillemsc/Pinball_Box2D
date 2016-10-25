@@ -145,41 +145,41 @@ bool j1Map::Start()
 
 	// Small Bumpers
 	small_bumper1 = new SpriteSheetItem();
-		small_bumper1->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper1->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper1->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper1->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper1->anim.speed = 0.00f;
 
 	small_bumper2 = new SpriteSheetItem();
-		small_bumper2->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper2->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper2->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper2->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper2->anim.speed = 0.00f;
 
 	small_bumper3 = new SpriteSheetItem();
-		small_bumper3->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper3->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper3->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper3->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper3->anim.speed = 0.00f;
 
 	small_bumper4 = new SpriteSheetItem();
-		small_bumper4->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper4->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper4->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper4->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper4->anim.speed = 0.00f;
 
 	small_bumper5 = new SpriteSheetItem();
-		small_bumper5->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper5->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper5->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper5->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper5->anim.speed = 0.00f;
 
 	small_bumper6 = new SpriteSheetItem();
-		small_bumper6->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper6->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper6->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper6->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper6->anim.speed = 0.00f;
 
 	small_bumper7 = new SpriteSheetItem();
-		small_bumper7->anim.PushBack({ 105, 212, 36, 34 });
-		small_bumper7->anim.PushBack({ 584, 300, 60, 60 });
+		small_bumper7->anim.PushBack({ 141, 225, 55, 55 });
+		small_bumper7->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper7->anim.speed = 0.00f;
 
-	// Blue Arrow
+	// Blue Arrow (?)
 	blue_arrow = new SpriteSheetItem();
 		blue_arrow->anim.PushBack({ 7, 212, 48, 61 });
 		blue_arrow->anim.PushBack({ 56, 212, 48, 61 });
@@ -187,14 +187,14 @@ bool j1Map::Start()
 
 	// Big bumpers
 	big_bumper1 = new SpriteSheetItem();
-		big_bumper1->anim.PushBack({ 209, 258, 104, 104 });
-		big_bumper1->anim.PushBack({ 385, 266, 114, 113 });
-		big_bumper1->anim.speed = 0;
+		big_bumper1->anim.PushBack({ 202, 250, 104, 104 });
+		big_bumper1->anim.PushBack({ 379, 258, 127, 127 });
+		big_bumper1->anim.speed = 0.00f;
 
 	big_bumper2 = new SpriteSheetItem();
-		big_bumper2->anim.PushBack({ 209, 258, 104, 104 });
-		big_bumper2->anim.PushBack({ 385, 266, 114, 113 });
-		big_bumper2->anim.speed = 0;
+		big_bumper2->anim.PushBack({ 202, 250, 104, 104 });
+		big_bumper2->anim.PushBack({ 379, 258, 127, 127 });
+		big_bumper2->anim.speed = 0.00f;
 
 	// ----------------------------------
 
@@ -548,16 +548,16 @@ void j1Map::CreateTimers()
 	kawaii_guy->timer = new Timer(0.2); timers.add(kawaii_guy->timer);
 	kawaii_girl->timer = new Timer(0.2); timers.add(kawaii_girl->timer);
 
-	big_bumper1->timer = new Timer(0.1); timers.add(big_bumper1->timer);
-	big_bumper2->timer = new Timer(0.1); timers.add(big_bumper2->timer);
+	big_bumper1->timer = new Timer(0.3); timers.add(big_bumper1->timer);
+	big_bumper2->timer = new Timer(0.3); timers.add(big_bumper2->timer);
 
-	small_bumper1->timer = new Timer(0.2); timers.add(small_bumper1->timer);
-	small_bumper2->timer = new Timer(0.2); timers.add(small_bumper2->timer);
-	small_bumper3->timer = new Timer(0.2); timers.add(small_bumper3->timer);
-	small_bumper4->timer = new Timer(0.2); timers.add(small_bumper4->timer);
-	small_bumper5->timer = new Timer(0.2); timers.add(small_bumper5->timer);
-	small_bumper6->timer = new Timer(0.2); timers.add(small_bumper6->timer);
-	small_bumper7->timer = new Timer(0.2); timers.add(small_bumper7->timer);
+	small_bumper1->timer = new Timer(0.3); timers.add(small_bumper1->timer);
+	small_bumper2->timer = new Timer(0.3); timers.add(small_bumper2->timer);
+	small_bumper3->timer = new Timer(0.3); timers.add(small_bumper3->timer);
+	small_bumper4->timer = new Timer(0.3); timers.add(small_bumper4->timer);
+	small_bumper5->timer = new Timer(0.3); timers.add(small_bumper5->timer);
+	small_bumper6->timer = new Timer(0.3); timers.add(small_bumper6->timer);
+	small_bumper7->timer = new Timer(0.3); timers.add(small_bumper7->timer);
 }
 
 
@@ -579,17 +579,17 @@ void j1Map::Draw()
 
 
 	// Big bumpers
-	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 56, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 57, &big_bumper1->anim.GetCurrentFrame());
-	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 56, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 57, &big_bumper2->anim.GetCurrentFrame());
+	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 62, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 63, &big_bumper1->anim.GetCurrentFrame());
+	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 62, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 63, &big_bumper2->anim.GetCurrentFrame());
 
 	// Small bumpers
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().y) - 16, &small_bumper1->anim.GetCurrentFrame());
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().y) - 16, &small_bumper2->anim.GetCurrentFrame());
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().y) - 16, &small_bumper3->anim.GetCurrentFrame());
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().y) - 16, &small_bumper4->anim.GetCurrentFrame());
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().y) - 16, &small_bumper5->anim.GetCurrentFrame());
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().y) - 16, &small_bumper6->anim.GetCurrentFrame());
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().x) - 16, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().y) - 16, &small_bumper7->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().y) - 38, &small_bumper1->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().y) - 38, &small_bumper2->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().y) - 38, &small_bumper3->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().y) - 38, &small_bumper4->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().y) - 38, &small_bumper5->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().y) - 38, &small_bumper6->anim.GetCurrentFrame());
+	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().y) - 38, &small_bumper7->anim.GetCurrentFrame());
 
 	// -------------------------
 
