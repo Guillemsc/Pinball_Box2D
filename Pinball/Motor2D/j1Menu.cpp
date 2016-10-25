@@ -60,7 +60,7 @@ bool j1Menu::PreUpdate()
 // Called each loop iteration
 bool j1Menu::Update(float dt)
 {	
-	
+	// Print background
 	App->render->DrawQuad(background, 255, 255, 255, 255);
 	degrees++;
 	App->render->Blit(rotating_background->texture, rotating_background->pos.x, rotating_background->pos.y, &rotating_background->rect, 1.0f, (degrees * 0.5f));
@@ -68,9 +68,11 @@ bool j1Menu::Update(float dt)
 
 	start_button->Draw();
 
+	// Button options
 	if (start_button->MouseDown())
 	{
-		App->scene_manager->LoadScene();
+		// Start timer
+		App->scene_manager->loading->Start();
 	}
 
 	if (start_button->MouseOver())
@@ -82,6 +84,7 @@ bool j1Menu::Update(float dt)
 		App->render->Blit(button_normal->texture, button_normal->pos.x, button_normal->pos.y, &button_normal->rect);
 	}
 
+	// Debug camera
 	if (App->scene_manager->camera_debug)
 	{
 		if ((App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT))

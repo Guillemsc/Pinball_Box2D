@@ -34,6 +34,15 @@ bool j1SceneManager::Awake()
 // Called before the first frame
 bool j1SceneManager::Start()
 {
+	one_time = true;
+	loading = new Timer(1.5);
+
+	background.x = 0;
+	background.y = -App->render->camera.y;
+	background.w = 1000;
+	background.h = 1000;
+
+	loading_image = new MenuItem(App->tex->Load("menu/loading.png"), 0, 0, 224, 34, 215, 750);
 
 	return true;
 }
@@ -41,6 +50,8 @@ bool j1SceneManager::Start()
 // Called each loop iteration
 bool j1SceneManager::PreUpdate()
 {
+	loading->UpdateTime();
+
 	return true;
 }
 
@@ -50,7 +61,8 @@ bool j1SceneManager::Update(float dt)
 	// Title and puntuation
 	if (App->scene->active)
 	{
-		p2SString title("%s	  [Balls: %d Points: %d]", App->title.GetString(), App->map->player.balls, App->map->player.points);
+		p2SString title("%s	  [Balls: %d Points: %d MaxPuntuation: %d]", 
+			App->title.GetString(), App->map->player.balls, App->map->player.points, App->map->player.max_points);
 		App->win->SetTitle(title.GetString());
 	}
 	else
@@ -62,6 +74,22 @@ bool j1SceneManager::Update(float dt)
 	// Activate camera debug
 	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
 		camera_debug = !camera_debug;
+
+	// Loading timer
+	if (!loading->IsTimeReached())
+	{
+		is_loading = true;
+		App->render->DrawQuad(background, 30, 30, 30, 255);
+		App->render->Blit(loading_image->texture, loading_image->pos.x, loading_image->pos.y, &loading_image->rect);
+
+		if (one_time)
+		{
+			LoadScene();
+			one_time = false;
+		}
+	}
+	else
+		is_loading = false;
 
 	return true;
 }

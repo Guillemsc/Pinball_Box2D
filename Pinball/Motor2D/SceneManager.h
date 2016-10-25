@@ -2,8 +2,61 @@
 #define __j1SCENEMANAGER_H__
 
 #include "j1Module.h"
+#include "j1Menu.h"
 
 struct SDL_Texture;
+
+class MenuItem;
+class Timer
+{
+public:
+	Timer(float _time_to_wait) : time_to_wait(_time_to_wait * 0.5f * 1000.0f)
+	{
+		now = 0.0f;
+		stop_time = true;
+		actual = 0.0f;
+	}
+
+	~Timer()
+	{};
+
+
+	void UpdateTime()
+	{
+		if (!stop_time)
+			now = SDL_GetTicks();
+		else
+			now = time_to_wait + 10;
+	}
+
+	bool IsTimeReached()
+	{
+		if (now - actual >= time_to_wait)
+			return true;
+		return false;
+	}
+
+	void Reset()
+	{
+		stop_time = true;
+	}
+
+	void Start()
+	{
+		stop_time = false;
+		actual = SDL_GetTicks();
+	}
+
+private:
+
+public:
+
+public:
+	float now;
+	float time_to_wait;
+	float actual;
+	bool stop_time;
+};
 
 class j1SceneManager : public j1Module
 {
@@ -35,9 +88,14 @@ public:
 	void LoadScene();
 
 public:
-	bool camera_debug = false;
+	bool camera_debug = true;
+	Timer* loading;
+	bool is_loading;
 
 private:
+	bool one_time;
+	SDL_Rect background;
+	MenuItem* loading_image;
 };
 
 #endif // __j1SCENEMANAGER_H__

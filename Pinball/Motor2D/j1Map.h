@@ -16,9 +16,9 @@ public:
 
 	struct Player
 	{
-		int points;
-		int balls;
-		int max_points;
+		uint points;
+		uint balls;
+		uint max_points;
 	};
 
 	class Sprite

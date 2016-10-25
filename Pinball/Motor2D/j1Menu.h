@@ -73,18 +73,17 @@ public:
 
 public:
 
-	MenuItem* start;
-	MenuItem* button_normal;
-	MenuItem* button_pressed;
-	MenuItem* rotating_background;
-	MenuItem* logo;
+	MenuItem*		start;
+	MenuItem*		button_normal;
+	MenuItem*		button_pressed;
+	MenuItem*		rotating_background;
+	MenuItem*		logo;
 
-	Button* start_button;
+	Button*		    start_button;
 
-	SDL_Rect background;
-
-private:
-	float degrees = 0;
+private:	
+	float			degrees = 0;
+	SDL_Rect		background;
 };
 
 #endif // __j1MENU_H__

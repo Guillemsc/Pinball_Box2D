@@ -37,9 +37,6 @@ bool j1Map::Start()
 {
 	bool ret = true;
 
-	player.points = 0;
-	player.balls = 3;
-
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
 

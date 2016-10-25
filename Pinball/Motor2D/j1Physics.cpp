@@ -621,7 +621,12 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->map->kawaii_guy->timer->Start();
 			break;
 		case ball_dead_detector:
+		{
 			App->scene->resetball = true;
+
+			if(App->map->player.balls > 0)
+				App->map->player.balls--;
+		}
 		case wall:
 			App->audio->PlayFx(App->map->ball_hit_fx);
 			break;

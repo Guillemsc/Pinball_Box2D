@@ -38,9 +38,6 @@ public:
 	void ResetBall(bool& reset);
 	bool resetball = false;
 
-
-
-
 public:
 	
 private:

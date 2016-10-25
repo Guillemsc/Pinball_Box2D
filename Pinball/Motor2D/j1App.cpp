@@ -49,9 +49,9 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 
 	// Scenes
-	AddModule(scene_manager);
 	AddModule(menu);
 	AddModule(scene);
+	AddModule(scene_manager);
 
 	// render last to swap buffer
 	AddModule(render);
