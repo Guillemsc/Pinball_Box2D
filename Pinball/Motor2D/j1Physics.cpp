@@ -617,6 +617,9 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 		case slingshot:
 			App->audio->PlayFx(App->map->slingshot_fx);
 			break;
+		case target:
+			App->audio->PlayFx(App->map->target_fx);
+			break;
 		case little_button_1:
 			App->map->little_button1->anim.SetFrame(1);
 			break;

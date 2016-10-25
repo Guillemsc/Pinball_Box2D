@@ -49,6 +49,7 @@ enum collider_names
 	ball_dead_detector,
 
 	wall,
+	target,
 	slingshot
 };
 

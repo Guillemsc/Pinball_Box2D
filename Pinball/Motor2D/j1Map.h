@@ -168,6 +168,7 @@ public:
 	Sprite*					big_right_kicker;
 	Sprite*					small_left_kicker;
 	Sprite*					small_right_kicker;
+	Sprite*					target;
 
 	SpriteSheetItem*		kawaii_blue;
 	SpriteSheetItem*		kawaii_green;

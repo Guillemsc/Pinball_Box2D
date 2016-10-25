@@ -87,6 +87,10 @@ bool j1Map::Start()
 	small_right_kicker = new Sprite(App->tex->Load("images/small_kicker_right.png"),
 		1, 1, 67, 28);
 
+	// Target
+	target = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
+
 	// Spritesheet items ----------------
 
 	// Kawaii blue
@@ -554,6 +558,10 @@ void j1Map::CreateColliders()
 	small_bumper7->pb = App->physics->CreateCircle(480, 100, 17, 0.8f, 0x0003, 0x0002); small_bumper7->pb->body->SetType(b2_kinematicBody);
 	small_bumper7->pb->coll_name = collider_names::small_bumper_7;
 
+	// Targets
+	target->pb = App->physics->CreateCircle(123, 622, 20, 0.4f, 0x0003, 0x0002); target->pb->body->SetType(b2_staticBody);
+	target->pb->coll_name = collider_names::target;
+
 	// Sensors -----------------
 
 	kawaii_blue->pb = App->physics->CreateRectangleSensor(236, 923, 64, 64, 0x0003, 0x0002);
@@ -682,6 +690,9 @@ void j1Map::Draw()
 	Blit(little_button6->texture, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().y) - 26, &little_button6->anim.GetCurrentFrame());
 	Blit(little_button7->texture, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().y) - 26, &little_button7->anim.GetCurrentFrame());
 	Blit(little_button8->texture, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().y) - 26, &little_button8->anim.GetCurrentFrame());
+
+	// Targets
+	Blit(target->texture, 140, 610, &target->rect, 1, 45);
 
 	// -------------------------
 
