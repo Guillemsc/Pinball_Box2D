@@ -99,11 +99,13 @@ bool j1Scene::Update(float dt)
 	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN)) {
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 		App->map->small_left_kicker_coll->SetMotorSpeed(200);
+		App->map->small_left_kicker_coll2->SetMotorSpeed(200);
 		App->audio->PlayFx(App->map->kicker1_fx);
 	}
 	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT)) {
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 		App->map->small_left_kicker_coll->SetMotorSpeed(200);
+		App->map->small_left_kicker_coll2->SetMotorSpeed(200);
 	}
 	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_UP)) {
 		App->audio->PlayFx(App->map->kicker2_fx);
@@ -111,17 +113,20 @@ bool j1Scene::Update(float dt)
 	else {
 		App->map->big_left_kicker_coll->SetMotorSpeed(-200);
 		App->map->small_left_kicker_coll->SetMotorSpeed(-10);
+		App->map->small_left_kicker_coll2->SetMotorSpeed(-10);
 	}
 
 	// Right kickers
 	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN)) {
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 		App->map->small_right_kicker_coll->SetMotorSpeed(-200);
+		App->map->small_right_kicker_coll2->SetMotorSpeed(-200);
 		App->audio->PlayFx(App->map->kicker1_fx);
 	}
 	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT)) {
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 		App->map->small_right_kicker_coll->SetMotorSpeed(-200);
+		App->map->small_right_kicker_coll2->SetMotorSpeed(-200);
 	}
 	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_UP)) {
 		App->audio->PlayFx(App->map->kicker2_fx);
@@ -129,6 +134,7 @@ bool j1Scene::Update(float dt)
 	else {
 		App->map->big_right_kicker_coll->SetMotorSpeed(200);
 		App->map->small_right_kicker_coll->SetMotorSpeed(10);
+		App->map->small_right_kicker_coll2->SetMotorSpeed(10);
 	}
 	// ----------------------------------------------------------------------------
 
