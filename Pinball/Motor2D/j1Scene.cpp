@@ -31,6 +31,12 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
+	// Load game ------------------
+
+	App->LoadGame("save_game.xml");
+
+	// ----------------------------
+
 	// Create colliders -----------
 
 	App->map->CreateColliders();
@@ -55,11 +61,8 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	// Load/Save
-	/*
-	if (App->input->GetKey(SDL_SCANCODE_L) == KEY_DOWN)
-		App->LoadGame("save_game.xml");
 
+	/*
 	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
 		App->SaveGame("save_game.xml");
 	*/
@@ -156,7 +159,7 @@ bool j1Scene::Update(float dt)
 	// ----------------
 
 	// Create a new ball
-	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN))
+	if ((App->input->GetKey(SDL_SCANCODE_N) == KEY_DOWN) && camera_debug)
 	{
 		resetball = true;
 	}

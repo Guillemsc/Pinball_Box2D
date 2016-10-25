@@ -14,6 +14,7 @@
 #include "j1Map.h"
 #include "j1App.h"
 #include "j1Physics.h"
+#include "j1Menu.h"
 
 
 // Constructor
@@ -27,6 +28,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	render = new j1Render();
 	tex = new j1Textures();
 	audio = new j1Audio();
+	menu = new j1Menu();
 	scene = new j1Scene();
 	fs = new j1FileSystem();
 	map = new j1Map();
@@ -43,6 +45,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 
 	// Scenes
+	AddModule(menu);
 	AddModule(scene);
 
 	// render last to swap buffer

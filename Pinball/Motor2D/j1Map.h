@@ -14,6 +14,13 @@ class j1Map : public j1Module
 {
 public:
 
+	struct Player
+	{
+		int points;
+		int balls;
+		int max_points;
+	};
+
 	class Sprite
 	{
 	public:
@@ -143,6 +150,7 @@ public:
 
 	// Called before render is available
 	bool Awake(pugi::xml_node& conf);
+	bool Load(pugi::xml_node&);
 
 	bool Start();
 
