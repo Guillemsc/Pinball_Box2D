@@ -31,23 +31,8 @@ bool j1Scene::Awake()
 // Called before the first frame
 bool j1Scene::Start()
 {
-	// Load game ------------------
 
-	App->LoadGame("save_game.xml");
-
-	// ----------------------------
-
-	// Create colliders -----------
-
-	App->map->CreateColliders();
-
-	// ----------------------------
-
-	// Create timers --------------
-
-	App->map->CreateTimers();
-
-	// ----------------------------
+	one_start = true;
 
 	return true;
 }
@@ -62,11 +47,22 @@ bool j1Scene::PreUpdate()
 bool j1Scene::Update(float dt)
 {
 
-	/*
-	if (App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN)
-		App->SaveGame("save_game.xml");
-	*/
+	if (one_start)
+	{
+		// Load game ------------------
 
+		App->LoadGame("save_game.xml");
+
+		// ----------------------------
+
+		// Create colliders -----------
+
+		App->map->CreateColliders();
+
+		// ----------------------------
+
+		one_start = false;
+	}
 
 	// Camera ---------------------------------------------------------------------
 

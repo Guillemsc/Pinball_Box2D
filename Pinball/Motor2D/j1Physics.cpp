@@ -57,6 +57,12 @@ bool j1Physics::Start()
 	b2BodyDef bd;
 	ground = world->CreateBody(&bd);
 
+	// Create timers ----------------
+
+	App->map->CreateTimers();
+
+	// ------------------------------
+
 	return true;
 }
 
@@ -240,6 +246,11 @@ bool j1Physics::CleanUp()
 
 	// Delete the whole physics world!
 	delete world;
+
+	for (int i = 0; i < App->map->timers.count(); i++)
+	{
+		App->map->timers[i]->Reset();
+	}
 
 	return true;
 }

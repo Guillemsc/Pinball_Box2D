@@ -44,6 +44,7 @@ public:
 public:
 	bool camera_debug = false;
 private:
+	bool one_start;
 };
 
 #endif // __j1SCENE_H__

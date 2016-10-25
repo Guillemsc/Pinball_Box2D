@@ -46,9 +46,22 @@ bool j1Menu::PreUpdate()
 // Called each loop iteration
 bool j1Menu::Update(float dt)
 {
-
-	
-
+	/*
+	if ((App->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN))
+	{
+		App->physics->Enable();
+		App->physics->active = true;
+		App->scene->Enable();
+		App->scene->active = true;
+	}
+	if ((App->input->GetKey(SDL_SCANCODE_O) == KEY_DOWN))
+	{
+		App->scene->Disable();
+		App->scene->active = false;
+		App->physics->Disable();
+		App->physics->active = false;
+	}
+	*/
 	return true;
 }
 

@@ -50,6 +50,8 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 
 	// render last to swap buffer
 	AddModule(render);
+
+	//scene->active = false;
 }
 
 // Destructor
@@ -66,6 +68,7 @@ j1App::~j1App()
 
 	modules.clear();
 }
+
 
 void j1App::AddModule(j1Module* module)
 {
