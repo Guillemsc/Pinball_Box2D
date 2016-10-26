@@ -415,7 +415,7 @@ void j1Map::CreateColliders()
 		149, 882,
 		207, 983
 	};
-	PhysBody* collider_slingshot1 = App->physics->CreateChain(0, 0, chainA, 4, 0x0001, 0x0002);
+	collider_slingshot1 = App->physics->CreateChain(0, 0, chainA, 4, 0x0001, 0x0002, 1.25f);
 	collider_slingshot1->body->SetType(b2_staticBody);
 	collider_slingshot1->coll_name = collider_names::slingshot;
 
@@ -434,7 +434,7 @@ void j1Map::CreateColliders()
 		463, 882,
 		404, 985
 	};
-	PhysBody* collider_slingshot2 = App->physics->CreateChain(0, 0, chainB, 4, 0x0001, 0x0002);
+	collider_slingshot2 = App->physics->CreateChain(0, 0, chainB, 4, 0x0001, 0x0002, 1.25f);
 	collider_slingshot2->body->SetType(b2_staticBody);
 	collider_slingshot2->coll_name = collider_names::slingshot;
 
@@ -571,18 +571,22 @@ void j1Map::CreateColliders()
 	small_bumper7->pb->coll_name = collider_names::small_bumper_7;
 
 	// Targets
-	target->pb = App->physics->CreateCircle(123, 622, 20, 0.4f, 0x0003, 0x0002); target->pb->body->SetType(b2_staticBody);
+	target->pb = App->physics->CreateCircle(123, 622, 20, 1.25f, 0x0003, 0x0002); target->pb->body->SetType(b2_staticBody);
 	target->pb->coll_name = collider_names::target;
-	target2->pb = App->physics->CreateCircle(102, 448, 18, 0.4f, 0x0003, 0x0002); target2->pb->body->SetType(b2_staticBody);
-	target2->pb->coll_name = collider_names::target;
-	target3->pb = App->physics->CreateCircle(102, 398, 18, 0.4f, 0x0003, 0x0002); target3->pb->body->SetType(b2_staticBody);
-	target3->pb->coll_name = collider_names::target;
-	target4->pb = App->physics->CreateCircle(613, 573, 18, 0.4f, 0x0003, 0x0002); target4->pb->body->SetType(b2_staticBody);
-	target4->pb->coll_name = collider_names::target;
-	target5->pb = App->physics->CreateCircle(613, 350, 18, 0.4f, 0x0003, 0x0002); target5->pb->body->SetType(b2_staticBody);
-	target5->pb->coll_name = collider_names::target;
-	target5->pb = App->physics->CreateCircle(118, 272, 18, 0.4f, 0x0003, 0x0002); target5->pb->body->SetType(b2_staticBody);
-	target5->pb->coll_name = collider_names::target; 
+	target2->pb = App->physics->CreateCircle(102, 448, 18, 1.25f, 0x0003, 0x0002); target2->pb->body->SetType(b2_staticBody);
+	target2->pb->coll_name = collider_names::target2;
+	target3->pb = App->physics->CreateCircle(102, 398, 18, 1.25f, 0x0003, 0x0002); target3->pb->body->SetType(b2_staticBody);
+	target3->pb->coll_name = collider_names::target3;
+	target4->pb = App->physics->CreateCircle(613, 573, 18, 1.25f, 0x0003, 0x0002); target4->pb->body->SetType(b2_staticBody);
+	target4->pb->coll_name = collider_names::target4;
+	target5->pb = App->physics->CreateCircle(613, 350, 18, 1.25f, 0x0003, 0x0002); target5->pb->body->SetType(b2_staticBody);
+	target5->pb->coll_name = collider_names::target5;
+	target6->pb = App->physics->CreateCircle(118, 272, 18, 1.25f, 0x0003, 0x0002); target6->pb->body->SetType(b2_staticBody);
+	target6->pb->coll_name = collider_names::target6; 
+	target7->pb = App->physics->CreateCircle(570, 65, 18, 1.25f, 0x0003, 0x0002); target7->pb->body->SetType(b2_staticBody);
+	target7->pb->coll_name = collider_names::target7;
+	target8->pb = App->physics->CreateCircle(405, 63, 18, 1.25f, 0x0003, 0x0002); target8->pb->body->SetType(b2_staticBody);
+	target8->pb->coll_name = collider_names::target8;
 
 	// Sensors -----------------
 
@@ -620,29 +624,14 @@ void j1Map::CreateColliders()
 	ball_dead_detector->coll_name = collider_names::ball_dead_detector;
 
 	little_button1->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button1->pb->body->SetType(b2_kinematicBody);
-	little_button1->pb->coll_name = collider_names::little_button_1;
-
 	little_button2->pb = App->physics->CreateCircleSensor(550, 580, 20, 0x0003, 0x0002); little_button2->pb->body->SetType(b2_kinematicBody);
-	little_button2->pb->coll_name = collider_names::little_button_2;
-
 	little_button3->pb = App->physics->CreateCircleSensor(145, 460, 20, 0x0003, 0x0002); little_button3->pb->body->SetType(b2_kinematicBody);
-	little_button3->pb->coll_name = collider_names::little_button_3;
-
-	little_button4->pb = App->physics->CreateCircleSensor(145, 405, 20, 0x0003, 0x0002); little_button4->pb->body->SetType(b2_kinematicBody);
-	little_button4->pb->coll_name = collider_names::little_button_4;
-
-	little_button5->pb = App->physics->CreateCircleSensor(550, 350, 20, 0x0003, 0x0002); little_button5->pb->body->SetType(b2_kinematicBody);
-	little_button5->pb->coll_name = collider_names::little_button_5;
-
+	little_button4->pb = App->physics->CreateCircleSensor(145, 405, 20, 0x0003, 0x0002); little_button4->pb->body->SetType(b2_kinematicBody);	
+	little_button5->pb = App->physics->CreateCircleSensor(550, 350, 20, 0x0003, 0x0002); little_button5->pb->body->SetType(b2_kinematicBody);	
 	little_button6->pb = App->physics->CreateCircleSensor(420, 112, 20, 0x0003, 0x0002); little_button6->pb->body->SetType(b2_kinematicBody);
-	little_button6->pb->coll_name = collider_names::little_button_6;
-
 	little_button7->pb = App->physics->CreateCircleSensor(530, 112, 20, 0x0003, 0x0002); little_button7->pb->body->SetType(b2_kinematicBody);
-	little_button7->pb->coll_name = collider_names::little_button_7;
-
 	little_button8->pb = App->physics->CreateCircleSensor(160, 300, 20, 0x0003, 0x0002); little_button8->pb->body->SetType(b2_kinematicBody);
-	little_button8->pb->coll_name = collider_names::little_button_8;
-
+	
 	// -------------------------
 }
 

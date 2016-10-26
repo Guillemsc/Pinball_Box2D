@@ -30,6 +30,14 @@ enum collider_names
 	kawaii_box2,
 	big_bumper_1,
 	big_bumper_2,
+	target,
+	target2,
+	target3,
+	target4,
+	target5,
+	target6,
+	target7, 
+	target8,
 	small_bumper_1,
 	small_bumper_2,
 	small_bumper_3,
@@ -37,19 +45,10 @@ enum collider_names
 	small_bumper_5,
 	small_bumper_6,
 	small_bumper_7,
-	little_button_1,
-	little_button_2,
-	little_button_3,
-	little_button_4,
-	little_button_5,
-	little_button_6,
-	little_button_7,
-	little_button_8,
 
 	ball_dead_detector,
 
 	wall,
-	target,
 	slingshot
 };
 
@@ -103,7 +102,7 @@ public:
 	PhysBody* CreateCircleSensor(int x, int y, int radius, uint16 mask, uint16 category);
 	PhysBody* CreateRectangle(int x, int y, int width, int height, uint16 mask = 0x0001, uint16 category = 0x0001);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, uint16 mask, uint16 category);
-	PhysBody* CreateChain(int x, int y, int* points, int size, uint16 mask, uint16 category);
+	PhysBody* CreateChain(int x, int y, int* points, int size, uint16 mask, uint16 category, float restitution = 0.0f);
 	b2PrismaticJoint* CreatePrismaticJoint(PhysBody* bodyA, PhysBody* bodyB, b2Vec2 ancorA, b2Vec2 ancorB, int max, int min, int maxMotor, int motorSpeed);
 	b2RevoluteJoint* CreateRevoluteJoint(int radius, int* vects, int size, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category);
 	void TimerActions();

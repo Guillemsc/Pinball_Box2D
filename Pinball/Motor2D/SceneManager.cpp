@@ -97,8 +97,16 @@ bool j1SceneManager::Update(float dt)
 	// Game over
 	if(App->map->player.balls == 0 && App->scene->IsEnabled())
 	{
+<<<<<<< HEAD
 		App->render->DrawQuad(background, 30, 30, 30, 200);
 	
+=======
+		App->render->DrawQuad(background, 30, 30, 30, 160);
+		if (App->map->player.score > App->map->player.max_score){
+			App->map->player.max_score = App->map->player.score;
+		}
+
+>>>>>>> origin/master
 		game_over = true;
 		if(play_again->MouseOver())
 		{
