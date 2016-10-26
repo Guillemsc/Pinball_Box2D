@@ -62,7 +62,7 @@ bool j1Scene::Update(float dt)
 
 		// ----------------------------
 
-		App->map->player.points = 0;
+		App->map->player.score = 0;
 		App->map->player.balls = 3;
 
 		one_start = false;

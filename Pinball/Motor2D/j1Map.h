@@ -16,9 +16,9 @@ public:
 
 	struct Player
 	{
-		uint points;
+		uint score;
 		uint balls;
-		uint max_points;
+		uint max_score;
 	};
 
 	class Sprite
@@ -176,7 +176,15 @@ public:
 	Sprite*					big_right_kicker;
 	Sprite*					small_left_kicker;
 	Sprite*					small_right_kicker;
+
+	// Targets
 	Sprite*					target;
+	Sprite*					target2;
+	Sprite*					target3;
+	Sprite*					target4;
+	Sprite*					target5;
+	Sprite*					target6;
+	Sprite*					target7;
 
 	SpriteSheetItem*		kawaii_blue;
 	SpriteSheetItem*		kawaii_green;

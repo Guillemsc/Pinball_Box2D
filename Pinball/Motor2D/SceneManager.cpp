@@ -61,8 +61,8 @@ bool j1SceneManager::Update(float dt)
 	// Title and puntuation
 	if (App->scene->active)
 	{
-		p2SString title("%s	  [Balls: %d Points: %d MaxPuntuation: %d]", 
-			App->title.GetString(), App->map->player.balls, App->map->player.points, App->map->player.max_points);
+		p2SString title("%s	  [Balls: %d Score: %d Max Score: %d]", 
+			App->title.GetString(), App->map->player.balls, App->map->player.score, App->map->player.max_score);
 		App->win->SetTitle(title.GetString());
 	}
 	else
