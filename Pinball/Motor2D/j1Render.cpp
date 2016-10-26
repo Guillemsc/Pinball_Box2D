@@ -88,6 +88,7 @@ bool j1Render::CleanUp()
 	return true;
 }
 
+/*
 // Load Game State
 bool j1Render::Load(pugi::xml_node& data)
 {
@@ -107,6 +108,7 @@ bool j1Render::Save(pugi::xml_node& data) const
 
 	return true;
 }
+*/
 
 void j1Render::SetBackgroundColor(SDL_Color color)
 {

@@ -79,6 +79,10 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
+	// Load / Save
+	bool Load(pugi::xml_node& node);
+	bool Save(pugi::xml_node& node) const;
+
 	// Called before all Updates
 	bool PostUpdate();
 

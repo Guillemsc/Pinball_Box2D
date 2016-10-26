@@ -31,9 +31,26 @@ bool j1SceneManager::Awake()
 	return ret;
 }
 
+bool j1SceneManager::Load(pugi::xml_node &data)
+{
+	App->map->player.max_score = data.attribute("max_score").as_int();
+
+	return true;
+}
+
+bool j1SceneManager::Save(pugi::xml_node &data) const
+{
+	if (data.attribute("max_score").as_int() < App->map->player.max_score)
+		data.append_attribute("max_score") = App->map->player.max_score;
+
+	return true;
+}
+
 // Called before the first frame
 bool j1SceneManager::Start()
 {
+	App->LoadGame("save_game.xml");
+
 	one_time = true;
 	loading = new Timer(1.5);
 	game_over = false;
@@ -58,6 +75,7 @@ bool j1SceneManager::PreUpdate()
 
 	return true;
 }
+
 
 // Called each loop iteration
 bool j1SceneManager::Update(float dt)
@@ -95,12 +113,15 @@ bool j1SceneManager::Update(float dt)
 	else
 		is_loading = false;
 
-	// Game over
+	// Game over ---------------
 	if(App->map->player.balls == 0 && App->scene->IsEnabled() && !is_loading)
 	{
+		if(!game_over)
+			App->SaveGame("save_game.xml");
 
 		App->render->DrawQuad(background, 30, 30, 30, 200);
 	
+		// Max Score update
 		if (App->map->player.score > App->map->player.max_score)
 		{
 			App->map->player.max_score = App->map->player.score;
@@ -108,6 +129,7 @@ bool j1SceneManager::Update(float dt)
 
 		game_over = true;
 
+		// Button control
 		if(play_again->MouseOver() && game_over)
 		{
 			App->render->Blit(button_pressed->texture, button_pressed->pos.x, button_pressed->pos.y, &button_pressed->rect);
@@ -116,6 +138,7 @@ bool j1SceneManager::Update(float dt)
 		{
 			App->render->Blit(button_normal->texture, button_normal->pos.x, button_normal->pos.y, &button_normal->rect);
 		}
+		// Play again
 		if(play_again->MouseDown() && game_over)
 		{
 			game_over = false;

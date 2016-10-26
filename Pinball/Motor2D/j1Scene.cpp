@@ -50,12 +50,6 @@ bool j1Scene::Update(float dt)
 
 	if (one_start)
 	{
-		// Load game ------------------
-
-		App->LoadGame("save_game.xml");
-
-		// ----------------------------
-
 		// Create colliders -----------
 
 		App->map->CreateColliders();
