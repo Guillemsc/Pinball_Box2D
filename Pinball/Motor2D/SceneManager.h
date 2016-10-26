@@ -91,6 +91,8 @@ public:
 
 	void LoadScene();
 
+	void Unload(SDL_Texture* tex);
+
 public:
 	bool			camera_debug = true;
 	Timer*			loading;

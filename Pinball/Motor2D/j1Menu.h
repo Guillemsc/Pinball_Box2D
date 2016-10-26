@@ -71,6 +71,8 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void Unload(SDL_Texture* tex);
+
 public:
 
 	MenuItem*		start;

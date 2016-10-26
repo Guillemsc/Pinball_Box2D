@@ -33,6 +33,7 @@ bool j1Map::Start()
 	bool ret = true;
 
 	print_points1 = new PrintPoints(App->tex->Load("menu/+100.png"), 0, 0, 46, 21, App->tex->Load("menu/+500.png"), 0, 0, 46, 21, 1);
+	spritesheet = App->tex->Load("images/spritesheet.png");
 
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
@@ -73,8 +74,14 @@ bool j1Map::Start()
 	spring = new Sprite(App->tex->Load("images/spring.png"), 
 		0, 0, 29, 180, 580, 900);
 
-	// Ball
+	// Balls
 	ball = new Sprite(App->tex->Load("images/ball.png"),
+		0, 0, 33, 32);
+
+	ball1 = new Sprite(App->tex->Load("images/ball.png"),
+		0, 0, 33, 32);
+
+	ball2 = new Sprite(App->tex->Load("images/ball.png"),
 		0, 0, 33, 32);
 
 	// Kickers
@@ -268,14 +275,22 @@ bool j1Map::Start()
 
 void j1Map::CreateColliders()
 {
-	// Ball
+	// Balls
 	ball->pb = App->physics->CreateCircle(598, 990, 14, 0.4f, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
 	ball->pb->listener = App->physics;
 	ball->pb->coll_name = collider_names::ball;
 	print_points1->balls.add(ball->pb);
 
+	/*
+	ball1->pb = App->physics->CreateCircle(598, 990, 14, 0.4f, 0x0002, 0x0001); ball->pb->body->SetBullet(1); 
+	ball1->pb->listener = App->physics;
+	ball1->pb->coll_name = collider_names::ball;
+	print_points1->balls.add(ball->pb);
+	*/
+
+
 	// Background standalone colliders
-	// Pivot 0, 0
+
 	int chain1[154] = {
 		263, 121,
 		259, 98,
@@ -491,9 +506,10 @@ void j1Map::CreateColliders()
 		8, 30,
 		97, 32
 	};
+	PhysBody* b1 = App->physics->CreateCircle(225, 1107, 15, 0.00f, 0x0003, 0x0002); b1->body->SetType(b2_staticBody);
+	big_left_kicker_coll = App->physics->CreateRevoluteJoint(b1, big_kicker_left_points, 16, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
 
-	big_left_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_left_points, 16, 225, 1107, 70, 20, 200, 150, 250, -90, 0x0003, 0x0002);
-
+	PhysBody* b2 = App->physics->CreateCircle(387, 1107, 15, 0.00f, 0x0003, 0x0002); b2->body->SetType(b2_staticBody);
 	int big_kicker_right_points[16] = {
 		5, 1,
 		84, 8,
@@ -504,7 +520,7 @@ void j1Map::CreateColliders()
 		84, 29,
 		0, 36
 	};
-	big_right_kicker_coll = App->physics->CreateRevoluteJoint(15, big_kicker_right_points, 16, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
+	big_right_kicker_coll = App->physics->CreateRevoluteJoint(b2, big_kicker_right_points, 16, 387, 1107, 20, 20, -150, -200, 250, 90, 0x0003, 0x0002);
 
 	// Small Kickers
 	int small_kicker_left_points[22] = {
@@ -520,8 +536,11 @@ void j1Map::CreateColliders()
 		57, 6,
 		12, 0
 	};
-	small_left_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 130, 554, 15, 15, 360, 300, 200, -90, 0x0003, 0x0002);
-	small_left_kicker_coll2 = App->physics->CreateRevoluteJoint(12.5, small_kicker_left_points, 20, 412, 258, 15, 15, 15, -25, 200, -90, 0x0003, 0x0002);
+	PhysBody* b3 = App->physics->CreateCircle(130, 554, 12.5, 0.00f, 0x0003, 0x0002); b3->body->SetType(b2_staticBody);
+	small_left_kicker_coll = App->physics->CreateRevoluteJoint(b3, small_kicker_left_points, 20, 130, 554, 15, 15, 360, 300, 200, -90, 0x0003, 0x0002);
+	
+	PhysBody* b4 = App->physics->CreateCircle(412, 258, 12.5, 0.00f, 0x0003, 0x0002); b4->body->SetType(b2_staticBody);
+	small_left_kicker_coll2 = App->physics->CreateRevoluteJoint(b4, small_kicker_left_points, 20, 412, 258, 15, 15, 15, -25, 200, -90, 0x0003, 0x0002);
 
 	int small_kicker_right_points[22] = {
 		1, 11,
@@ -536,8 +555,11 @@ void j1Map::CreateColliders()
 		1, 18,
 		0, 15
 	};
-	small_right_kicker_coll = App->physics->CreateRevoluteJoint(12.5, small_kicker_right_points, 20, 570, 690, 50, 15, 55, 5, 200, -90, 0x0003, 0x0002);
-	small_right_kicker_coll2 = App->physics->CreateRevoluteJoint(12.5, small_kicker_right_points, 20, 550, 258, 50, 15, 30, -10, 200, -90, 0x0003, 0x0002);
+	PhysBody* b5 = App->physics->CreateCircle(570, 690, 12.5, 0.00f, 0x0003, 0x0002); b5->body->SetType(b2_staticBody);
+	small_right_kicker_coll = App->physics->CreateRevoluteJoint(b5, small_kicker_right_points, 20, 570, 690, 50, 15, 55, 5, 200, -90, 0x0003, 0x0002);
+	
+	PhysBody* b6 = App->physics->CreateCircle(550, 258, 12.5, 0.00f, 0x0003, 0x0002); b6->body->SetType(b2_staticBody);
+	small_right_kicker_coll2 = App->physics->CreateRevoluteJoint(b6, small_kicker_right_points, 20, 550, 258, 50, 15, 30, -10, 200, -90, 0x0003, 0x0002);
 
 	// Spring
 	int pos_x = 596; int pos_y = 1150;
@@ -676,39 +698,39 @@ void j1Map::Draw()
 	Blit(bg2->texture, bg2->pos.x, bg2->pos.y, &bg2->rect);
 
 	// Kawaiis
-	Blit(kawaii_blue->texture, kawaii_blue->pos.x, kawaii_blue->pos.y, &kawaii_blue->anim.GetCurrentFrame());
-	Blit(kawaii_red->texture, kawaii_red->pos.x, kawaii_red->pos.y, &kawaii_red->anim.GetCurrentFrame());
-	Blit(kawaii_green->texture, kawaii_green->pos.x, kawaii_green->pos.y, &kawaii_green->anim.GetCurrentFrame());
-	Blit(kawaii_orange->texture, kawaii_orange->pos.x, kawaii_orange->pos.y, &kawaii_orange->anim.GetCurrentFrame());
-	Blit(kawaii_violet->texture, kawaii_violet->pos.x, kawaii_violet->pos.y, &kawaii_violet->anim.GetCurrentFrame());
-	Blit(kawaii_yellow->texture, kawaii_yellow->pos.x, kawaii_yellow->pos.y, &kawaii_yellow->anim.GetCurrentFrame());
-	Blit(kawaii_girl->texture, kawaii_girl->pos.x, kawaii_girl->pos.y, &kawaii_girl->anim.GetCurrentFrame(), 1, 20);
-	Blit(kawaii_guy->texture, kawaii_guy->pos.x, kawaii_guy->pos.y, &kawaii_guy->anim.GetCurrentFrame(), 1, -20);
-	Blit(kawaii_box1->texture, kawaii_box1->pos.x, kawaii_box1->pos.y, &kawaii_box1->anim.GetCurrentFrame());
-	Blit(kawaii_box2->texture, kawaii_box2->pos.x, kawaii_box2->pos.y, &kawaii_box2->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_blue->pos.x, kawaii_blue->pos.y, &kawaii_blue->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_red->pos.x, kawaii_red->pos.y, &kawaii_red->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_green->pos.x, kawaii_green->pos.y, &kawaii_green->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_orange->pos.x, kawaii_orange->pos.y, &kawaii_orange->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_violet->pos.x, kawaii_violet->pos.y, &kawaii_violet->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_yellow->pos.x, kawaii_yellow->pos.y, &kawaii_yellow->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_girl->pos.x, kawaii_girl->pos.y, &kawaii_girl->anim.GetCurrentFrame(), 1, 20);
+	Blit(spritesheet, kawaii_guy->pos.x, kawaii_guy->pos.y, &kawaii_guy->anim.GetCurrentFrame(), 1, -20);
+	Blit(spritesheet, kawaii_box1->pos.x, kawaii_box1->pos.y, &kawaii_box1->anim.GetCurrentFrame());
+	Blit(spritesheet, kawaii_box2->pos.x, kawaii_box2->pos.y, &kawaii_box2->anim.GetCurrentFrame());
 
 	// Big bumpers
-	Blit(big_bumper1->texture, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 62, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 63, &big_bumper1->anim.GetCurrentFrame());
-	Blit(big_bumper2->texture, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 62, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 63, &big_bumper2->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().x) - 62, METERS_TO_PIXELS(big_bumper1->pb->body->GetPosition().y) - 63, &big_bumper1->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().x) - 62, METERS_TO_PIXELS(big_bumper2->pb->body->GetPosition().y) - 63, &big_bumper2->anim.GetCurrentFrame());
 
 	// Small bumpers
-	Blit(small_bumper1->texture, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().y) - 38, &small_bumper1->anim.GetCurrentFrame());
-	Blit(small_bumper2->texture, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().y) - 38, &small_bumper2->anim.GetCurrentFrame());
-	Blit(small_bumper3->texture, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().y) - 38, &small_bumper3->anim.GetCurrentFrame());
-	Blit(small_bumper4->texture, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().y) - 38, &small_bumper4->anim.GetCurrentFrame());
-	Blit(small_bumper5->texture, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().y) - 38, &small_bumper5->anim.GetCurrentFrame());
-	Blit(small_bumper6->texture, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().y) - 38, &small_bumper6->anim.GetCurrentFrame());
-	Blit(small_bumper7->texture, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().y) - 38, &small_bumper7->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper1->pb->body->GetPosition().y) - 38, &small_bumper1->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper2->pb->body->GetPosition().y) - 38, &small_bumper2->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper3->pb->body->GetPosition().y) - 38, &small_bumper3->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper4->pb->body->GetPosition().y) - 38, &small_bumper4->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper5->pb->body->GetPosition().y) - 38, &small_bumper5->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper6->pb->body->GetPosition().y) - 38, &small_bumper6->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().x) - 36, METERS_TO_PIXELS(small_bumper7->pb->body->GetPosition().y) - 38, &small_bumper7->anim.GetCurrentFrame());
 
 	// Small Buttons
-	Blit(little_button1->texture, METERS_TO_PIXELS(little_button1->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button1->pb->body->GetPosition().y) - 26, &little_button1->anim.GetCurrentFrame());
-	Blit(little_button2->texture, METERS_TO_PIXELS(little_button2->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button2->pb->body->GetPosition().y) - 26, &little_button2->anim.GetCurrentFrame());
-	Blit(little_button3->texture, METERS_TO_PIXELS(little_button3->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button3->pb->body->GetPosition().y) - 26, &little_button3->anim.GetCurrentFrame());
-	Blit(little_button4->texture, METERS_TO_PIXELS(little_button4->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button4->pb->body->GetPosition().y) - 26, &little_button4->anim.GetCurrentFrame());
-	Blit(little_button5->texture, METERS_TO_PIXELS(little_button5->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button5->pb->body->GetPosition().y) - 26, &little_button5->anim.GetCurrentFrame());
-	Blit(little_button6->texture, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().y) - 26, &little_button6->anim.GetCurrentFrame());
-	Blit(little_button7->texture, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().y) - 26, &little_button7->anim.GetCurrentFrame());
-	Blit(little_button8->texture, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().y) - 26, &little_button8->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button1->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button1->pb->body->GetPosition().y) - 26, &little_button1->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button2->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button2->pb->body->GetPosition().y) - 26, &little_button2->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button3->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button3->pb->body->GetPosition().y) - 26, &little_button3->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button4->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button4->pb->body->GetPosition().y) - 26, &little_button4->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button5->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button5->pb->body->GetPosition().y) - 26, &little_button5->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button6->pb->body->GetPosition().y) - 26, &little_button6->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button7->pb->body->GetPosition().y) - 26, &little_button7->anim.GetCurrentFrame());
+	Blit(spritesheet, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().x) - 26, METERS_TO_PIXELS(little_button8->pb->body->GetPosition().y) - 26, &little_button8->anim.GetCurrentFrame());
 
 	// Targets
 	Blit(target->texture, 140, 610, &target->rect, 1, 45);
@@ -771,7 +793,7 @@ void j1Map::PrintPuntuations()
 			App->render->Blit(print_points1->texture500, print_points1->points500[i].x + print_points1->points_plus500[i].x, print_points1->points500[i].y - print_points1->points_plus500[i].y, &print_points1->rect500);
 			i++;
 		}
-		else if (print_points1->list500.count());
+		else if (print_points1->list500[i]->IsTimeReached() && !print_points1->list500[i]->stop_time);
 		{
 			print_points1->list500.del(print_points1->list500.At(i));
 			print_points1->points500.del(print_points1->points500.At(i));
@@ -782,10 +804,32 @@ void j1Map::PrintPuntuations()
 	// ------------------------------------
 }
 
+
 // Called before quitting
 bool j1Map::CleanUp()
 {
 	LOG("Unloading map");
+
+	Unload(spritesheet);
+	Unload(ball->texture);
+	Unload(ball1->texture);
+	Unload(ball2->texture);
+	Unload(bg1->texture);
+	Unload(bg2->texture);
+	Unload(spring->texture);
+	Unload(big_left_kicker->texture);
+	Unload(big_right_kicker->texture);
+	Unload(big_right_kicker->texture);
+	Unload(small_left_kicker->texture);
+	Unload(small_right_kicker->texture);
+	Unload(target->texture);
+	Unload(target2->texture);
+	Unload(target3->texture);
+	Unload(target4->texture);
+	Unload(target5->texture);
+	Unload(target6->texture);
+	Unload(target7->texture);
+	Unload(target8->texture);
 
 	return true;
 }
@@ -793,6 +837,11 @@ bool j1Map::CleanUp()
 void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y)
 {
 	App->render->Blit(texture, x, y, section, speed, angle, pivot_x, pivot_y);
+}
+
+void j1Map::Unload(SDL_Texture* tex)
+{
+	App->tex->UnLoad(tex);
 }
 
 
