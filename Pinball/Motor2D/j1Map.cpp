@@ -32,7 +32,7 @@ bool j1Map::Start()
 {
 	bool ret = true;
 
-	print_points1 = new PrintPoints(App->tex->Load("menu/100.png"), 0, 0, 52, 19, App->tex->Load("menu/500.png"), 0, 0, 52, 19, 1);
+	print_points1 = new PrintPoints(App->tex->Load("menu/+100.png"), 0, 0, 46, 21, App->tex->Load("menu/+500.png"), 0, 0, 46, 21, 1);
 
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
@@ -730,36 +730,36 @@ void j1Map::PrintPuntuations()
 	// Puntuation print -------------------
 
 	// 100
-	for (int i = 0; i < App->map->print_points1->list100.count();)
+	for (int i = 0; i < print_points1->list100.count();)
 	{
-		App->map->print_points1->list100[i]->UpdateTime();
+		print_points1->list100[i]->UpdateTime();
 
-		if (!App->map->print_points1->list100[i]->IsTimeReached())
+		if (!print_points1->list100[i]->IsTimeReached())
 		{
-			App->render->Blit(App->map->print_points1->texture100, App->map->print_points1->points100[i].x, App->map->print_points1->points100[i].y, &App->map->print_points1->rect100);
+			App->render->Blit(print_points1->texture100, print_points1->points100[i].x, print_points1->points100[i].y, &print_points1->rect100);
 			i++;
 		}
-		else if (App->map->print_points1->list100[i]->IsTimeReached() && !App->map->print_points1->list100[i]->stop_time)
+		else if (print_points1->list100[i]->IsTimeReached() && !print_points1->list100[i]->stop_time)
 		{
-			App->map->print_points1->list100.del(App->map->print_points1->list100.At(i));
-			App->map->print_points1->points100.del(App->map->print_points1->points100.At(i));
+			print_points1->list100.del(print_points1->list100.At(i));
+			print_points1->points100.del(print_points1->points100.At(i));
 		}
 	}
 
 	// 500
-	for (int i = 0; i < App->map->print_points1->list500.count();)
+	for (int i = 0; i < print_points1->list500.count();)
 	{
-		App->map->print_points1->list500[i]->UpdateTime();
+		print_points1->list500[i]->UpdateTime();
 
-		if (!App->map->print_points1->list500[i]->IsTimeReached())
+		if (!print_points1->list500[i]->IsTimeReached())
 		{
-			App->render->Blit(App->map->print_points1->texture500, App->map->print_points1->points500[i].x, App->map->print_points1->points500[i].y, &App->map->print_points1->rect500);
+			App->render->Blit(print_points1->texture500, print_points1->points500[i].x, print_points1->points500[i].y, &print_points1->rect500);
 			i++;
 		}
-		else if (App->map->print_points1->list500.count());
+		else if (print_points1->list500.count());
 		{
-			App->map->print_points1->list500.del(App->map->print_points1->list500.At(i));
-			App->map->print_points1->points500.del(App->map->print_points1->points500.At(i));
+			print_points1->list500.del(print_points1->list500.At(i));
+			print_points1->points500.del(print_points1->points500.At(i));
 		}
 	}
 

@@ -100,6 +100,11 @@ public:
 			print.x = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().x);
 			print.y = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().y);
 			points100.add(print);
+
+			iPoint plus;
+			plus.x = 0;
+			plus.y = 0;
+			points_plus100.add(plus);
 		}
 
 		void New500()
@@ -112,6 +117,11 @@ public:
 			print.x = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().x);
 			print.y = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().y);
 			points500.add(print);
+
+			iPoint plus;
+			plus.x = 0;
+			plus.y = 0;
+			points_plus500.add(plus);
 		}
 
 	public:
@@ -122,9 +132,11 @@ public:
 
 		p2List<Timer*> list100;
 		p2List<iPoint> points100;
+		p2List<iPoint> points_plus100;
 
 		p2List<Timer*> list500;
 		p2List<iPoint> points500;
+		p2List<iPoint> points_plus500;
 
 		int ball_index;
 		p2List<PhysBody*> balls;
