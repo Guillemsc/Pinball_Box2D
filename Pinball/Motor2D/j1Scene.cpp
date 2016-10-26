@@ -60,7 +60,11 @@ bool j1Scene::Update(float dt)
 		App->audio->PlayFx(App->map->meow_meow_happy_bonus_fx);
 		App->map->kawaii_guy->collide_for_bonus = false; // So it can't enter again
 	}
-
+	if (App->map->kawaii_box1->collide_for_bonus && App->map->kawaii_box2->collide_for_bonus){
+		App->scene_manager->big_pixel_bonus = true;
+		App->audio->PlayFx(App->map->big_pixel_bonus_fx);
+		App->map->kawaii_box1->collide_for_bonus = false; // So it can't enter again
+	}
 	if (one_start)
 	{
 		// Create colliders -----------

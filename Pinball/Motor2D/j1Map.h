@@ -315,6 +315,8 @@ public:
 	uint					kawaii_sound2_fx;
 	uint					kawaii_sound3_fx;
 	uint					kawaii_sound4_fx;
+	uint					big_pixel1_fx;
+	uint					big_pixel2_fx;
 	uint					small_bumper_fx;
 	uint					big_bumper_fx;
 	uint					multiball_release_fx;
@@ -323,6 +325,8 @@ public:
 	uint					slingshot_fx;
 	uint					piyo_bonus_fx;
 	uint					meow_meow_happy_bonus_fx;
+	uint					big_pixel_bonus_fx;
+
 	// Lists
 	p2List<Timer*>			timers;
 

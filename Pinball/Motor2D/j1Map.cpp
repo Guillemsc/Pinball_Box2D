@@ -48,6 +48,8 @@ bool j1Map::Start()
 	kawaii_sound2_fx = App->audio->LoadFx("audio/fx/kawaii_sound2_fx.wav");
 	kawaii_sound3_fx = App->audio->LoadFx("audio/fx/kawaii_sound3_fx.wav");
 	kawaii_sound4_fx = App->audio->LoadFx("audio/fx/kawaii_sound4_fx.wav");
+	big_pixel1_fx = App->audio->LoadFx("audio/fx/big_pixel1_fx.wav");
+	big_pixel2_fx = App->audio->LoadFx("audio/fx/big_pixel2_fx.wav");
 	multiball_release_fx = App->audio->LoadFx("audio/fx/multiball_release_fx.wav");
 	multiball_fx = App->audio->LoadFx("audio/fx/multiball_fx.wav");
 	slingshot_fx = App->audio->LoadFx("audio/fx/slingshot_fx.wav");
@@ -56,6 +58,7 @@ bool j1Map::Start()
 	big_bumper_fx = App->audio->LoadFx("audio/fx/big_bumper_fx.wav");
 	piyo_bonus_fx = App->audio->LoadFx("audio/fx/piyo_bonus_fx.wav");
 	meow_meow_happy_bonus_fx = App->audio->LoadFx("audio/fx/meow_meow_happy_bonus_fx.wav");
+	big_pixel_bonus_fx = App->audio->LoadFx("audio/fx/big_pixel_bonus_fx.wav");
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 

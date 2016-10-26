@@ -578,8 +578,9 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			break;
 		case kawaii_box1:
 			if (App->map->kawaii_box1->collide_once) {
-				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->audio->PlayFx(App->map->big_pixel1_fx);
 				App->map->kawaii_box1->collide_once = false;
+				App->map->kawaii_box1->collide_for_bonus = true;
 			}
 			App->map->kawaii_box1->timer->Start();
 			App->map->player.score += 100;
@@ -587,8 +588,9 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			break;
 		case kawaii_box2:
 			if (App->map->kawaii_box2->collide_once) {
-				App->audio->PlayFx(App->map->kawaii_sound2_fx);
+				App->audio->PlayFx(App->map->big_pixel2_fx);
 				App->map->kawaii_box2->collide_once = false;
+				App->map->kawaii_box2->collide_for_bonus = true;
 			}
 			App->map->kawaii_box2->timer->Start();
 			App->map->player.score += 100;

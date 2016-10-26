@@ -89,6 +89,10 @@ bool j1SceneManager::Update(float dt)
 		meow_meow_happy_bonus = false;
 		timer2->stop_time = true;
 	}
+	if (timer3->IsTimeReached() && !timer3->stop_time) {
+		big_pixel_bonus = false;
+		timer3->stop_time = true;
+	}
 	// Title and puntuation
 	if (App->scene->active)
 	{
@@ -114,6 +118,16 @@ bool j1SceneManager::Update(float dt)
 				meow_meow_happy_bonus_sum = false;
 			}
 			App->win->SetTitle(title3.GetString());
+		}
+		if (big_pixel_bonus) {
+			timer3->UpdateTime();
+			p2SString title4("\t\tBIG PIXEL BONUS +200000");
+			if (big_pixel_bonus_sum) { // So it sums once
+				timer3->Start();
+				App->map->player.score += 200000;
+				big_pixel_bonus_sum = false;
+			}
+			App->win->SetTitle(title4.GetString());
 		}
 	}
 	else
