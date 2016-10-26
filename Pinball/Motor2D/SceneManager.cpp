@@ -95,6 +95,10 @@ bool j1SceneManager::Update(float dt)
 	if(App->map->player.balls == 0 && App->scene->IsEnabled())
 	{
 		App->render->DrawQuad(background, 30, 30, 30, 160);
+		if (App->map->player.score > App->map->player.max_score){
+			App->map->player.max_score = App->map->player.score;
+		}
+
 		game_over = true;
 	}
 

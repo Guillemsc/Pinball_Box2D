@@ -139,5 +139,8 @@
     <Xml Include="..\Game\config.xml">
       <Filter>Desenvolupament  ========\Modules</Filter>
     </Xml>
+    <Xml Include="..\Game\save_game.xml">
+      <Filter>Desenvolupament  ========\Tools</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

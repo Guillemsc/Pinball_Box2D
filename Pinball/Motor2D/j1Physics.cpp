@@ -650,6 +650,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			break;
 		case slingshot:
 			App->audio->PlayFx(App->map->slingshot_fx);
+			App->map->player.score += 100;
 			break;
 		case target:
 			App->audio->PlayFx(App->map->target_fx);
