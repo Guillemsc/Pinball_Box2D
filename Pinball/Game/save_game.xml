@@ -4,4 +4,5 @@
   <renderer>
     <camera x="100" y="0"/>
   </renderer>
+  <scene_manager max_score = "0"/>
 </game_state>

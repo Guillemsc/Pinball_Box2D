@@ -34,7 +34,7 @@ bool j1SceneManager::Awake()
 bool j1SceneManager::Load(pugi::xml_node &data)
 {
 	App->map->player.max_score = data.attribute("max_score").as_int();
-
+	
 	return true;
 }
 
@@ -42,18 +42,23 @@ bool j1SceneManager::Save(pugi::xml_node &data) const
 {
 	if (data.attribute("max_score").as_int() < App->map->player.max_score)
 		data.append_attribute("max_score") = App->map->player.max_score;
-
+		
 	return true;
 }
 
 // Called before the first frame
 bool j1SceneManager::Start()
 {
-	App->LoadGame("save_game.xml");
+	//App->LoadGame("save_game.xml");
 
 	one_time = true;
 	loading = new Timer(1.5);
 	game_over = false;
+	is_loading = false;;
+	App->map->player.balls = 3;
+	App->map->player.score = 0;
+	App->map->player.max_score = 0;
+
 
 	background.x = 0;
 	background.y = -App->render->camera.y;
@@ -154,6 +159,7 @@ bool j1SceneManager::Update(float dt)
 	// Activate camera debug
 	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		camera_debug = !camera_debug;
+		
 
 	// Loading timer
 	if (!loading->IsTimeReached())
@@ -174,9 +180,6 @@ bool j1SceneManager::Update(float dt)
 	// Game over ---------------
 	if(App->map->player.balls == 0 && App->scene->IsEnabled() && !is_loading)
 	{
-		if(!game_over)
-			App->SaveGame("save_game.xml");
-
 		App->render->DrawQuad(background, 30, 30, 30, 200);
 	
 		// Max Score update

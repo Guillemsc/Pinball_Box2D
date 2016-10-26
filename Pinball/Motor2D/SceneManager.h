@@ -94,25 +94,29 @@ public:
 	void Unload(SDL_Texture* tex);
 
 public:
-	bool			camera_debug = true;
+	bool			camera_debug = false;
+
+
 	Timer*			loading;
 	bool			is_loading;
 	bool			game_over;
-	bool piyo_bonus = false; //+150.000 points
-	bool piyo_bonus_sum = true;
-	Timer* timer = new Timer(4);
-	bool meow_meow_happy_bonus = false; //+200.000 points
-	bool meow_meow_happy_bonus_sum = true;
-	Timer* timer2 = new Timer(4);
-	bool big_pixel_bonus = false; //+200.000 points
-	bool big_pixel_bonus_sum = true;
-	Timer* timer3 = new Timer(4);
-	bool loop_bonus = false;
-	bool loop_bonus_sum = true;
-	Timer* timer4 = new Timer(4);
+
+	bool			piyo_bonus = false; //+150.000 points
+	bool			piyo_bonus_sum = true;
+	Timer*			timer = new Timer(4);
+	bool			meow_meow_happy_bonus = false; //+200.000 points
+	bool			meow_meow_happy_bonus_sum = true;
+	Timer*			timer2 = new Timer(4);
+	bool			big_pixel_bonus = false; //+200.000 points
+	bool			big_pixel_bonus_sum = true;
+	Timer*			timer3 = new Timer(4);
+	bool			loop_bonus = false;
+	bool			loop_bonus_sum = true;
+	Timer*			timer4 = new Timer(4);
 
 private:
 	bool			one_time;
+
 	SDL_Rect		background;
 
 	MenuItem*		loading_image;

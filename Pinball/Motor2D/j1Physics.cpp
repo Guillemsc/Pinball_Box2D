@@ -105,10 +105,7 @@ bool j1Physics::PostUpdate()
 {
 	bool ret = true;
 
-	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
-		debug = !debug;
-
-	if (!debug)
+	if (!App->scene_manager->camera_debug)
 		return true;
 
 	// Bonus code: this will iterate all objects in the world and draw the circles
@@ -988,11 +985,11 @@ void j1Physics::TimerActions()
 	// Small bumper 6
 	if (App->map->small_bumper6->timer->IsTimeReached()) 
 	{
-		if (!App->map->small_bumper1->timer->stop_time)
+		if (!App->map->small_bumper6->timer->stop_time)
 		{
-			App->map->small_bumper1->anim.SetFrame(0);
-			App->map->small_bumper1->anim.speed = 0;
-			App->map->small_bumper1->timer->Reset();
+			App->map->small_bumper6->anim.SetFrame(0);
+			App->map->small_bumper6->anim.speed = 0;
+			App->map->small_bumper6->timer->Reset();
 		}
 	}
 	else
