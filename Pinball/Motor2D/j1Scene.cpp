@@ -212,6 +212,7 @@ void j1Scene::ResetBall(bool& reset)
 	if (reset) 
 	{
 		App->audio->PlayFx(App->map->ball_lost_fx);
+		App->map->ball->pb->body->SetAngularVelocity(0);
 		App->map->ball->pb->body->SetTransform(b2Vec2(PIXEL_TO_METERS(598), PIXEL_TO_METERS(990)), 0);
 		App->map->ball->pb->body->SetAngularVelocity(0);
 		reset = false;
