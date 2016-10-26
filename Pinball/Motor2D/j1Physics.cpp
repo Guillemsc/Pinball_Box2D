@@ -428,9 +428,10 @@ b2PrismaticJoint* j1Physics::CreatePrismaticJoint(PhysBody* bodyA, PhysBody* bod
 	return joint;
 }
 
-b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int size, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category)
+
+b2RevoluteJoint* j1Physics::CreateRevoluteJoint(PhysBody* bodyB, int* vects, int size, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category)
 {
-//body and fixture defs - the common parts
+  //body and fixture defs - the common parts
   b2BodyDef bodyDef;
   b2FixtureDef fixtureDef;
   fixtureDef.density = 1;
@@ -448,10 +449,6 @@ b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int size
   }
 
   poligonShape.Set(vect, size/2);
-
-
-  b2CircleShape circleShape;
-  circleShape.m_radius = PIXEL_TO_METERS(radius);
   
   //make a box
   bodyDef.position.Set(PIXEL_TO_METERS(posx), PIXEL_TO_METERS(posy));
@@ -459,17 +456,11 @@ b2RevoluteJoint* j1Physics::CreateRevoluteJoint(int radius, int* vects, int size
   bodyDef.type = b2_dynamicBody;
   b2Body* m_bodyA = world->CreateBody( &bodyDef );
   m_bodyA->CreateFixture( &fixtureDef );
-  
-  //and a circle
-  bodyDef.position.Set(PIXEL_TO_METERS(posx), PIXEL_TO_METERS(posy));
-  fixtureDef.shape = &circleShape;
-  bodyDef.type = b2_staticBody;
-  b2Body* m_bodyB = world->CreateBody( &bodyDef );
-  m_bodyB->CreateFixture( &fixtureDef );
+ 
 
   b2RevoluteJointDef revoluteJointDef;
   revoluteJointDef.bodyA = m_bodyA;
-  revoluteJointDef.bodyB = m_bodyB;
+  revoluteJointDef.bodyB = bodyB->body;
   revoluteJointDef.collideConnected = false;
   revoluteJointDef.type = e_revoluteJoint;
   revoluteJointDef.localAnchorA.Set(PIXEL_TO_METERS(desplacementx), PIXEL_TO_METERS(desplacementy));
@@ -744,16 +735,20 @@ void j1Physics::TimerActions()
 
 
 	// Kawaii_blue
-	if (App->map->kawaii_blue->timer->IsTimeReached())	{
-		if (App->map->kawaii_blue->timer->stop_time) { 
+	if (App->map->kawaii_blue->timer->IsTimeReached())	
+	{
+		if (App->map->kawaii_blue->timer->stop_time) 
+		{ 
 			App->map->kawaii_blue->anim.SetFrame(0); 
 		}
-		else {
+		else 
+		{
 			App->map->kawaii_blue->anim.SetFrame(1);
 			App->map->kawaii_blue->anim.speed = 0;
 		}
 	}
-	else{
+	else
+	{
 		App->map->kawaii_blue->anim.speed = 0.5f;
 	}
 

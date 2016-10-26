@@ -202,7 +202,6 @@ public:
 		{};
 
 	public:
-		SDL_Texture* texture = App->tex->Load("images/spritesheet.png");
 		Animation anim;
 		iPoint pos;
 		PhysBody* pb = nullptr;
@@ -228,6 +227,7 @@ public:
 	void Draw();
 	void CreateTimers();
 	void PrintPuntuations();
+	void Unload(SDL_Texture* tex);
 
 	// Called before quitting
 	bool CleanUp();
@@ -238,10 +238,13 @@ private:
 public:
 
 	// Sprites
+	Sprite*					ball;
+	Sprite*					ball1;
+	Sprite*					ball2;
+
 	Sprite*					bg1;
 	Sprite*					bg2;
 	Sprite*					spring;	
-	Sprite*					ball;
 	Sprite*					big_left_kicker;
 	Sprite*					big_right_kicker;
 	Sprite*					small_left_kicker;
@@ -285,6 +288,9 @@ public:
 	SpriteSheetItem*		big_bumper1;
 	SpriteSheetItem*		big_bumper2;
 	SpriteSheetItem*	    blue_arrow;
+
+	// Sprite Sheet
+	SDL_Texture*			spritesheet = nullptr;
 
 	// Kickers
 	b2RevoluteJoint*		big_left_kicker_coll;

@@ -212,7 +212,12 @@ bool j1SceneManager::PostUpdate()
 // Called before quitting
 bool j1SceneManager::CleanUp()
 {
-	LOG("Freeing scene");
+	LOG("Freeing scene manager");
+
+	Unload(loading_image->texture);
+	Unload(button_normal->texture);
+	Unload(button_pressed->texture);
+	Unload(game_over_text->texture);
 
 	return true;
 }
@@ -232,4 +237,9 @@ void j1SceneManager::LoadScene()
 		App->physics->Disable();
 		App->physics->active = false;
 */
+}
+
+void j1SceneManager::Unload(SDL_Texture * tex)
+{
+	App->tex->UnLoad(tex);
 }

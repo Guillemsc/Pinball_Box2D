@@ -118,7 +118,13 @@ bool j1Menu::PostUpdate()
 // Called before quitting
 bool j1Menu::CleanUp()
 {
-	LOG("Freeing scene");
+	LOG("Freeing menu");
+
+	Unload(start->texture);
+	Unload(button_normal->texture);
+	Unload(button_pressed->texture);
+	Unload(rotating_background->texture);
+	Unload(logo->texture);
 
 	return true;
 }
@@ -164,6 +170,11 @@ bool Button::MouseOver()
 		}
 	}
 	return false;
+}
+
+void j1Menu::Unload(SDL_Texture* tex)
+{
+	App->tex->UnLoad(tex);
 }
 
 
