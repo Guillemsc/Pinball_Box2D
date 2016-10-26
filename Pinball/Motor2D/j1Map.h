@@ -10,15 +10,124 @@
 #include "j1Physics.h"
 
 class App;
+
 class j1Map : public j1Module
 {
 public:
 
+	// Lists
+	p2List<PhysBody*>		balls;
+
+public:
 	struct Player
 	{
 		uint score;
 		uint balls;
 		uint max_score;
+	};
+
+	class Timer
+	{
+	public:
+		Timer(float _time_to_wait) : time_to_wait(_time_to_wait * 0.5f * 1000.0f)
+		{
+			now = 0.0f;
+			stop_time = true;
+			actual = 0.0f;
+		}
+
+		~Timer()
+		{};
+
+
+		void UpdateTime()
+		{
+			if (!stop_time)
+				now = SDL_GetTicks();
+			else
+				now = time_to_wait + 10;
+		}
+
+		bool IsTimeReached()
+		{
+			if (now - actual >= time_to_wait)
+				return true;
+			return false;
+		}
+
+		void Reset()
+		{
+			stop_time = true;
+		}
+
+		void Start()
+		{
+			stop_time = false;
+			actual = SDL_GetTicks();
+		}
+
+	private:
+
+	public:
+
+	public:
+		float now;
+		float time_to_wait;
+		float actual;
+		bool stop_time;
+	};
+
+	class PrintPoints
+	{
+	public:
+		PrintPoints(SDL_Texture* _texture100, int x, int y, int w, int h, SDL_Texture* _texture500, int x2, int y2, int w2, int h2, int _ball_index)
+		{
+			texture100 = _texture100;
+			texture500 = _texture500;
+			ball_index = _ball_index;
+
+			rect100.x = x; rect100.y = y; rect100.w = w; rect100.h = h;
+			rect500.x = x2; rect500.y = y2; rect500.w = w2; rect500.h = h2;
+		}
+
+		void New100()
+		{
+			Timer* t = new Timer(1.5);
+			list100.add(t);
+			list100[list100.count() - 1]->Start();
+
+			iPoint print;
+			print.x = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().x);
+			print.y = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().y);
+			points100.add(print);
+		}
+
+		void New500()
+		{
+			Timer* t = new Timer(2);
+			list500.add(t);
+			list500[list500.count() - 1]->Start();
+
+			iPoint print;
+			print.x = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().x);
+			print.y = METERS_TO_PIXELS(balls[ball_index - 1]->body->GetPosition().y);
+			points500.add(print);
+		}
+
+	public:
+		SDL_Texture* texture100 = nullptr;
+		SDL_Rect rect100;
+		SDL_Texture* texture500 = nullptr;
+		SDL_Rect rect500;
+
+		p2List<Timer*> list100;
+		p2List<iPoint> points100;
+
+		p2List<Timer*> list500;
+		p2List<iPoint> points500;
+
+		int ball_index;
+		p2List<PhysBody*> balls;
 	};
 
 	class Sprite
@@ -61,7 +170,6 @@ public:
 	private:
 	};
 
-	class Timer;
 	class SpriteSheetItem 
 	{
 	public:
@@ -92,57 +200,6 @@ public:
 	private:
 	};
 
-	class Timer
-	{
-	public:
-		Timer(float _time_to_wait) : time_to_wait(_time_to_wait * 0.5f * 1000.0f)
-		{
-			now = 0.0f;
-			stop_time = true;
-			actual = 0.0f;
-		}
-
-		~Timer()
-		{};
-
-
-		void UpdateTime()
-		{
-			if (!stop_time)
-				now = SDL_GetTicks();
-			else
-				now = time_to_wait + 10;
-		}
-
-		bool IsTimeReached()
-		{
-			if (now - actual >= time_to_wait)
-				return true;
-			return false;
-		}
-
-		void Reset()
-		{
-			stop_time = true;
-		}
-
-		void Start()
-		{
-			stop_time = false;
-			actual = SDL_GetTicks();
-		}
-	
-	private:
-
-	public:
-
-	public:
-		float now;
-		float time_to_wait;
-		float actual;
-		bool stop_time;
-	};
-
 	j1Map();
 
 	// Destructor
@@ -157,6 +214,7 @@ public:
 	void CreateColliders();
 	void Draw();
 	void CreateTimers();
+	void PrintPuntuations();
 
 	// Called before quitting
 	bool CleanUp();
@@ -252,11 +310,12 @@ public:
 	uint					slingshot_fx;
 
 	// Lists
-	p2List<PhysBody*>		balls;
 	p2List<Timer*>			timers;
 
 	// Player
 	Player player;
+
+	PrintPoints* print_points1;
 };
 
 #endif // __j1MAP_H__

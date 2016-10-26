@@ -104,6 +104,7 @@ private:
 	MenuItem*		loading_image;
 	MenuItem*		button_normal;
 	MenuItem*		button_pressed;
+	MenuItem*		game_over_text;
 	Button*			play_again;
 };
 

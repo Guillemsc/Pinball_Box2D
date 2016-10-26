@@ -63,6 +63,7 @@ bool j1SceneManager::Start()
 	loading_image = new MenuItem(App->tex->Load("menu/loading.png"), 0, 0, 224, 34, 215, 750);
 	button_normal = new MenuItem(App->tex->Load("menu/play_again_button_blue.png"), 0, 0, 320, 76, 160, 850);
 	button_pressed = new MenuItem(App->tex->Load("menu/play_again_button_orange.png"), 0, 0, 320, 76, 160, 850);
+	game_over_text = new MenuItem(App->tex->Load("menu/game_over.png"), 0, 0, 620, 152, 0, 700);
 	play_again = new Button(160, 470, 320, 80);
 
 	return true;
@@ -138,6 +139,9 @@ bool j1SceneManager::Update(float dt)
 		{
 			App->render->Blit(button_normal->texture, button_normal->pos.x, button_normal->pos.y, &button_normal->rect);
 		}
+
+		App->render->Blit(game_over_text->texture, game_over_text->pos.x, game_over_text->pos.y, &game_over_text->rect);
+
 		// Play again
 		if(play_again->MouseDown() && game_over)
 		{

@@ -159,6 +159,8 @@ bool j1Scene::Update(float dt)
 
 	App->map->Draw();
 
+	App->map->PrintPuntuations();
+
 	// ----------------
 
 	ResetBall(resetball);

@@ -9,6 +9,7 @@
 #include "j1Map.h"
 #include "j1Physics.h"
 #include "j1Scene.h"
+#include "j1Map.h"
 
 
 #define GRAVITY_X 0.0f
@@ -522,6 +523,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_blue->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_red:
 			if (App->map->kawaii_red->collide_once) {
@@ -530,6 +532,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_red->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_violet:
 			if (App->map->kawaii_violet->collide_once) {
@@ -538,6 +541,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_violet->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_yellow:
 			if (App->map->kawaii_yellow->collide_once) {
@@ -546,6 +550,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_yellow->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_green:
 			if (App->map->kawaii_green->collide_once) {
@@ -554,6 +559,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_green->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_orange:
 			if (App->map->kawaii_orange->collide_once) {
@@ -562,6 +568,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_orange->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_box1:
 			if (App->map->kawaii_box1->collide_once) {
@@ -570,6 +577,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_box1->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_box2:
 			if (App->map->kawaii_box2->collide_once) {
@@ -578,51 +586,61 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_box2->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case big_bumper_1:
 			App->map->big_bumper1->timer->Start();
 			App->audio->PlayFx(App->map->big_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case big_bumper_2:
 			App->map->big_bumper2->timer->Start();
 			App->audio->PlayFx(App->map->big_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_1:
 			App->map->small_bumper1->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_2:
 			App->map->small_bumper2->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_3:
 			App->map->small_bumper3->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_4:
 			App->map->small_bumper4->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_5:
 			App->map->small_bumper5->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_6:
 			App->map->small_bumper6->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case small_bumper_7:
 			App->map->small_bumper7->timer->Start();
 			App->audio->PlayFx(App->map->small_bumper_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_girl:
 			if (App->map->kawaii_girl->collide_once) {
@@ -631,6 +649,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_girl->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case kawaii_guy:
 			if (App->map->kawaii_guy->collide_once) {
@@ -639,6 +658,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			}
 			App->map->kawaii_guy->timer->Start();
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case ball_dead_detector:
 			App->scene->resetball = true;
@@ -652,46 +672,55 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 		case slingshot:
 			App->audio->PlayFx(App->map->slingshot_fx);
 			App->map->player.score += 100;
+			App->map->print_points1->New100();
 			break;
 		case target:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button1->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target2:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button3->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target3:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button4->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target4:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button2->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target5:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button5->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target6:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button8->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target7:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button7->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		case target8:
 			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button6->anim.SetFrame(1);
 			App->map->player.score += 500;
+			App->map->print_points1->New500();
 			break;
 		default:
 			break;
@@ -702,6 +731,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 void j1Physics::TimerActions()
 {
 	// Timer actions ----------------------------------------------------------------------------------
+
 
 	// Kawaii_blue
 	if (App->map->kawaii_blue->timer->IsTimeReached())	{

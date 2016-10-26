@@ -32,6 +32,8 @@ bool j1Map::Start()
 {
 	bool ret = true;
 
+	print_points1 = new PrintPoints(App->tex->Load("menu/100.png"), 0, 0, 52, 19, App->tex->Load("menu/500.png"), 0, 0, 52, 19, 1);
+
 	// Audio MUSIC
 	App->audio->PlayMusic("audio/music/game_music.mp3");
 
@@ -264,7 +266,7 @@ void j1Map::CreateColliders()
 	ball->pb = App->physics->CreateCircle(598, 990, 14, 0.4f, 0x0002, 0x0001); ball->pb->body->SetBullet(1);
 	ball->pb->listener = App->physics;
 	ball->pb->coll_name = collider_names::ball;
-	balls.add(ball->pb);
+	print_points1->balls.add(ball->pb);
 
 	// Background standalone colliders
 	// Pivot 0, 0
@@ -655,7 +657,6 @@ void j1Map::CreateTimers()
 	small_bumper7->timer = new Timer(0.3); timers.add(small_bumper7->timer);
 }
 
-
 void j1Map::Draw()
 {
 	// Background --------------
@@ -721,6 +722,48 @@ void j1Map::Draw()
 	Blit(small_right_kicker->texture, 520, 675, &small_right_kicker->rect, 1, (-small_right_kicker_coll->GetJointAngle() * RADTODEG), 54, 15);
 	Blit(small_left_kicker->texture, 400, 242, &small_left_kicker->rect, 1, (-small_left_kicker_coll2->GetJointAngle() * RADTODEG), 13, 15);
 	Blit(small_right_kicker->texture, 497, 243, &small_right_kicker->rect, 1, (-small_right_kicker_coll2->GetJointAngle() * RADTODEG), 54, 15);
+
+}
+
+void j1Map::PrintPuntuations()
+{
+	// Puntuation print -------------------
+
+	// 100
+	for (int i = 0; i < App->map->print_points1->list100.count();)
+	{
+		App->map->print_points1->list100[i]->UpdateTime();
+
+		if (!App->map->print_points1->list100[i]->IsTimeReached())
+		{
+			App->render->Blit(App->map->print_points1->texture100, App->map->print_points1->points100[i].x, App->map->print_points1->points100[i].y, &App->map->print_points1->rect100);
+			i++;
+		}
+		else if (App->map->print_points1->list100[i]->IsTimeReached() && !App->map->print_points1->list100[i]->stop_time)
+		{
+			App->map->print_points1->list100.del(App->map->print_points1->list100.At(i));
+			App->map->print_points1->points100.del(App->map->print_points1->points100.At(i));
+		}
+	}
+
+	// 500
+	for (int i = 0; i < App->map->print_points1->list500.count();)
+	{
+		App->map->print_points1->list500[i]->UpdateTime();
+
+		if (!App->map->print_points1->list500[i]->IsTimeReached())
+		{
+			App->render->Blit(App->map->print_points1->texture500, App->map->print_points1->points500[i].x, App->map->print_points1->points500[i].y, &App->map->print_points1->rect500);
+			i++;
+		}
+		else if (App->map->print_points1->list500.count());
+		{
+			App->map->print_points1->list500.del(App->map->print_points1->list500.At(i));
+			App->map->print_points1->points500.del(App->map->print_points1->points500.At(i));
+		}
+	}
+
+	// ------------------------------------
 }
 
 // Called before quitting
