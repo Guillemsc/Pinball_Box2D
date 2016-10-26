@@ -205,6 +205,8 @@ public:
 		void ResetFrame()
 		{
 			anim.SetFrame(0);
+			collide_once = true;
+			collide_for_bonus = false;
 		}
 
 		void ResetTimer()

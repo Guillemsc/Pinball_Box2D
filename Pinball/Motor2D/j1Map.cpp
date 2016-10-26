@@ -5,6 +5,7 @@
 #include "j1FileSystem.h"
 #include "j1Textures.h"
 #include "j1Map.h"
+#include "SceneManager.h"
 #include "j1Animation.h"
 #include "j1Audio.h"
 #include <math.h>
@@ -872,6 +873,14 @@ void j1Map::ResetAnimations()
 		if(s_s_i[i]->timer != nullptr)
 			s_s_i[i]->ResetTimer();
 	}
+	App->scene_manager->piyo_bonus = false; //+150.000 points
+	App->scene_manager->piyo_bonus_sum = true;
+	App->scene_manager->meow_meow_happy_bonus = false; //+200.000 points
+	App->scene_manager->meow_meow_happy_bonus_sum = true;
+	App->scene_manager->big_pixel_bonus = false; //+200.000 points
+	App->scene_manager->big_pixel_bonus_sum = true;
+	App->scene_manager->loop_bonus = false;
+	App->scene_manager->loop_bonus_sum = true;
 }
 
 void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y)
