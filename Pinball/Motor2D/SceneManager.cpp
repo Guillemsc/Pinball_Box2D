@@ -36,6 +36,7 @@ bool j1SceneManager::Start()
 {
 	one_time = true;
 	loading = new Timer(1.5);
+	game_over = false;
 
 	background.x = 0;
 	background.y = -App->render->camera.y;
@@ -95,7 +96,7 @@ bool j1SceneManager::Update(float dt)
 		is_loading = false;
 
 	// Game over
-	if(App->map->player.balls == 0 && App->scene->IsEnabled())
+	if(App->map->player.balls == 0 && App->scene->IsEnabled() && !is_loading)
 	{
 
 		App->render->DrawQuad(background, 30, 30, 30, 200);
@@ -106,7 +107,8 @@ bool j1SceneManager::Update(float dt)
 		}
 
 		game_over = true;
-		if(play_again->MouseOver())
+
+		if(play_again->MouseOver() && game_over)
 		{
 			App->render->Blit(button_pressed->texture, button_pressed->pos.x, button_pressed->pos.y, &button_pressed->rect);
 		}
@@ -114,11 +116,12 @@ bool j1SceneManager::Update(float dt)
 		{
 			App->render->Blit(button_normal->texture, button_normal->pos.x, button_normal->pos.y, &button_normal->rect);
 		}
-		if(play_again->MouseDown())
+		if(play_again->MouseDown() && game_over)
 		{
 			game_over = false;
 			one_time = true;
 			App->map->player.balls = 3;
+			App->map->player.score = 0;
 			loading->Start();
 			is_loading = true;
 		}

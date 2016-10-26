@@ -96,18 +96,18 @@ bool j1Scene::Update(float dt)
 
 
 	// Left kickers
-	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN && !App->scene_manager->is_loading)) {
+	if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_DOWN && !App->scene_manager->is_loading && !App->scene_manager->game_over)) {
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 		App->map->small_left_kicker_coll->SetMotorSpeed(200);
 		App->map->small_left_kicker_coll2->SetMotorSpeed(200);
 		App->audio->PlayFx(App->map->kicker1_fx);
 	}
-	else if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && !App->scene_manager->is_loading) {
+	else if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->map->big_left_kicker_coll->SetMotorSpeed(400);
 		App->map->small_left_kicker_coll->SetMotorSpeed(200);
 		App->map->small_left_kicker_coll2->SetMotorSpeed(200);
 	}
-	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_UP) && !App->scene_manager->is_loading) {
+	else if ((App->input->GetKey(SDL_SCANCODE_A) == KEY_UP) && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->audio->PlayFx(App->map->kicker2_fx);
 	}
 	else {
@@ -117,18 +117,18 @@ bool j1Scene::Update(float dt)
 	}
 
 	// Right kickers
-	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN) && !App->scene_manager->is_loading) {
+	if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_DOWN) && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 		App->map->small_right_kicker_coll->SetMotorSpeed(-200);
 		App->map->small_right_kicker_coll2->SetMotorSpeed(-200);
 		App->audio->PlayFx(App->map->kicker1_fx);
 	}
-	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) && !App->scene_manager->is_loading) {
+	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->map->big_right_kicker_coll->SetMotorSpeed(-400);
 		App->map->small_right_kicker_coll->SetMotorSpeed(-200);
 		App->map->small_right_kicker_coll2->SetMotorSpeed(-200);
 	}
-	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_UP) && !App->scene_manager->is_loading) {
+	else if ((App->input->GetKey(SDL_SCANCODE_D) == KEY_UP) && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->audio->PlayFx(App->map->kicker2_fx);
 	}
 	else {
@@ -140,13 +140,13 @@ bool j1Scene::Update(float dt)
 
 	// Spring ----------
 
-	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) && !App->scene_manager->is_loading) {
+	if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_DOWN) && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->audio->PlayFx(App->map->spring_pull_fx);
 		App->map->spring_coll->SetMotorSpeed(2);
 	}
-	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) && !App->scene_manager->is_loading)
+	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) && !App->scene_manager->is_loading && !App->scene_manager->game_over)
 		App->map->spring_coll->SetMotorSpeed(6);
-	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_UP) && !App->scene_manager->is_loading) {
+	else if ((App->input->GetKey(SDL_SCANCODE_S) == KEY_UP) && !App->scene_manager->is_loading && !App->scene_manager->game_over) {
 		App->audio->PlayFx(App->map->spring_push_fx);
 	}
 	else {
