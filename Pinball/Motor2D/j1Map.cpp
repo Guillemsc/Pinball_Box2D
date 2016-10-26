@@ -199,9 +199,9 @@ bool j1Map::Start()
 		little_button7->anim.speed = 0.00f;
 
 	little_button8 = new SpriteSheetItem();
-		little_button1->anim.PushBack({ 102, 334, 55, 55 });
-		little_button1->anim.PushBack({ 8, 278, 52, 52 });
-		little_button1->anim.speed = 0.00f;
+		little_button8->anim.PushBack({ 102, 334, 55, 55 });
+		little_button8->anim.PushBack({ 8, 278, 52, 52 });
+		little_button8->anim.speed = 0.00f;
 
 	// Small Bumpers
 	small_bumper1 = new SpriteSheetItem();
@@ -634,7 +634,7 @@ void j1Map::CreateColliders()
 	little_button7->pb = App->physics->CreateCircleSensor(530, 112, 20, 0x0003, 0x0002); little_button7->pb->body->SetType(b2_kinematicBody);
 	little_button7->pb->coll_name = collider_names::little_button_7;
 
-	little_button8->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button8->pb->body->SetType(b2_kinematicBody);
+	little_button8->pb = App->physics->CreateCircleSensor(160, 300, 20, 0x0003, 0x0002); little_button8->pb->body->SetType(b2_kinematicBody);
 	little_button8->pb->coll_name = collider_names::little_button_8;
 
 	// -------------------------

@@ -72,7 +72,7 @@ bool j1SceneManager::Update(float dt)
 	}
 
 	// Activate camera debug
-	if (App->input->GetKey(SDL_SCANCODE_G) == KEY_DOWN)
+	if (App->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
 		camera_debug = !camera_debug;
 
 	// Loading timer

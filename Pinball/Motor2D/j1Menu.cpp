@@ -98,6 +98,9 @@ bool j1Menu::Update(float dt)
 
 		if ((App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT))
 			App->render->camera.x -= 5;
+
+		if((App->input->GetKey(SDL_SCANCODE_F2) == KEY_DOWN))
+			App->scene_manager->loading->Start();
 	}
 
 	return true;
