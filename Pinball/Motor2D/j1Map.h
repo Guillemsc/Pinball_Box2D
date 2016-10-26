@@ -321,6 +321,7 @@ public:
 	uint					multiball_fx;
 	uint					target_fx;
 	uint					slingshot_fx;
+	uint					piyo_bonus_fx;
 
 	// Lists
 	p2List<Timer*>			timers;

@@ -52,6 +52,7 @@ bool j1Scene::Update(float dt)
 		&& App->map->kawaii_violet->collide_for_bonus && App->map->kawaii_green->collide_for_bonus) 
 	{
 		App->scene_manager->piyo_bonus = true;
+		App->audio->PlayFx(App->map->piyo_bonus_fx);
 		App->map->kawaii_blue->collide_for_bonus = false; // So it can't enter again
 	}
 	if (one_start)
