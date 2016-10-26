@@ -227,6 +227,10 @@ public:
 	// Spring
 	b2PrismaticJoint*		spring_coll;
 
+	// Slingshot
+	PhysBody* collider_slingshot1;
+	PhysBody* collider_slingshot2;
+
 	// Standalone detectors
 	PhysBody*				 ball_dead_detector = nullptr;
 

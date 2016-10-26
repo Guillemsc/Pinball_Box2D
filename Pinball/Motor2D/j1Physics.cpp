@@ -366,7 +366,7 @@ PhysBody * j1Physics::CreateRectangleSensor(int x, int y, int width, int height,
 	return pbody;
 }
 
-PhysBody * j1Physics::CreateChain(int x, int y, int * points, int size, uint16 mask, uint16 category)
+PhysBody * j1Physics::CreateChain(int x, int y, int * points, int size, uint16 mask, uint16 category, float restitution)
 {
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
@@ -389,6 +389,7 @@ PhysBody * j1Physics::CreateChain(int x, int y, int * points, int size, uint16 m
 	fixture.shape = &shape;
 	fixture.filter.maskBits = mask;
 	fixture.filter.categoryBits = category;
+	fixture.restitution = restitution;
 
 	b->CreateFixture(&fixture);
 

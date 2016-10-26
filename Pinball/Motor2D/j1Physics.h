@@ -102,7 +102,7 @@ public:
 	PhysBody* CreateCircleSensor(int x, int y, int radius, uint16 mask, uint16 category);
 	PhysBody* CreateRectangle(int x, int y, int width, int height, uint16 mask = 0x0001, uint16 category = 0x0001);
 	PhysBody* CreateRectangleSensor(int x, int y, int width, int height, uint16 mask, uint16 category);
-	PhysBody* CreateChain(int x, int y, int* points, int size, uint16 mask, uint16 category);
+	PhysBody* CreateChain(int x, int y, int* points, int size, uint16 mask, uint16 category, float restitution = 0.0f);
 	b2PrismaticJoint* CreatePrismaticJoint(PhysBody* bodyA, PhysBody* bodyB, b2Vec2 ancorA, b2Vec2 ancorB, int max, int min, int maxMotor, int motorSpeed);
 	b2RevoluteJoint* CreateRevoluteJoint(int radius, int* vects, int size, int posx, int posy, int desplacementx, int desplacementy, int upper_angle, int lower_angle, int max_torque, int speed, uint16 mask, uint16 category);
 	void TimerActions();
