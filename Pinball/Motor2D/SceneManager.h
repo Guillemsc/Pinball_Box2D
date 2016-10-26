@@ -88,15 +88,19 @@ public:
 	void LoadScene();
 
 public:
-	bool camera_debug = true;
-	Timer* loading;
-	bool is_loading;
-	bool game_over;
+	bool			camera_debug = true;
+	Timer*			loading;
+	bool			is_loading;
+	bool			game_over;
 
 private:
-	bool one_time;
-	SDL_Rect background;
-	MenuItem* loading_image;
+	bool			one_time;
+	SDL_Rect		background;
+
+	MenuItem*		loading_image;
+	MenuItem*		button_normal;
+	MenuItem*		button_pressed;
+	Button*			play_again;
 };
 
 #endif // __j1SCENEMANAGER_H__

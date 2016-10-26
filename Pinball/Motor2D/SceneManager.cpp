@@ -43,6 +43,9 @@ bool j1SceneManager::Start()
 	background.h = 1000;
 
 	loading_image = new MenuItem(App->tex->Load("menu/loading.png"), 0, 0, 224, 34, 215, 750);
+	button_normal = new MenuItem(App->tex->Load("menu/play_again_button_blue.png"), 0, 0, 320, 76, 160, 850);
+	button_pressed = new MenuItem(App->tex->Load("menu/play_again_button_orange.png"), 0, 0, 320, 76, 160, 850);
+	play_again = new Button(160, 470, 320, 80);
 
 	return true;
 }
@@ -94,8 +97,26 @@ bool j1SceneManager::Update(float dt)
 	// Game over
 	if(App->map->player.balls == 0 && App->scene->IsEnabled())
 	{
-		App->render->DrawQuad(background, 30, 30, 30, 160);
+		App->render->DrawQuad(background, 30, 30, 30, 200);
+	
 		game_over = true;
+		if(play_again->MouseOver())
+		{
+			App->render->Blit(button_pressed->texture, button_pressed->pos.x, button_pressed->pos.y, &button_pressed->rect);
+		}
+		else
+		{
+			App->render->Blit(button_normal->texture, button_normal->pos.x, button_normal->pos.y, &button_normal->rect);
+		}
+		if(play_again->MouseDown())
+		{
+			game_over = false;
+			one_time = true;
+			App->map->player.balls = 3;
+			loading->Start();
+			is_loading = true;
+		}
+		play_again->Draw();
 	}
 
 	return true;
