@@ -621,12 +621,11 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			App->map->kawaii_guy->timer->Start();
 			break;
 		case ball_dead_detector:
-		{
 			App->scene->resetball = true;
 
 			if(App->map->player.balls > 0)
 				App->map->player.balls--;
-		}
+			break;
 		case wall:
 			App->audio->PlayFx(App->map->ball_hit_fx);
 			break;
@@ -635,30 +634,35 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			break;
 		case target:
 			App->audio->PlayFx(App->map->target_fx);
-			break;
-		case little_button_1:
 			App->map->little_button1->anim.SetFrame(1);
 			break;
-		case little_button_2:
-			App->map->little_button2->anim.SetFrame(1);
-			break;
-		case little_button_3:
+		case target2:
+			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button3->anim.SetFrame(1);
 			break;
-		case little_button_4:
+		case target3:
+			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button4->anim.SetFrame(1);
 			break;
-		case little_button_5:
+		case target4:
+			App->audio->PlayFx(App->map->target_fx);
+			App->map->little_button2->anim.SetFrame(1);
+			break;
+		case target5:
+			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button5->anim.SetFrame(1);
 			break;
-		case little_button_6:
-			App->map->little_button6->anim.SetFrame(1);
+		case target6:
+			App->audio->PlayFx(App->map->target_fx);
+			App->map->little_button8->anim.SetFrame(1);
 			break;
-		case little_button_7:
+		case target7:
+			App->audio->PlayFx(App->map->target_fx);
 			App->map->little_button7->anim.SetFrame(1);
 			break;
-		case little_button_8:
-			App->map->little_button8->anim.SetFrame(1);
+		case target8:
+			App->audio->PlayFx(App->map->target_fx);
+			App->map->little_button6->anim.SetFrame(1);
 			break;
 		default:
 			break;

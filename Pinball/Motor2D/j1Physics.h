@@ -30,6 +30,14 @@ enum collider_names
 	kawaii_box2,
 	big_bumper_1,
 	big_bumper_2,
+	target,
+	target2,
+	target3,
+	target4,
+	target5,
+	target6,
+	target7, 
+	target8,
 	small_bumper_1,
 	small_bumper_2,
 	small_bumper_3,
@@ -37,19 +45,10 @@ enum collider_names
 	small_bumper_5,
 	small_bumper_6,
 	small_bumper_7,
-	little_button_1,
-	little_button_2,
-	little_button_3,
-	little_button_4,
-	little_button_5,
-	little_button_6,
-	little_button_7,
-	little_button_8,
 
 	ball_dead_detector,
 
 	wall,
-	target,
 	slingshot
 };
 
