@@ -47,7 +47,13 @@ bool j1Scene::PreUpdate()
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-
+	if (App->map->kawaii_blue->collide_for_bonus && App->map->kawaii_red->collide_for_bonus
+		&& App->map->kawaii_yellow->collide_for_bonus && App->map->kawaii_orange->collide_for_bonus
+		&& App->map->kawaii_violet->collide_for_bonus && App->map->kawaii_green->collide_for_bonus) 
+	{
+		App->scene_manager->piyo_bonus = true;
+		App->map->kawaii_blue->collide_for_bonus = false; // So it can't enter again
+	}
 	if (one_start)
 	{
 		// Create colliders -----------

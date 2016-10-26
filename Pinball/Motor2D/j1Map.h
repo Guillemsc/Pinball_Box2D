@@ -208,6 +208,7 @@ public:
 		PhysBody* pb = nullptr;
 		Timer* timer;
 		bool collide_once = true;
+		bool collide_for_bonus = false;
 
 	private:
 	};

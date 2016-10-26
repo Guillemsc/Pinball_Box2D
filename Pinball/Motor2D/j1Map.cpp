@@ -35,8 +35,8 @@ bool j1Map::Start()
 	print_points1 = new PrintPoints(App->tex->Load("menu/+100.png"), 0, 0, 46, 21, App->tex->Load("menu/+500.png"), 0, 0, 46, 21, 1);
 
 	// Audio MUSIC
-	//App->audio->PlayMusic("audio/music/game_music.mp3");
-	App->audio->PlayMusic("ocarina-of-time.mp3");
+	App->audio->PlayMusic("audio/music/game_music.mp3");
+
 	// Audio FX
 	spring_pull_fx = App->audio->LoadFx("audio/fx/spring_pull_fx.wav");
 	spring_push_fx = App->audio->LoadFx("audio/fx/spring_push_fx.wav");
@@ -655,6 +655,8 @@ void j1Map::CreateTimers()
 	small_bumper5->timer = new Timer(0.3); timers.add(small_bumper5->timer);
 	small_bumper6->timer = new Timer(0.3); timers.add(small_bumper6->timer);
 	small_bumper7->timer = new Timer(0.3); timers.add(small_bumper7->timer);
+
+	
 }
 
 void j1Map::Draw()

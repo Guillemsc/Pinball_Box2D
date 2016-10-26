@@ -96,6 +96,10 @@ public:
 	Timer*			loading;
 	bool			is_loading;
 	bool			game_over;
+	bool piyo_bonus = false; //+150.000 points
+	bool piyo_bonus_sum = true;
+	Timer* timer = new Timer(4);
+
 
 private:
 	bool			one_time;

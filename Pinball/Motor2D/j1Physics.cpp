@@ -520,6 +520,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_blue->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound2_fx);
 				App->map->kawaii_blue->collide_once = false;
+				App->map->kawaii_blue->collide_for_bonus = true;
 			}
 			App->map->kawaii_blue->timer->Start();
 			App->map->player.score += 100;
@@ -529,6 +530,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_red->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound1_fx);
 				App->map->kawaii_red->collide_once = false;
+				App->map->kawaii_red->collide_for_bonus = true;
 			}
 			App->map->kawaii_red->timer->Start();
 			App->map->player.score += 100;
@@ -538,6 +540,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_violet->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound1_fx);
 				App->map->kawaii_violet->collide_once = false;
+				App->map->kawaii_violet->collide_for_bonus = true;
 			}
 			App->map->kawaii_violet->timer->Start();
 			App->map->player.score += 100;
@@ -547,6 +550,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_yellow->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound1_fx);
 				App->map->kawaii_yellow->collide_once = false;
+				App->map->kawaii_yellow->collide_for_bonus = true;
 			}
 			App->map->kawaii_yellow->timer->Start();
 			App->map->player.score += 100;
@@ -556,6 +560,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_green->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound2_fx);
 				App->map->kawaii_green->collide_once = false;
+				App->map->kawaii_green->collide_for_bonus = true;
 			}
 			App->map->kawaii_green->timer->Start();
 			App->map->player.score += 100;
@@ -565,6 +570,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_orange->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound2_fx);
 				App->map->kawaii_orange->collide_once = false;
+				App->map->kawaii_orange->collide_for_bonus = true;
 			}
 			App->map->kawaii_orange->timer->Start();
 			App->map->player.score += 100;

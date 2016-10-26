@@ -81,12 +81,27 @@ bool j1SceneManager::PreUpdate()
 // Called each loop iteration
 bool j1SceneManager::Update(float dt)
 {
+	if (timer->IsTimeReached() && !timer->stop_time) {
+		piyo_bonus = false;
+		timer->stop_time = true;
+	}
 	// Title and puntuation
 	if (App->scene->active)
 	{
 		p2SString title("%s	  [Balls: %d Score: %d Max Score: %d]", 
 			App->title.GetString(), App->map->player.balls, App->map->player.score, App->map->player.max_score);
 		App->win->SetTitle(title.GetString());
+		if (piyo_bonus) {
+			timer->UpdateTime();
+			p2SString title2("%s	  [Balls: %d Score: %d Max Score: %d] PIYO BONUS +150000",
+				App->title.GetString(), App->map->player.balls, App->map->player.score, App->map->player.max_score);
+			if (piyo_bonus_sum) { // So it sums once
+				timer->Start();
+				App->map->player.score += 150000;
+				piyo_bonus_sum = false;
+			}
+			App->win->SetTitle(title2.GetString());
+		}
 	}
 	else
 	{

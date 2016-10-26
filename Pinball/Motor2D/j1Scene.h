@@ -42,6 +42,7 @@ public:
 	
 private:
 	bool one_start;
+
 };
 
 #endif // __j1SCENE_H__
