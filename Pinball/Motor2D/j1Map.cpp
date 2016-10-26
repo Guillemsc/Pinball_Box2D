@@ -736,13 +736,15 @@ void j1Map::PrintPuntuations()
 
 		if (!print_points1->list100[i]->IsTimeReached())
 		{
-			App->render->Blit(print_points1->texture100, print_points1->points100[i].x, print_points1->points100[i].y, &print_points1->rect100);
+			print_points1->points_plus100[i].y++;
+			App->render->Blit(print_points1->texture100, print_points1->points100[i].x + print_points1->points_plus100[i].x, print_points1->points100[i].y - print_points1->points_plus100[i].y, &print_points1->rect100);
 			i++;
 		}
 		else if (print_points1->list100[i]->IsTimeReached() && !print_points1->list100[i]->stop_time)
 		{
 			print_points1->list100.del(print_points1->list100.At(i));
 			print_points1->points100.del(print_points1->points100.At(i));
+			print_points1->points_plus100.del(print_points1->points_plus100.At(i));
 		}
 	}
 
@@ -753,13 +755,15 @@ void j1Map::PrintPuntuations()
 
 		if (!print_points1->list500[i]->IsTimeReached())
 		{
-			App->render->Blit(print_points1->texture500, print_points1->points500[i].x, print_points1->points500[i].y, &print_points1->rect500);
+			print_points1->points_plus500[i].y++;
+			App->render->Blit(print_points1->texture500, print_points1->points500[i].x + print_points1->points_plus500[i].x, print_points1->points500[i].y - print_points1->points_plus500[i].y, &print_points1->rect500);
 			i++;
 		}
 		else if (print_points1->list500.count());
 		{
 			print_points1->list500.del(print_points1->list500.At(i));
 			print_points1->points500.del(print_points1->points500.At(i));
+			print_points1->points_plus500.del(print_points1->points_plus500.At(i));
 		}
 	}
 
