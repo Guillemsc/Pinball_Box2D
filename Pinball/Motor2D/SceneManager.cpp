@@ -91,6 +91,13 @@ bool j1SceneManager::Update(float dt)
 	else
 		is_loading = false;
 
+	// Game over
+	if(App->map->player.balls == 0 && App->scene->IsEnabled())
+	{
+		App->render->DrawQuad(background, 30, 30, 30, 160);
+		game_over = true;
+	}
+
 	return true;
 }
 

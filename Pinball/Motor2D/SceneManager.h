@@ -91,6 +91,7 @@ public:
 	bool camera_debug = true;
 	Timer* loading;
 	bool is_loading;
+	bool game_over;
 
 private:
 	bool one_time;
