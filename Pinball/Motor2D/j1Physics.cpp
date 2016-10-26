@@ -652,6 +652,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_girl->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound4_fx);
 				App->map->kawaii_girl->collide_once = false;
+				App->map->kawaii_girl->collide_for_bonus = true;
 			}
 			App->map->kawaii_girl->timer->Start();
 			App->map->player.score += 100;
@@ -661,6 +662,7 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 			if (App->map->kawaii_guy->collide_once) {
 				App->audio->PlayFx(App->map->kawaii_sound3_fx);
 				App->map->kawaii_guy->collide_once = false;
+				App->map->kawaii_guy->collide_for_bonus = true;
 			}
 			App->map->kawaii_guy->timer->Start();
 			App->map->player.score += 100;

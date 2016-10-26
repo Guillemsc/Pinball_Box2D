@@ -99,7 +99,9 @@ public:
 	bool piyo_bonus = false; //+150.000 points
 	bool piyo_bonus_sum = true;
 	Timer* timer = new Timer(4);
-
+	bool meow_meow_happy_bonus = false; //+200.000 points
+	bool meow_meow_happy_bonus_sum = true;
+	Timer* timer2 = new Timer(4);
 
 private:
 	bool			one_time;

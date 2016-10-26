@@ -55,6 +55,7 @@ bool j1Map::Start()
 	small_bumper_fx = App->audio->LoadFx("audio/fx/small_bumper_fx.wav");
 	big_bumper_fx = App->audio->LoadFx("audio/fx/big_bumper_fx.wav");
 	piyo_bonus_fx = App->audio->LoadFx("audio/fx/piyo_bonus_fx.wav");
+	meow_meow_happy_bonus_fx = App->audio->LoadFx("audio/fx/meow_meow_happy_bonus_fx.wav");
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 

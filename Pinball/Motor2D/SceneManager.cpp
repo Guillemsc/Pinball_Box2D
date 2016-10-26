@@ -85,6 +85,10 @@ bool j1SceneManager::Update(float dt)
 		piyo_bonus = false;
 		timer->stop_time = true;
 	}
+	if (timer2->IsTimeReached() && !timer2->stop_time) {
+		meow_meow_happy_bonus = false;
+		timer2->stop_time = true;
+	}
 	// Title and puntuation
 	if (App->scene->active)
 	{
@@ -93,14 +97,23 @@ bool j1SceneManager::Update(float dt)
 		App->win->SetTitle(title.GetString());
 		if (piyo_bonus) {
 			timer->UpdateTime();
-			p2SString title2("%s	  [Balls: %d Score: %d Max Score: %d] PIYO BONUS +150000",
-				App->title.GetString(), App->map->player.balls, App->map->player.score, App->map->player.max_score);
+			p2SString title2("\t\tPIYO BONUS +150000");
 			if (piyo_bonus_sum) { // So it sums once
 				timer->Start();
 				App->map->player.score += 150000;
 				piyo_bonus_sum = false;
 			}
 			App->win->SetTitle(title2.GetString());
+		}
+		if (meow_meow_happy_bonus) {
+			timer2->UpdateTime();
+			p2SString title3("\t\tMEOW MEOW HAPPY BONUS +200000");
+			if (meow_meow_happy_bonus_sum) { // So it sums once
+				timer2->Start();
+				App->map->player.score += 200000;
+				meow_meow_happy_bonus_sum = false;
+			}
+			App->win->SetTitle(title3.GetString());
 		}
 	}
 	else

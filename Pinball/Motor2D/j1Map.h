@@ -322,7 +322,7 @@ public:
 	uint					target_fx;
 	uint					slingshot_fx;
 	uint					piyo_bonus_fx;
-
+	uint					meow_meow_happy_bonus_fx;
 	// Lists
 	p2List<Timer*>			timers;
 
