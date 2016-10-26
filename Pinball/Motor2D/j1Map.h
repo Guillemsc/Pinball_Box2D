@@ -185,6 +185,7 @@ public:
 	Sprite*					target5;
 	Sprite*					target6;
 	Sprite*					target7;
+	Sprite*					target8;
 
 	SpriteSheetItem*		kawaii_blue;
 	SpriteSheetItem*		kawaii_green;

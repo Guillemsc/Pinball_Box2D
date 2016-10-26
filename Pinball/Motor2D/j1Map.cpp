@@ -100,6 +100,8 @@ bool j1Map::Start()
 		0, 0, 21, 45);
 	target7 = new Sprite(App->tex->Load("images/target.png"),
 		0, 0, 21, 45);
+	target8 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
 
 	// Spritesheet items ----------------
 
@@ -577,6 +579,10 @@ void j1Map::CreateColliders()
 	target3->pb->coll_name = collider_names::target;
 	target4->pb = App->physics->CreateCircle(613, 573, 18, 0.4f, 0x0003, 0x0002); target4->pb->body->SetType(b2_staticBody);
 	target4->pb->coll_name = collider_names::target;
+	target5->pb = App->physics->CreateCircle(613, 350, 18, 0.4f, 0x0003, 0x0002); target5->pb->body->SetType(b2_staticBody);
+	target5->pb->coll_name = collider_names::target;
+	target5->pb = App->physics->CreateCircle(118, 272, 18, 0.4f, 0x0003, 0x0002); target5->pb->body->SetType(b2_staticBody);
+	target5->pb->coll_name = collider_names::target; 
 
 	// Sensors -----------------
 
@@ -712,6 +718,10 @@ void j1Map::Draw()
 	Blit(target2->texture, 102, 425, &target2->rect, 1);
 	Blit(target3->texture, 102, 375, &target3->rect, 1);
 	Blit(target4->texture, 613, 595, &target4->rect, 1, 180);
+	Blit(target5->texture, 613, 373, &target5->rect, 1, 180);
+	Blit(target6->texture, 123, 250, &target6->rect, 1, 20);
+	Blit(target7->texture, 585, 80, &target7->rect, 1, 130);
+	Blit(target8->texture, 420, 45, &target8->rect, 1, 50);
 	// -------------------------
 
 	// Spring
