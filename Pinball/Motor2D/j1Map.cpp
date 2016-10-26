@@ -88,6 +88,18 @@ bool j1Map::Start()
 	// Target
 	target = new Sprite(App->tex->Load("images/target.png"),
 		0, 0, 21, 45);
+	target2 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
+	target3 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
+	target4 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
+	target5 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
+	target6 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
+	target7 = new Sprite(App->tex->Load("images/target.png"),
+		0, 0, 21, 45);
 
 	// Spritesheet items ----------------
 
@@ -559,6 +571,12 @@ void j1Map::CreateColliders()
 	// Targets
 	target->pb = App->physics->CreateCircle(123, 622, 20, 0.4f, 0x0003, 0x0002); target->pb->body->SetType(b2_staticBody);
 	target->pb->coll_name = collider_names::target;
+	target2->pb = App->physics->CreateCircle(102, 448, 18, 0.4f, 0x0003, 0x0002); target2->pb->body->SetType(b2_staticBody);
+	target2->pb->coll_name = collider_names::target;
+	target3->pb = App->physics->CreateCircle(102, 398, 18, 0.4f, 0x0003, 0x0002); target3->pb->body->SetType(b2_staticBody);
+	target3->pb->coll_name = collider_names::target;
+	target4->pb = App->physics->CreateCircle(613, 573, 18, 0.4f, 0x0003, 0x0002); target4->pb->body->SetType(b2_staticBody);
+	target4->pb->coll_name = collider_names::target;
 
 	// Sensors -----------------
 
@@ -691,7 +709,9 @@ void j1Map::Draw()
 
 	// Targets
 	Blit(target->texture, 140, 610, &target->rect, 1, 45);
-
+	Blit(target2->texture, 102, 425, &target2->rect, 1);
+	Blit(target3->texture, 102, 375, &target3->rect, 1);
+	Blit(target4->texture, 613, 595, &target4->rect, 1, 180);
 	// -------------------------
 
 	// Spring

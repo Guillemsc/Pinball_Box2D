@@ -285,8 +285,12 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+<<<<<<< HEAD
 *.tvr
 *.lck
 FlashAndExtractor/Portable SWF/www.liveinternet.club/Registry.rw.tvr.transact
 *.cache
 Pinball/upc_videojocs.VC.db
+=======
+*.opendb
+>>>>>>> origin/master
