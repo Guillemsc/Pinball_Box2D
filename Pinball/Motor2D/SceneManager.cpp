@@ -204,6 +204,7 @@ bool j1SceneManager::Update(float dt)
 		{
 			game_over = false;
 			one_time = true;
+			App->map->ResetAnimations();
 			App->map->player.balls = 3;
 			App->map->player.score = 0;
 			loading->Start();

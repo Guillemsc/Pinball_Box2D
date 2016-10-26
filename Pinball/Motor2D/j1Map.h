@@ -58,6 +58,7 @@ public:
 		void Reset()
 		{
 			stop_time = true;
+			actual = 0;
 		}
 
 		void Start()
@@ -201,11 +202,21 @@ public:
 		~SpriteSheetItem() 
 		{};
 
+		void ResetFrame()
+		{
+			anim.SetFrame(0);
+		}
+
+		void ResetTimer()
+		{
+			timer->Reset();
+		}
+
 	public:
 		Animation anim;
 		iPoint pos;
 		PhysBody* pb = nullptr;
-		Timer* timer;
+		Timer* timer = nullptr;
 		bool collide_once = true;
 		bool collide_for_bonus = false;
 
@@ -227,6 +238,7 @@ public:
 	void Draw();
 	void CreateTimers();
 	void PrintPuntuations();
+	void ResetAnimations();
 	void Unload(SDL_Texture* tex);
 
 	// Called before quitting
@@ -337,6 +349,7 @@ public:
 
 	// Lists
 	p2List<Timer*>			timers;
+	p2List<SpriteSheetItem*> s_s_i;
 
 	// Player
 	Player player;

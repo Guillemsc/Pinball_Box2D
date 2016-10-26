@@ -120,153 +120,183 @@ bool j1Map::Start()
 		kawaii_blue->anim.PushBack({0, 130, 75, 65});
 		kawaii_blue->anim.PushBack({76, 130, 75, 65});
 		kawaii_blue->anim.speed = 0.00f ;
+		s_s_i.add(kawaii_blue);
 
 	// Kawaii green
 	kawaii_green = new SpriteSheetItem(340, 890);
 		kawaii_green->anim.PushBack({ 152, 0, 75, 65 });
 		kawaii_green->anim.PushBack({ 228, 0, 75, 65 });
 		kawaii_green->anim.speed = 0.00f;
+		s_s_i.add(kawaii_green);
 
 	// Kawaii orange
 	kawaii_orange = new SpriteSheetItem(270, 990);
 		kawaii_orange->anim.PushBack({ 152, 65, 75, 65 });
 		kawaii_orange->anim.PushBack({ 228, 65, 75, 65 });
 		kawaii_orange->anim.speed = 0.00f;
+		s_s_i.add(kawaii_orange);
 
 	// Kawaii red
 	kawaii_red = new SpriteSheetItem(425, 695);
 		kawaii_red->anim.PushBack({ 152, 130, 75, 65 });
 		kawaii_red->anim.PushBack({ 228, 130, 75, 65 });
 		kawaii_red->anim.speed = 0.00f;
+		s_s_i.add(kawaii_red);
 
 	// Kawaii violet
 	kawaii_violet = new SpriteSheetItem(285, 670);
 		kawaii_violet->anim.PushBack({ 0, 65, 75, 65 });
 		kawaii_violet->anim.PushBack({ 76, 65, 75, 65 });
 		kawaii_violet->anim.speed = 0.00f;
+		s_s_i.add(kawaii_violet);
 
 	// Kawaii yellow
 	kawaii_yellow = new SpriteSheetItem(150, 695);
 		kawaii_yellow->anim.PushBack({ 0, 0, 75, 65 });
 		kawaii_yellow->anim.PushBack({ 76, 0, 75, 65 });
 		kawaii_yellow->anim.speed = 0.00f;
+		s_s_i.add(kawaii_yellow);
 
 	// Kawaii girl
 	kawaii_girl = new SpriteSheetItem(505, 890);
 		kawaii_girl->anim.PushBack({ 309, 126, 66, 76 });
 		kawaii_girl->anim.PushBack({ 375, 126, 66, 76 });
 		kawaii_girl->anim.speed = 0.00f;
+		s_s_i.add(kawaii_girl);
 
 	// Kawaii guy
 	kawaii_guy = new SpriteSheetItem(40, 910);
 		kawaii_guy->anim.PushBack({ 309, 55, 65, 70 });
 		kawaii_guy->anim.PushBack({ 375, 55, 65, 70 });
 		kawaii_guy->anim.speed = 0.00f;
+		s_s_i.add(kawaii_guy);
 
 	// Kawaii box
 	kawaii_box1 = new SpriteSheetItem(453, 130);
 		kawaii_box1->anim.PushBack({ 313, 0, 58, 53 });
 		kawaii_box1->anim.PushBack({ 377, 0, 58, 53 });
 		kawaii_box1->anim.speed = 0.00f;
+		s_s_i.add(kawaii_box1);
 
 	kawaii_box2 = new SpriteSheetItem(318, 347);
 		kawaii_box2->anim.PushBack({ 313, 0, 58, 53 });
 		kawaii_box2->anim.PushBack({ 377, 0, 58, 53 });
 		kawaii_box2->anim.speed = 0.00f;
+		s_s_i.add(kawaii_box2);
 
 	// Little button
 	little_button1 = new SpriteSheetItem();
 		little_button1->anim.PushBack({ 102, 334, 55, 55 });
 		little_button1->anim.PushBack({ 8, 278, 52, 52 });
 		little_button1->anim.speed = 0.00f;
+		s_s_i.add(little_button1);
 
 	little_button2 = new SpriteSheetItem();
 		little_button2->anim.PushBack({ 102, 334, 55, 55 });
 		little_button2->anim.PushBack({ 8, 278, 52, 52 });
 		little_button2->anim.speed = 0.00f;
+		s_s_i.add(little_button2);
 
 	little_button3 = new SpriteSheetItem();
 		little_button3->anim.PushBack({ 102, 334, 55, 55 });
 		little_button3->anim.PushBack({ 8, 278, 52, 52 });
 		little_button3->anim.speed = 0.00f;
+		s_s_i.add(little_button3);
 
 	little_button4 = new SpriteSheetItem();
 		little_button4->anim.PushBack({ 102, 334, 55, 55 });
 		little_button4->anim.PushBack({ 8, 278, 52, 52 });
 		little_button4->anim.speed = 0.00f;
+		s_s_i.add(little_button4);
 
 	little_button5 = new SpriteSheetItem();
 		little_button5->anim.PushBack({ 102, 334, 55, 55 });
 		little_button5->anim.PushBack({ 8, 278, 52, 52 });
 		little_button5->anim.speed = 0.00f;
+		s_s_i.add(little_button5);
 
 	little_button6 = new SpriteSheetItem();
 		little_button6->anim.PushBack({ 102, 334, 55, 55 });
 		little_button6->anim.PushBack({ 8, 278, 52, 52 });
 		little_button6->anim.speed = 0.00f;
+		s_s_i.add(little_button6);
 
 	little_button7 = new SpriteSheetItem();
 		little_button7->anim.PushBack({ 102, 334, 55, 55 });
 		little_button7->anim.PushBack({ 8, 278, 52, 52 });
 		little_button7->anim.speed = 0.00f;
+		s_s_i.add(little_button7);
 
 	little_button8 = new SpriteSheetItem();
 		little_button8->anim.PushBack({ 102, 334, 55, 55 });
 		little_button8->anim.PushBack({ 8, 278, 52, 52 });
 		little_button8->anim.speed = 0.00f;
+		s_s_i.add(little_button8);
 
 	// Small Bumpers
 	small_bumper1 = new SpriteSheetItem();
 		small_bumper1->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper1->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper1->anim.speed = 0.00f;
+		s_s_i.add(small_bumper1);
+
 
 	small_bumper2 = new SpriteSheetItem();
 		small_bumper2->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper2->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper2->anim.speed = 0.00f;
+		s_s_i.add(small_bumper2);
 
 	small_bumper3 = new SpriteSheetItem();
 		small_bumper3->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper3->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper3->anim.speed = 0.00f;
+		small_bumper3->anim.SetFrame(0);
+		s_s_i.add(small_bumper3);
 
 	small_bumper4 = new SpriteSheetItem();
 		small_bumper4->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper4->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper4->anim.speed = 0.00f;
+		s_s_i.add(small_bumper4);
 
 	small_bumper5 = new SpriteSheetItem();
 		small_bumper5->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper5->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper5->anim.speed = 0.00f;
+		s_s_i.add(small_bumper5);
 
 	small_bumper6 = new SpriteSheetItem();
 		small_bumper6->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper6->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper6->anim.speed = 0.00f;
+		s_s_i.add(small_bumper6);
 
 	small_bumper7 = new SpriteSheetItem();
 		small_bumper7->anim.PushBack({ 141, 225, 55, 55 });
 		small_bumper7->anim.PushBack({ 577, 291, 70, 70 });
 		small_bumper7->anim.speed = 0.00f;
+		s_s_i.add(small_bumper7);
 
 	// Blue Arrow (?)
 	blue_arrow = new SpriteSheetItem();
 		blue_arrow->anim.PushBack({ 7, 212, 48, 61 });
 		blue_arrow->anim.PushBack({ 56, 212, 48, 61 });
 		blue_arrow->anim.speed = 0.00f;
+		s_s_i.add(blue_arrow);
 
 	// Big bumpers
 	big_bumper1 = new SpriteSheetItem();
 		big_bumper1->anim.PushBack({ 202, 250, 104, 104 });
 		big_bumper1->anim.PushBack({ 379, 258, 127, 127 });
 		big_bumper1->anim.speed = 0.00f;
+		s_s_i.add(big_bumper1);
 
 	big_bumper2 = new SpriteSheetItem();
 		big_bumper2->anim.PushBack({ 202, 250, 104, 104 });
 		big_bumper2->anim.PushBack({ 379, 258, 127, 127 });
 		big_bumper2->anim.speed = 0.00f;
+		s_s_i.add(big_bumper2);
 
 	// ----------------------------------
 
@@ -832,6 +862,16 @@ bool j1Map::CleanUp()
 	Unload(target8->texture);
 
 	return true;
+}
+void j1Map::ResetAnimations()
+{
+	for(int i = 0; i<s_s_i.count(); i++)
+	{
+		s_s_i[i]->ResetFrame();
+
+		if(s_s_i[i]->timer != nullptr)
+			s_s_i[i]->ResetTimer();
+	}
 }
 
 void j1Map::Blit(SDL_Texture * texture, int x, int y, const SDL_Rect* section, float speed, double angle, int pivot_x, int pivot_y)
