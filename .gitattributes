@@ -16,4 +16,5 @@
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
 
-FlashAndExtractor* linguist-vendored
+FlashAndExtractor/* linguist-vendored
+Vertex-Box2D-v1.3 (Programa de Ric)/* linguist-vendored
