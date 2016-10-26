@@ -47,6 +47,7 @@ enum collider_names
 	small_bumper_7,
 
 	ball_dead_detector,
+	loop_detector,
 
 	wall,
 	slingshot

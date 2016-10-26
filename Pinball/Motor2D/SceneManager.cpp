@@ -93,6 +93,10 @@ bool j1SceneManager::Update(float dt)
 		big_pixel_bonus = false;
 		timer3->stop_time = true;
 	}
+	if (timer4->IsTimeReached() && !timer4->stop_time) {
+		loop_bonus = false;
+		timer4->stop_time = true;
+	}
 	// Title and puntuation
 	if (App->scene->active)
 	{
@@ -128,6 +132,17 @@ bool j1SceneManager::Update(float dt)
 				big_pixel_bonus_sum = false;
 			}
 			App->win->SetTitle(title4.GetString());
+		}
+		if (loop_bonus) {
+			timer4->UpdateTime();
+			p2SString title5("\t\tLOOP BONUS +50000");
+			if (loop_bonus_sum) { // So it sums once
+				timer4->Start();
+				App->audio->PlayFx(App->map->loop_bonus_fx);
+				App->map->player.score += 50000;
+				loop_bonus_sum = false;
+			}
+			App->win->SetTitle(title5.GetString());
 		}
 	}
 	else

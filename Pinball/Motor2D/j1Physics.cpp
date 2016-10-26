@@ -9,6 +9,7 @@
 #include "j1Map.h"
 #include "j1Physics.h"
 #include "j1Scene.h"
+#include "SceneManager.h"
 #include "j1Map.h"
 
 
@@ -675,6 +676,10 @@ void j1Physics::OnCollision(PhysBody * bodyA, PhysBody * bodyB)
 
 			if(App->map->player.balls > 0)
 				App->map->player.balls--;
+			break;
+		case loop_detector:
+			App->scene_manager->loop_bonus = true;
+			if (!App->scene_manager->loop_bonus_sum) App->scene_manager->loop_bonus_sum = true;
 			break;
 		case wall:
 			App->audio->PlayFx(App->map->ball_hit_fx);

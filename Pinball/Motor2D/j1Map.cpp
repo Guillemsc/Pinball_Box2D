@@ -59,6 +59,7 @@ bool j1Map::Start()
 	piyo_bonus_fx = App->audio->LoadFx("audio/fx/piyo_bonus_fx.wav");
 	meow_meow_happy_bonus_fx = App->audio->LoadFx("audio/fx/meow_meow_happy_bonus_fx.wav");
 	big_pixel_bonus_fx = App->audio->LoadFx("audio/fx/big_pixel_bonus_fx.wav");
+	loop_bonus_fx = App->audio->LoadFx("audio/fx/loop_bonus_fx.wav");
 
 	// Background 1
 	bg1 = new Sprite(App->tex->Load("images/background1.png"), 
@@ -625,6 +626,9 @@ void j1Map::CreateColliders()
 	ball_dead_detector = App->physics->CreateRectangleSensor(300, 1250, 300, 30, 0x0003, 0x0002);
 	ball_dead_detector->coll_name = collider_names::ball_dead_detector;
 
+	loop_detector = App->physics->CreateRectangleSensor(77, 705, 75, 25, 0x0003, 0x0002);
+	loop_detector->coll_name = collider_names::loop_detector;
+
 	little_button1->pb = App->physics->CreateCircleSensor(150, 665, 20, 0x0003, 0x0002); little_button1->pb->body->SetType(b2_kinematicBody);
 	little_button2->pb = App->physics->CreateCircleSensor(550, 580, 20, 0x0003, 0x0002); little_button2->pb->body->SetType(b2_kinematicBody);
 	little_button3->pb = App->physics->CreateCircleSensor(145, 460, 20, 0x0003, 0x0002); little_button3->pb->body->SetType(b2_kinematicBody);
@@ -633,6 +637,7 @@ void j1Map::CreateColliders()
 	little_button6->pb = App->physics->CreateCircleSensor(420, 112, 20, 0x0003, 0x0002); little_button6->pb->body->SetType(b2_kinematicBody);
 	little_button7->pb = App->physics->CreateCircleSensor(530, 112, 20, 0x0003, 0x0002); little_button7->pb->body->SetType(b2_kinematicBody);
 	little_button8->pb = App->physics->CreateCircleSensor(160, 300, 20, 0x0003, 0x0002); little_button8->pb->body->SetType(b2_kinematicBody);
+	
 	
 	// -------------------------
 }

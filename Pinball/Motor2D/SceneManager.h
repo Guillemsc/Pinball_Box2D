@@ -105,6 +105,9 @@ public:
 	bool big_pixel_bonus = false; //+200.000 points
 	bool big_pixel_bonus_sum = true;
 	Timer* timer3 = new Timer(4);
+	bool loop_bonus = false;
+	bool loop_bonus_sum = true;
+	Timer* timer4 = new Timer(4);
 
 private:
 	bool			one_time;

@@ -302,7 +302,8 @@ public:
 	PhysBody* collider_slingshot2;
 
 	// Standalone detectors
-	PhysBody*				 ball_dead_detector = nullptr;
+	PhysBody*				ball_dead_detector = nullptr;
+	PhysBody*				loop_detector = nullptr;
 
 	// Music
 	uint					kicker1_fx;
@@ -326,6 +327,7 @@ public:
 	uint					piyo_bonus_fx;
 	uint					meow_meow_happy_bonus_fx;
 	uint					big_pixel_bonus_fx;
+	uint					loop_bonus_fx;
 
 	// Lists
 	p2List<Timer*>			timers;
