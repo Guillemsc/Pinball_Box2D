@@ -1,1 +1,0 @@
-﻿<p align="center"><font face="score_board Regular" size="35" color="#cc6600" letterSpacing="0.000000" kerning="1">BUTTON</font></p>

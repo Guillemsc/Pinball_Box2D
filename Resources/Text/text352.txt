@@ -1,1 +1,0 @@
-﻿<p align="left"><font face="score_board Regular" size="19" color="#ffcc00" letterSpacing="0.000000" kerning="1">0</font></p>

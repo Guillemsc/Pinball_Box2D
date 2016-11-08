@@ -1,1 +1,0 @@
-﻿<p align="center"><font face="score_board Regular" size="63" color="#ffcc00" letterSpacing="0.000000" kerning="1">BIG PIXEL</font></p><p align="center"><font face="score_board Regular" size="63" color="#ffcc00" letterSpacing="0.000000" kerning="1">PINBALL</font></p>
